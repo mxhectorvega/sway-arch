@@ -14,3 +14,8 @@ Puede clonar el repositorio manualmente o ejecutar un script haga todo por usted
 
 **Nota:**
 Esta configuracion fue probada en #ArchLinux, estamos trabajando para portarla a los sistemas UNIX/BSD.
+
+**Screenshot:**
+<center>
+<img src="https://raw.githubusercontent.com/mxhectorvega/sway-arch/main/arch.png" style="max-width:100%;width:auto;height:auto;">
+</center>
