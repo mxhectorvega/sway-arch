@@ -1,0 +1,18 @@
+## Configuracion para WofiMenu
+## Autor:
+## Hector Ivan Vega Zamudio
+## mxhectorvega@gmail.com
+## https://github.com/mxhectorvega
+## Version:
+## v1.5: 14/11/211
+
+
+width=400
+height=300
+insensitive=true
+mode=drun,run
+columns=1
+padding:5
+lines=6
+filter_rate=100
+location=center

@@ -1,0 +1,115 @@
+/* 
+## Configuracion para Waybar
+## Autor:
+## Hector Ivan Vega Zamudio
+## mxhectorvega@gmail.com
+## https://github.com/mxhectorvega
+## Version:
+## v1.5: 14/11/211
+*/
+
+{
+    "layer": "top",
+    "height": 25,
+    "margin-top": 5,
+    "margin-left": 5,
+    "margin-right": 5, 
+    "modules-left": ["sway/workspaces", "sway/mode"],
+    // "modules-center": ["sway/mode", "sway/window"],
+    "modules-right": [  "network", "cpu", "temperature", "memory", "backlight", "pulseaudio", "battery", "clock", "tray"],
+
+    "sway/mode": {
+        "format": "{}"
+    },
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": false,
+        "disable-markup": false,
+        "format": "{icon}",
+        "format-icons": {
+            "1": "I 💻",
+            "2": "II 📝",
+            "3": "III 📁",
+            "4": "IV 🌎",
+            "5": "V 🎹",
+        }
+    },
+    "sway/window": {
+        "max-length": 20,
+        "format":" {}",
+        "tooltip": false
+    },
+
+
+"battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "🔌 {capacity}%",
+        "format-plugged": "🔌 {capacity}%",
+        "format-alt": "{icon} {time}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["❤️", "❤️", "❤️", "❤️", "❤️"]
+    },
+    "battery#bat2": {
+        "bat": "BAT2"
+    },  
+  "clock": {
+        "format": "📅 {:%H:%M}",
+        "format-alt": "📅 {:%a, %d. %b}"	
+    },
+     "backlight": {
+        "device": "intel_backlight",
+        "format": "{icon} {percent}%",
+        "format-icons": ["🌙", "🔅", "🔆"]
+    },
+     "tray": {
+        "icon-size": 14,
+        "spacing": 10
+    },
+   "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "📡 {essid} ({signalStrength}%)",
+        //"format-wifi": "📡 {signalStrength}%",
+        "format-ethernet": "🥨 {ipaddr}/{cidr}",
+        "tooltip-format": "🥨 {ifname} via {gwaddr}",
+        "format-linked": "🥨 {ifname} (No IP)",
+        "format-disconnected": "😵 Disconnected",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{icon} {volume}% ",
+        "format-muted": "🔈",
+        "format-icons": {
+          "headphone": "",
+          "hands-free": "",
+          "headset": "",
+          "phone": "",
+          "portable": "",
+          "car": "",
+          "default": ["🔉", "🔊"]
+           },
+        "scroll-step": 1,
+        "on-click": "pavucontrol"
+  },
+    "memory": {
+        "format": "🐏 {}%"
+    },
+    "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        // "format-critical": "{icon} {temperatureC}°C",
+        "format": "{icon} {temperatureC}°C",
+        "format-icons": ["", "🔥", ""]
+    },
+    "cpu": {
+        "interval": 2,
+        "format": "🐌 {usage}%",
+    }
+}

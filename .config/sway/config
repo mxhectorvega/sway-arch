@@ -1,0 +1,469 @@
+## Configuracion para SwayWM
+## Autor:
+## Hector Ivan Vega Zamudio
+## mxhectorvega@gmail.com
+## https://github.com/mxhectorvega
+## Version:
+## v1.5: 14/11/211
+
+## Delara teclas super y alt
+set $mod Mod4
+set $alt Mod1
+
+## Declarar wallpapers bloqueo y escritorio
+set $block-wall $HOME/.config/wall.*
+set $desktop-wall $HOME/.config/wall.*
+
+## Pantalla de bloqueo
+set $lock_warning exec notify-send -t 10000 -i $HOME/.config/user.png "SystemCtl" "La pantalla se bloqueará en 10 segundos, mueva el cursor o siga en lo que estaba..."
+set $lock swaylock \
+    --daemonize \
+    --no-unlock-indicator \
+    --image $block-wall
+
+## Delara los espacios entre ventanas
+set $gap_ext 1
+set $gap_int 5
+
+## Delara tu tipografia
+set $default_font Iosevka 9
+set $font_dmenu Iosevka-9
+
+## Delara la terminal por defecto
+set $terminal alacritty
+
+## Declara el lanzador de aplicaciones
+set $lanzador wofi -a -b -I 
+
+## Apariencia basica
+smart_borders on
+smart_gaps off
+titlebar_border_thickness 0
+titlebar_padding 1
+default_border pixel 0
+gaps inner $gap_int
+gaps outer $gap_ext
+font $default_font
+popup_during_fullscreen smart
+
+
+## Colores basicos
+set $colour_blanco     #ffffff
+set $colour_gris       #141414
+set $colour_gris_alpha #14141499
+set $colour_azul       #0088CC
+set $colour_rojo       #BC5858
+set $colour_inactive   #8D8D8D
+
+## Confuracion de teclado y velocidad de escritura
+input * {
+    xkb_layout latam
+    repeat_delay 195
+    repeat_rate 95
+}
+
+## Configuracion de trackpad o touchpad 
+## (habilita tab ligero a 1 dedo, menu contextual a 2 dedos y scroll click a 3 dedos)
+input type:touchpad {
+    tap enabled
+    natural_scroll enabled
+}
+
+## Status Bar:
+bar {
+   status_command pkill -9 waybar && waybar
+}
+
+## Otput configuration
+## Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+## output * bg #808080  solid_color
+output * {
+    bg $desktop-wall fill
+    resolution 1366x768
+    scale 0
+}
+
+## window colours       border            background         text               indicator          child
+client.focused          $colour_gris      $colour_gris       $colour_blanco     $colour_blanco     $colour_gris
+client.focused_inactive $colour_gris      $colour_gris       $colour_gris       $colour_gris       $colour_gris
+client.unfocused        $colour_gris      $colour_inactive   $colour_gris       $colour_inactive   $colour_gris
+client.urgent           $colour_rojo      $colour_rojo       $colour_blanco     $colour_rojo       $colour_gris
+
+## Transparencia
+set $opacity 0.9
+for_window [app_id="Alacritty"] opacity $opacity
+for_window [app_id="mousepad"] opacity $opacity
+
+## Teclas de direccion al estilo VIM
+set $left h
+set $down j
+set $up k
+set $right l
+
+## Cerrar ventana actual
+bindsym $mod+Shift+q kill
+
+## La tecla mod (super) arrastra ventanas flotantes con el mouse.
+floating_modifier $mod normal
+
+## Recargar configuracion
+bindsym $mod+Shift+c reload
+
+## Moverr ventanas de lugar
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+## You can "split" the current object of your focus with
+## $mod+b or $mod+v, for horizontal and vertical splits
+## respectively.
+bindsym $mod+b splith
+bindsym $mod+v splitv
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+bindsym $mod+f fullscreen
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+bindsym $mod+a focus parent
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+
+## Resizing containers:
+mode "resize" {
+bindsym $right resize shrink width 10px
+bindsym $down resize grow height 10px
+bindsym $up resize shrink height 10px
+bindsym $left resize grow width 10px
+bindsym Right resize shrink width 10px
+bindsym Down resize grow height 10px
+bindsym Up resize shrink height 10px
+bindsym Left resize grow width 10px
+
+## Return to default mode
+bindsym Return mode "default"
+bindsym Escape mode "default"
+}
+
+## Modo: cambiar de tamaño las ventanas
+set $mode_resize_tile "🪟 Resizer: h|j|k|l"
+bindsym $mod+$alt+r     mode $mode_resize_tile
+mode $mode_resize_tile {
+    bindsym h resize shrink width 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+## Modo: menu de apagado
+set $mode_system "👤 [B]loquear, [S]uspender, [R]einiciar, [A]pagar"
+bindsym $mod+$alt+q     mode $mode_system
+mode $mode_system {
+    bindsym b exec $lock;               mode default
+    bindsym s exec systemctl poweroff;  mode default
+    bindsym r exec systemctl reboot;    mode default
+    bindsym a exec systemctl suspend;   mode default
+    bindsym Return mode default
+    bindsym Escape mode default
+}
+
+## Modo: menu i3 cerrar sesion y recargar configuracion
+set $mode_i3 "⚙️ [R]ecargar conf, [S]alir Sway"
+bindsym $mod+$alt+i     mode $mode_i3
+mode $mode_i3 {
+    bindsym s exit
+    bindsym r reload
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+## Modo: mover ventana flotante
+set $mode_move_floating "🏄‍♂️ Flotante: h|j|k|l"
+bindsym $mod+$alt+space   mode $mode_move_floating
+mode $mode_move_floating {
+    bindsym h move left
+    bindsym j move down
+    bindsym k move up
+    bindsym l move right
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+## Modo: menu captura de pantalla
+set $mode_scrot "🎥 [G]rabar, [D]etener grabción"
+bindsym $mod+$alt+s     mode $mode_scrot
+mode $mode_scrot {
+    bindsym g exec wf-recorder -a -f "$HOME/Vídeos/screencast-$(date +'%Y-%m-%d %H-%M-%S').mp4", mode "default"
+    bindsym d exec killall --signal SIGINT wf-recorder, mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+## Modo: manipular gaps (espacios entre ventanas)
+set $mode_gaps_inner "🔩 Gaps int.: -|+|0 (local), shift -|+|0 (global)"
+mode $mode_gaps_inner {
+    bindsym minus gaps inner current plus 5
+    bindsym equal gaps inner current minus 5
+    bindsym 0     gaps inner current set 0
+    bindsym $alt+minus gaps inner all plus 5
+    bindsym $alt+equal gaps inner all minus 5
+    bindsym $alt+space     gaps inner all set 0
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+## Modo: manipular gaps (espacios entre ventanas)
+set $mode_gaps_outer "🔩 Gaps ext.: -|+|0 (local), shift -|+|0 (global)"
+mode $mode_gaps_outer {
+    bindsym minus gaps outer current plus 5
+    bindsym equal gaps outer current minus 5
+    bindsym 0     gaps outer current set 0
+    bindsym $alt+minus gaps outer all plus 5
+    bindsym $alt+equal gaps outer all minus 5
+    bindsym $alt+space     gaps outer all set 0
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+## Modo: manipular gaps (espacios entre ventanas)
+set $mode_gaps "🔩 Gaps: [I]terior, [E]xterior"
+bindsym $mod+$alt+g     mode $mode_gaps
+mode $mode_gaps {
+    bindsym e      mode $mode_gaps_outer
+    bindsym i      mode $mode_gaps_inner
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+## Manejo de espacios de trabajo
+## Switch to workspace
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+
+## Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+
+## Reglas para las ventanas
+bindcode 66 [app_id="^scratchpad-.*"] scratchpad show
+assign [class="^kitty$"] 		workspace number 1
+assign [class="^URxvt$"] 	 	workspace number 1
+assign [class="^XTerm$"] 		workspace number 1
+assign [app_id="^Alacritty$"] 		workspace number 1
+assign [class="^st-256color$"] 	 	workspace number 1
+assign [app_id="^Virt-manager$"]	workspace number 1
+assign [app_id="Pavucontrol"]		workspace number 1
+assign [class="Xfce4-settings-manager"]	workspace number 1
+assign [app_id="Blueberry.py"]		workspace number 1
+assign [class="Transmission-gtk"]	workspace number 1
+
+assign [app_id="^mousepad$"]		workspace number 2
+assign [class="^mousepad$"]		workspace number 2
+assign [class="^geany$"]		workspace number 2
+assign [class="^SublimeText3$"]		workspace number 2
+assign [class="^Code$"]			workspace number 2
+assign [app_id="^DesktopEditors$"]	workspace number 2
+assign [app_id="^tm$"]			workspace number 2
+assign [class="^pm$"]			workspace number 2
+assign [class="^libreoffice-writer$"]	workspace number 2
+assign [class="libreoffice-writer"]	workspace number 2
+assign [class="^libreoffice-calc$"]	workspace number 2
+assign [class="^libreoffice$"]		workspace number 2
+assign [app_id="^MuPDF$"]		workspace number 2
+assign [app_id="^org.pwmt.zathura$"]	workspace number 2
+
+assign [app_id="thunar"]		workspace number 3
+assign [class="^thunar$"]		workspace number 3
+
+assign [class="^Firefox$"]		workspace number 4
+assign [class="^firefox$"]		workspace number 4
+assign [app_id="^Firefox$"]		workspace number 4
+assign [app_id="^firefox$"]		workspace number 4
+assign [class="^Surf$"]			workspace number 4
+assign [app_id="^Navigator$"]		workspace number 4
+assign [app_id="telegramdesktop"]	workspace number 4
+assign [class="Telegram-Desktop"]	workspace number 4
+
+assign [app_id="^mpv$"]			workspace number 5
+assign [class="^vlc$"]			workspace number 5
+assign [class="^Kodi$"]			workspace number 5
+assign [class="^Spotify$"]		workspace number 5
+assign [class="^spotify$"]		workspace number 5
+assign [app_id="Sxiv"]			workspace number 5
+assign [class="^obs$"]			workspace number 5
+assign [app_id="^obs$"]			workspace number 5
+assign [class="^Gimp$"]			workspace number 5
+assign [class="^Kdenlive$"]		workspace number 5
+
+## Don't lock for video
+for_window [class="Firefox"]                            inhibit_idle fullscreen
+for_window [app_id="^firefox$"]                         inhibit_idle fullscreen
+for_window [class="^Nightly$"]                          inhibit_idle fullscreen
+for_window [class="Chromium"]                           inhibit_idle fullscreen
+for_window [app_id="^Chromium-browser$"]                inhibit_idle fullscreen
+for_window [app_id="^chromium-browser$"]                inhibit_idle fullscreen
+for_window [app_id="^Google-chrome$"]                   inhibit_idle fullscreen
+for_window [class="Google-chrome"]                      inhibit_idle fullscreen
+for_window [app_id="^org.qutebrowser.qutebrowser$"]     inhibit_idle fullscreen
+for_window [class="^jellyfin$"]                         inhibit_idle fullscreen
+for_window [class="^Google-chrome$" title="^Jellyfin$"] inhibit_idle fullscreen
+for_window [class="^Chromium-browser$"]                 inhibit_idle fullscreen
+for_window [class="^mpv$"]                              inhibit_idle visible
+for_window [app_id="^mpv$"]                             inhibit_idle visible
+for_window [class="^jellyfin$"]                         inhibit_idle visible
+for_window [class="^Google-chrome$" title="^Jellyfin$"] inhibit_idle visible
+
+## Ventanas flotantes
+for_window [window_type="menu"]                                       floating enable
+for_window [window_role="app"]                                        floating enable
+for_window [window_role="pop-up"]                                     floating enable
+for_window [window_role="task_dialog"]                                floating enable
+for_window [window_type="dialog"]                                     floating enable
+for_window [title="Preferences$"]                                     floating enable
+for_window [title="- Sharing Indicator$"]                             floating enable
+for_window [class="Anki"]                                             floating enable
+for_window [title="Anki$"]                                            floating enable
+for_window [app_id="electrum"]                                        floating enable
+for_window [app_id="nm-connection-editor"]                            floating enable
+for_window [app_id="wdisplays"]                                       floating enable
+for_window [app_id="^azulman-"]                                       floating enable
+for_window [title="^Figure 1$"]                                       floating enable
+for_window [class="azulman-manager"]                                  floating enable
+for_window [class="Galculator"]                                       floating enable
+for_window [class="Gui.py"]                                           floating enable
+for_window [class="Mnemosyne"]                                        floating enable
+for_window [class="Nm-connection-editor"]                             floating enable
+for_window [class="Pavucontrol"]                                      floating enable
+for_window [app_id="pavucontrol"]                                     floating enable
+for_window [class="Qpaeq"]                                            floating enable
+for_window [class="SimpleScreenRecorder"]                             floating enable
+for_window [class="Woeusbgui"]                                        floating enable
+for_window [class="electrum"]                                         floating enable
+for_window [class="etcher"]                                           floating enable
+for_window [class="feh"]                                              floating enable
+for_window [class="^XEyes$"]                                          floating enable
+for_window [title="^bobby$"]                                          floating enable
+for_window [app_id="^firefox$" title="Picture-in-Picture"]            floating enable
+for_window [app_id="^firefox$" title="^Firefox — Sharing Indicator$"] floating enable
+for_window [app_id="^thunar$" title="File Operation Progress"]        floating enable
+for_window [class="^Pinentry-gtk-2$"]                                 floating enable
+for_window [app_id="^qjackctl$"]                                      floating enable
+for_window [app_id="^Manjaro.manjaro-settings-manager$"]              floating enable
+for_window [title="^Emulator$"]                                       floating enable
+for_window [title="^Android Emulator"]                                floating enable
+for_window [class="^vysor$"]                                          floating enable
+for_window [app_id="^wev$"]                                           floating enable
+for_window [app_id="^imv$"]                                           floating enable
+for_window [title="is sharing your screen.$"]                         floating enable
+for_window [app_id="^com.github.tchx84.Flatseal$"]                    floating enable
+for_window [class="^QjackCtl$"]                                       floating enable
+for_window [class="com.github.wwmm.easyeffects"]                      floating enable
+for_window [app_id="Sxiv"]                                            floating enable, resize set 800 500
+for_window [class="sxiv"]                                            floating enable, resize set 800 500
+for_window [app_id="imv"]                                            floating enable, resize set 900 500
+for_window [class="imv"]                                            floating enable, resize set 900 500
+
+## floating sticky
+for_window [class="^jellyfin$"]                         floating enable, resize set 1334 568, sticky enable
+for_window [class="^Google-chrome$" title="^Jellyfin$"] floating enable, resize set 1334 568, sticky enable
+for_window [class="^work-meet$"]                        floating enable, resize set 1334 568, sticky enable
+for_window [class="^mpv$"]                              floating enable, resize set 250 250, sticky enable
+for_window [app_id="^mpv$"]                             floating enable, resize set 250 250, sticky enable
+
+## Controles de brillo, volumen y musica
+bindsym XF86AudioLowerVolume  exec amixer -c 0 set Master 1%- unmute
+bindsym XF86AudioRaiseVolume  exec amixer -c 0 set Master 1%+ unmute
+bindsym XF86AudioMute         exec amixer -c 0 set Master toggle
+bindsym XF86AudioMicMute      exec amixer -c 0 set Capture toggle
+bindsym XF86MonBrightnessDown exec light -U 5
+bindsym XF86MonBrightnessUp   exec light -A 5 
+bindsym XF86AudioPlay         exec playerctl play-pause
+bindsym XF86AudioStop         exec playerctl stop
+bindsym XF86AudioNext         exec playerctl next
+bindsym XF86AudioPrev         exec playerctl previous
+
+##s Applicaciones ejecutables
+bindsym $mod+Return 	exec $terminal
+bindsym $mod+d		exec $lanzador
+bindsym $mod+Shift+d	exec $dmenu_desktop
+bindsym $mod+p		exec $dmenu_clipboard
+
+## Screenshots
+## Captura de pantalla fullscreen
+bindsym --release Print exec \
+    grim $HOME/Imágenes/"captura $(date +'%Y-%m-%d %H-%M-%S')".png
+
+## Captura de pantalla fullscreen + portapapeles.
+bindsym --release Ctrl+Print exec \
+    grim - | wl-copy
+
+## Seleccion (drag to select)
+bindsym --release Shift+Print exec \
+    grim -g "$(slurp)" $HOME/Imágenes/"recorte $(date +'%Y-%m-%d %H-%M-%S')".png
+
+## Seleccion (drag to select) + portapapeles.
+bindsym --release Ctrl+Shift+Print exec \
+    grim -g "$(slurp)" - | wl-copy
+
+## Definir temas y fuentes gnome
+set $gnome-schema org.gnome.desktop.interface
+exec_always {
+    gsettings set $gnome-schema gtk-theme 'Materia-dark-compact'
+    gsettings set $gnome-schema icon-theme 'Papirus-Dark'
+    gsettings set $gnome-schema font-name '$default_font'
+    gsettings set $gnome-schema monospace-font-name '$default_font'
+    gsettings set $gnome-schema document-font-name '$default_font'
+    gsettings set org.gnome.desktop.wm.preferences titlebar-font '$default_font'
+    gsettings set org.gnome.desktop.wm.preferences button-layout ''
+    gsettings set org.gnome.nautilus.preferences always-use-location-entry 'true'
+    gsettings set org.gnome.desktop.default-applications.terminal exec '$terminal'
+    gsettings set org.gtk.Settings.FileChooser window-size '(800,500)'
+}
+
+exec_always export GTK_USE_PORTAL="0"
+
+exec_always 'pkill kanshi; exec kanshi'
+exec_always 'pkill mako; exec mako \
+    --background-color "$colour_gris" \
+    --margin "$gap_ext" \
+    --font "$default_font" \
+    --border-size 0 \
+    --width 360 \
+    --height 150 \
+    --padding 10 \
+    --border-radius 7 \
+    --border-color "$colour_blanco" \
+    --text-color "$colour_blanco" \
+    --anchor top-right \
+    --ignore-timeout 1 \
+    --default-timeout 5000'
+
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec swayidle -w \
+    timeout 290  "$lock_warning" \
+    timeout 300  "$lock" \
+    before-sleep "$lock"
+
+## Autoarranque
+exec wl-paste --watch cliphist store
+include /etc/sway/config.d/*
