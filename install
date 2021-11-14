@@ -25,7 +25,7 @@ printf '\n \nInstalando paquetes adicionales...\n'
 sleep 1
 
 # SwayWM
-sudo pacman -S sway swaylock swayidle wofi waybar alacritty grim slurp wl-clipboard wf-recorder gammastep swappy light v4l2loopback-dkms --noconfirm --needed
+sudo pacman -S sway swaylock swayidle wofi mako waybar alacritty grim slurp wl-clipboard wf-recorder gammastep swappy light v4l2loopback-dkms --noconfirm --needed
 sudo pacman -S alsa-utils pipewire-alsa pipewire-pulse bluez bluez-utils pavucontrol --noconfirm --needed
 sudo pacman -S thunar thunar-archive-plugin thunar-volman thunar-archive-plugin tumbler xarchiver zip unzip unrar unarj p7zip lzop lzip lrzip lha cpio arj --noconfirm --needed
 sudo pacman -S git iwv mpv zathura-pdf-mupdf neofetch mousepad htop bpytop ranger gcc make xdg-user-dirs gvfs --noconfirm --needed
