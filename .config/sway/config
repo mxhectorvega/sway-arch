@@ -435,12 +435,13 @@ exec_always {
     gsettings set $gnome-schema document-font-name '$default_font'
     gsettings set org.gnome.desktop.wm.preferences titlebar-font '$default_font'
     gsettings set org.gnome.desktop.wm.preferences button-layout ''
-    gsettings set org.gnome.nautilus.preferences always-use-location-entry 'true'
     gsettings set org.gnome.desktop.default-applications.terminal exec '$terminal'
     gsettings set org.gtk.Settings.FileChooser window-size '(800,500)'
 }
 
 exec_always export GTK_USE_PORTAL="0"
+exec_always export XDG_CURRENT_DESKTOP=sway
+exec_always export MOZ_ENABLE_WAYLAND=1
 
 exec_always 'pkill kanshi; exec kanshi'
 exec_always 'pkill mako; exec mako \
