@@ -58,8 +58,8 @@ set $colour_inactive   #8D8D8D
 ## Confuracion de teclado y velocidad de escritura
 input * {
     xkb_layout latam
-    repeat_delay 195
-    repeat_rate 95
+    repeat_delay 235
+    repeat_rate 85
 }
 
 ## Configuracion de trackpad o touchpad 
