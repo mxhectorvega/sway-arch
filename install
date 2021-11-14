@@ -41,6 +41,7 @@ cd ; git clone https://aur.archlinux.org/paru-bin.git ; cd paru-bin ; makepkg -s
 # Dotfiles Fedora en Arch
 clear
 printf '\n \nEscribe la contraseña para reemplazar archivo .bashrc...\n'
+mkdir "$HOME"/.local
 mkdir "$HOME"/.local/bin
 mkdir "$HOME"/.local/share
 mkdir "$HOME"/.local/share/fonts
@@ -49,7 +50,7 @@ sudo rm -rf "$HOME"/.bashrc
 clear
 printf '\n \nClonando repositorios mxhectorvega...\n'
 sleep 1
-git clone https://github.com/mxhectorvega/sway-arch /tmp/sway
+git clone https://github.com/mxhectorvega/sway-arch /tmp/sway-arch
 git clone https://github.com/mxhectorvega/tipografias  /tmp/tipografias
 cp -rp /tmp/sway-arch/.* "$HOME"
 cp -rp /tmp/tipografias/.* "$HOME"/.local/share/fonts
