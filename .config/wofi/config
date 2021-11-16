@@ -4,13 +4,13 @@
 ## mxhectorvega@gmail.com
 ## https://github.com/mxhectorvega
 ## Version:
-## v1.5: 14/11/211
+## v1.5: 14/11/2021
 
 
 width=400
 height=300
 insensitive=true
-mode=drun,run
+mode=drun
 columns=1
 padding:5
 lines=6

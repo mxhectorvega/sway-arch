@@ -26,7 +26,7 @@ sleep 1
 
 # SwayWM
 sudo pacman -Syu --noconfirm
-sudo pacman -S git imv mpv zathura-pdf-mupdf neofetch mousepad htop bpytop ranger gcc make xdg-user-dirs gvfs --noconfirm --needed
+sudo pacman -S telegram-desktop firefox cmus playerctl git imv mpv zathura-pdf-mupdf neofetch mousepad htop bpytop ranger gcc make xdg-user-dirs gvfs --noconfirm --needed
 sudo pacman -S sway kanshi swaylock swayidle wofi mako waybar alacritty grim slurp wl-clipboard wf-recorder gammastep swappy light v4l2loopback-dkms --noconfirm --needed
 sudo pacman -S alsa-utils pipewire-alsa pipewire-pulse bluez bluez-utils pavucontrol --noconfirm --needed
 sudo pacman -S thunar thunar-archive-plugin thunar-volman thunar-archive-plugin tumbler xarchiver zip unzip unrar unarj p7zip lzop lzip lrzip lha cpio arj --noconfirm --needed
@@ -41,6 +41,7 @@ cd ; git clone https://aur.archlinux.org/paru-bin.git ; cd paru-bin ; makepkg -s
 # Dotfiles Fedora en Arch
 clear
 printf '\n \nEscribe la contraseña para reemplazar archivo .bashrc...\n'
+mkdir "$HOME"/.config
 mkdir "$HOME"/.local
 mkdir "$HOME"/.local/bin
 mkdir "$HOME"/.local/share
@@ -116,6 +117,7 @@ KERNEL=="zram0", ATTR{initstate}=="0", ATTR{comp_algorithm}="lz4", ATTR{disksize
 EOF
 
 sudo tee -a /etc/fstab <<EOF
+
 # ZRAM Swap device
 /dev/zram0 none swap defaults 0 0
 EOF
@@ -153,7 +155,7 @@ printf '\n \nContribuye paypal.me/hivz'
 sleep 1
 printf '\n \n'
 
-
+paru -S sway-git wlroots
 # Otorgando permisos para cambiar brillo de pantalla
 #sudo chmod +s /usr/bin/light
 

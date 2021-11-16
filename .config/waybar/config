@@ -5,7 +5,7 @@
 ## mxhectorvega@gmail.com
 ## https://github.com/mxhectorvega
 ## Version:
-## v1.5: 14/11/211
+## v1.5: 14/11/2021
 */
 
 {
@@ -14,9 +14,10 @@
     "margin-top": 5,
     "margin-left": 5,
     "margin-right": 5, 
-    "modules-left": ["sway/workspaces", "sway/mode"],
-    // "modules-center": ["sway/mode", "sway/window"],
-    "modules-right": [  "network", "cpu", "temperature", "memory", "backlight", "pulseaudio", "battery", "clock", "tray"],
+    "modules-left": ["network", "cpu", "temperature", "memory","sway/mode"],
+    //"modules-center": ["sway/workspaces","sway/mode", "sway/window"],
+    "modules-center": ["sway/workspaces"],
+    "modules-right": ["backlight", "pulseaudio", "battery", "clock", "tray"],
 
     "sway/mode": {
         "format": "{}"
@@ -27,11 +28,11 @@
         "disable-markup": false,
         "format": "{icon}",
         "format-icons": {
-            "1": "I 💻",
-            "2": "II 📝",
-            "3": "III 📁",
-            "4": "IV 🌎",
-            "5": "V 🎹",
+            "1": "1:💻",
+            "2": "2:📝",
+            "3": "3:📁",
+            "4": "4:🌎",
+            "5": "5:🎹",
         }
     },
     "sway/window": {
@@ -50,17 +51,15 @@
         "format": "{icon} {capacity}%",
         "format-charging": "🔌 {capacity}%",
         "format-plugged": "🔌 {capacity}%",
-        "format-alt": "{icon} {time}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
-        "format-icons": ["❤️", "❤️", "❤️", "❤️", "❤️"]
+        "format-icons": ["💔", "❤️", "❤️", "❤️", "❤️"]
     },
     "battery#bat2": {
         "bat": "BAT2"
     },  
   "clock": {
-        "format": "📅 {:%H:%M}",
-        "format-alt": "📅 {:%a, %d. %b}"	
+        "format": "📅 {:%a, %d %b %H:%M}",
     },
      "backlight": {
         "device": "intel_backlight",
@@ -73,25 +72,24 @@
     },
    "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "📡 {essid} ({signalStrength}%)",
+        "format-wifi": "📡 {essid} {signalStrength}%",
         //"format-wifi": "📡 {signalStrength}%",
-        "format-ethernet": "🥨 {ipaddr}/{cidr}",
+        "format-ethernet": "🥨 {ipaddr}",
         "tooltip-format": "🥨 {ifname} via {gwaddr}",
         "format-linked": "🥨 {ifname} (No IP)",
-        "format-disconnected": "😵 Disconnected",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-disconnected": "😵 Sin internet",
     },
     "pulseaudio": {
         "format": "{icon} {volume}%",
-        "format-bluetooth": "{icon} {volume}% ",
+        "format-bluetooth": "🎧 {volume}% ",
         "format-muted": "🔈",
         "format-icons": {
-          "headphone": "",
-          "hands-free": "",
-          "headset": "",
-          "phone": "",
-          "portable": "",
-          "car": "",
+          "headphone": "",
+          "hands-free": "",
+          "headset": "",
+          "phone": "📞",
+          "portable": "📞",
+          "car": "📞🚘",
           "default": ["🔉", "🔊"]
            },
         "scroll-step": 1,
@@ -99,7 +97,14 @@
   },
     "memory": {
         "format": "🐏 {}%"
-    },
+       },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "☕️",
+            "deactivated": "🍻"
+        }
+      },
     "temperature": {
         // "thermal-zone": 2,
         // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
@@ -107,7 +112,7 @@
         // "format-critical": "{icon} {temperatureC}°C",
         "format": "{icon} {temperatureC}°C",
         "format-icons": ["", "🔥", ""]
-    },
+        },
     "cpu": {
         "interval": 2,
         "format": "🐌 {usage}%",

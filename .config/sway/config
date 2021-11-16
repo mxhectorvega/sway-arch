@@ -4,7 +4,7 @@
 ## mxhectorvega@gmail.com
 ## https://github.com/mxhectorvega
 ## Version:
-## v1.5: 14/11/211
+## v1.5: 14/11/2021
 
 ## Delara teclas super y alt
 set $mod Mod4
@@ -48,12 +48,12 @@ popup_during_fullscreen smart
 
 
 ## Colores basicos
-set $colour_blanco     #ffffff
-set $colour_gris       #141414
-set $colour_gris_alpha #14141499
-set $colour_azul       #0088CC
-set $colour_rojo       #BC5858
-set $colour_inactive   #8D8D8D
+set $colour_blanco       #ffffff
+set $colour_gris         #141414
+set $colour_gris_alpha   #14141499
+set $colour_azul         #0088CC
+set $colour_rojo         #BC5858
+set $colour_inactive     #8D8D8D
 
 ## Confuracion de teclado y velocidad de escritura
 input * {
@@ -83,16 +83,16 @@ output * {
     scale 0
 }
 
-## window colours       border            background         text               indicator          child
-client.focused          $colour_gris      $colour_gris       $colour_blanco     $colour_blanco     $colour_gris
-client.focused_inactive $colour_gris      $colour_gris       $colour_gris       $colour_gris       $colour_gris
-client.unfocused        $colour_gris      $colour_inactive   $colour_gris       $colour_inactive   $colour_gris
-client.urgent           $colour_rojo      $colour_rojo       $colour_blanco     $colour_rojo       $colour_gris
+## window colours         border            background         text               indicator          child
+client.focused            $colour_gris      $colour_gris       $colour_blanco     $colour_blanco     $colour_gris
+client.focused_inactive   $colour_gris      $colour_gris       $colour_gris       $colour_gris       $colour_gris
+client.unfocused          $colour_gris      $colour_inactive   $colour_gris       $colour_inactive   $colour_gris
+client.urgent             $colour_rojo      $colour_rojo       $colour_blanco     $colour_rojo       $colour_gris
 
 ## Transparencia
 set $opacity 0.9
-for_window [app_id="Alacritty"] opacity $opacity
-for_window [app_id="mousepad"] opacity $opacity
+for_window [app_id="Alacritty"]        opacity $opacity
+for_window [app_id="mousepad"]         opacity $opacity
 
 ## Teclas de direccion al estilo VIM
 set $left h
@@ -171,19 +171,19 @@ mode $mode_resize_tile {
 }
 
 ## Modo: menu de apagado
-set $mode_system "👤 [B]loquear, [S]uspender, [R]einiciar, [A]pagar"
+set $mode_system "👤 [B]loq. [S]usp. [R]einic. [A]pag."
 bindsym $mod+$alt+q     mode $mode_system
 mode $mode_system {
     bindsym b exec $lock;               mode default
-    bindsym s exec systemctl poweroff;  mode default
+    bindsym a exec systemctl poweroff;  mode default
     bindsym r exec systemctl reboot;    mode default
-    bindsym a exec systemctl suspend;   mode default
+    bindsym s exec systemctl suspend;   mode default
     bindsym Return mode default
     bindsym Escape mode default
 }
 
 ## Modo: menu i3 cerrar sesion y recargar configuracion
-set $mode_i3 "⚙️ [R]ecargar conf, [S]alir Sway"
+set $mode_i3 "⚙️ [R]ecargar [S]alir"
 bindsym $mod+$alt+i     mode $mode_i3
 mode $mode_i3 {
     bindsym s exit
@@ -193,7 +193,7 @@ mode $mode_i3 {
 }
 
 ## Modo: mover ventana flotante
-set $mode_move_floating "🏄‍♂️ Flotante: h|j|k|l"
+set $mode_move_floating "✨ Flotante: h|j|k|l"
 bindsym $mod+$alt+space   mode $mode_move_floating
 mode $mode_move_floating {
     bindsym h move left
@@ -204,7 +204,7 @@ mode $mode_move_floating {
     bindsym Escape mode "default"
 }
 ## Modo: menu captura de pantalla
-set $mode_scrot "🎥 [G]rabar, [D]etener grabción"
+set $mode_scrot "🎥 [G]rabar, [D]etener"
 bindsym $mod+$alt+s     mode $mode_scrot
 mode $mode_scrot {
     bindsym g exec wf-recorder -a -f "$HOME/Vídeos/screencast-$(date +'%Y-%m-%d %H-%M-%S').mp4", mode "default"
@@ -214,39 +214,39 @@ mode $mode_scrot {
 }
 
 ## Modo: manipular gaps (espacios entre ventanas)
-set $mode_gaps_inner "🔩 Gaps int.: -|+|0 (local), shift -|+|0 (global)"
+set $mode_gaps_inner "🔩 Gaps int.: -|+|0"
 mode $mode_gaps_inner {
-    bindsym minus gaps inner current plus 5
-    bindsym equal gaps inner current minus 5
-    bindsym 0     gaps inner current set 0
-    bindsym $alt+minus gaps inner all plus 5
-    bindsym $alt+equal gaps inner all minus 5
-    bindsym $alt+space     gaps inner all set 0
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
+    bindsym minus         gaps inner current plus 5
+    bindsym equal         gaps inner current minus 5
+    bindsym 0             gaps inner current set 0
+    bindsym $alt+minus    gaps inner all plus 5
+    bindsym $alt+equal    gaps inner all minus 5
+    bindsym $alt+space    gaps inner all set 0
+    bindsym Return mode   "default"
+    bindsym Escape mode   "default"
 }
 
 ## Modo: manipular gaps (espacios entre ventanas)
-set $mode_gaps_outer "🔩 Gaps ext.: -|+|0 (local), shift -|+|0 (global)"
+set $mode_gaps_outer "🔩 Gaps ext.: -|+|0"
 mode $mode_gaps_outer {
-    bindsym minus gaps outer current plus 5
-    bindsym equal gaps outer current minus 5
-    bindsym 0     gaps outer current set 0
-    bindsym $alt+minus gaps outer all plus 5
-    bindsym $alt+equal gaps outer all minus 5
-    bindsym $alt+space     gaps outer all set 0
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
+    bindsym minus        gaps outer current plus 5
+    bindsym equal        gaps outer current minus 5
+    bindsym 0            gaps outer current set 0
+    bindsym $alt+minus   gaps outer all plus 5
+    bindsym $alt+equal   gaps outer all minus 5
+    bindsym $alt+space   gaps outer all set 0
+    bindsym Return mode  "default"
+    bindsym Escape mode  "default"
 }
 
 ## Modo: manipular gaps (espacios entre ventanas)
 set $mode_gaps "🔩 Gaps: [I]terior, [E]xterior"
-bindsym $mod+$alt+g     mode $mode_gaps
+bindsym $mod+$alt+g      mode $mode_gaps
 mode $mode_gaps {
-    bindsym e      mode $mode_gaps_outer
-    bindsym i      mode $mode_gaps_inner
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
+    bindsym e            mode $mode_gaps_outer
+    bindsym i            mode $mode_gaps_inner
+    bindsym Return       mode "default"
+    bindsym Escape       mode "default"
 }
 
 ## Manejo de espacios de trabajo
@@ -265,55 +265,58 @@ bindsym $mod+Shift+4 move container to workspace number 4
 bindsym $mod+Shift+5 move container to workspace number 5
 
 ## Reglas para las ventanas
-bindcode 66 [app_id="^scratchpad-.*"] scratchpad show
-assign [class="^kitty$"] 		workspace number 1
-assign [class="^URxvt$"] 	 	workspace number 1
-assign [class="^XTerm$"] 		workspace number 1
-assign [app_id="^Alacritty$"] 		workspace number 1
-assign [class="^st-256color$"] 	 	workspace number 1
-assign [app_id="^Virt-manager$"]	workspace number 1
-assign [app_id="Pavucontrol"]		workspace number 1
-assign [class="Xfce4-settings-manager"]	workspace number 1
-assign [app_id="Blueberry.py"]		workspace number 1
-assign [class="Transmission-gtk"]	workspace number 1
+bindcode 66 [app_id="^scratchpad-.*"]       scratchpad show
+assign [class="^kitty$"]                    workspace number 1
+assign [class="^URxvt$"]                    workspace number 1
+assign [class="^XTerm$"]                    workspace number 1
+assign [app_id="^Alacritty$"]               workspace number 1
+assign [class="^st-256color$"]              workspace number 1
+assign [app_id="^Virt-manager$"]            workspace number 1
+assign [app_id="Pavucontrol"]               workspace number 1
+assign [class="Xfce4-settings-manager"]     workspace number 1
+assign [app_id="Blueberry.py"]              workspace number 1
+assign [class="Transmission-gtk"]           workspace number 1
 
-assign [app_id="^mousepad$"]		workspace number 2
-assign [class="^mousepad$"]		workspace number 2
-assign [class="^geany$"]		workspace number 2
-assign [class="^SublimeText3$"]		workspace number 2
-assign [class="^Code$"]			workspace number 2
-assign [app_id="^DesktopEditors$"]	workspace number 2
-assign [app_id="^tm$"]			workspace number 2
-assign [class="^pm$"]			workspace number 2
-assign [class="^libreoffice-writer$"]	workspace number 2
-assign [class="libreoffice-writer"]	workspace number 2
-assign [class="^libreoffice-calc$"]	workspace number 2
-assign [class="^libreoffice$"]		workspace number 2
-assign [app_id="^MuPDF$"]		workspace number 2
-assign [app_id="^org.pwmt.zathura$"]	workspace number 2
+assign [app_id="^mousepad$"]                workspace number 2
+assign [class="^mousepad$"]                 workspace number 2
+assign [class="^geany$"]                    workspace number 2
+assign [class="^SublimeText3$"]             workspace number 2
+assign [class="^Code$"]                     workspace number 2
+assign [app_id="^DesktopEditors$"]          workspace number 2
+assign [app_id="^tm$"]                      workspace number 2
+assign [class="^pm$"]                       workspace number 2
+assign [class="^libreoffice-writer$"]       workspace number 2
+assign [class="libreoffice-writer"]         workspace number 2
+assign [class="^libreoffice-calc$"]         workspace number 2
+assign [class="^libreoffice$"]              workspace number 2
+assign [app_id="^MuPDF$"]                   workspace number 2
+assign [app_id="^org.pwmt.zathura$"]        workspace number 2
+assign [class="^geany$"]                    workspace number 2
+assign [app_id="^geany$"]                   workspace number 2
 
-assign [app_id="thunar"]		workspace number 3
-assign [class="^thunar$"]		workspace number 3
 
-assign [class="^Firefox$"]		workspace number 4
-assign [class="^firefox$"]		workspace number 4
-assign [app_id="^Firefox$"]		workspace number 4
-assign [app_id="^firefox$"]		workspace number 4
-assign [class="^Surf$"]			workspace number 4
-assign [app_id="^Navigator$"]		workspace number 4
-assign [app_id="telegramdesktop"]	workspace number 4
-assign [class="Telegram-Desktop"]	workspace number 4
+assign [app_id="thunar"]                    workspace number 3
+assign [class="^thunar$"]                   workspace number 3
 
-assign [app_id="^mpv$"]			workspace number 5
-assign [class="^vlc$"]			workspace number 5
-assign [class="^Kodi$"]			workspace number 5
-assign [class="^Spotify$"]		workspace number 5
-assign [class="^spotify$"]		workspace number 5
-assign [app_id="Sxiv"]			workspace number 5
-assign [class="^obs$"]			workspace number 5
-assign [app_id="^obs$"]			workspace number 5
-assign [class="^Gimp$"]			workspace number 5
-assign [class="^Kdenlive$"]		workspace number 5
+assign [class="^Firefox$"]                  workspace number 4
+assign [class="^firefox$"]                  workspace number 4
+assign [app_id="^Firefox$"]                 workspace number 4
+assign [app_id="^firefox$"]                 workspace number 4
+assign [class="^Surf$"]                     workspace number 4
+assign [app_id="^Navigator$"]               workspace number 4
+assign [app_id="telegramdesktop"]           workspace number 4
+assign [class="Telegram-Desktop"]           workspace number 4
+
+assign [app_id="^mpv$"]                     workspace number 5
+assign [class="^vlc$"]                      workspace number 5
+assign [class="^Kodi$"]                     workspace number 5
+assign [class="^Spotify$"]                  workspace number 5
+assign [class="^spotify$"]                  workspace number 5
+assign [app_id="Sxiv"]                      workspace number 5
+assign [class="^obs$"]                      workspace number 5
+assign [app_id="^obs$"]                     workspace number 5
+assign [class="^Gimp$"]                     workspace number 5
+assign [class="^Kdenlive$"]                 workspace number 5
 
 ## Don't lock for video
 for_window [class="Firefox"]                            inhibit_idle fullscreen
@@ -379,34 +382,38 @@ for_window [app_id="^com.github.tchx84.Flatseal$"]                    floating e
 for_window [class="^QjackCtl$"]                                       floating enable
 for_window [class="com.github.wwmm.easyeffects"]                      floating enable
 for_window [app_id="Sxiv"]                                            floating enable, resize set 800 500
-for_window [class="sxiv"]                                            floating enable, resize set 800 500
-for_window [app_id="imv"]                                            floating enable, resize set 900 500
-for_window [class="imv"]                                            floating enable, resize set 900 500
+for_window [class="sxiv"]                                             floating enable, resize set 800 500
+for_window [app_id="imv"]                                             floating enable, resize set 900 500
+for_window [class="imv"]                                              floating enable, resize set 900 500
 
 ## floating sticky
-for_window [class="^jellyfin$"]                         floating enable, resize set 1334 568, sticky enable
-for_window [class="^Google-chrome$" title="^Jellyfin$"] floating enable, resize set 1334 568, sticky enable
-for_window [class="^work-meet$"]                        floating enable, resize set 1334 568, sticky enable
-for_window [class="^mpv$"]                              floating enable, resize set 250 250, sticky enable
-for_window [app_id="^mpv$"]                             floating enable, resize set 250 250, sticky enable
+for_window [class="^jellyfin$"]                              floating enable, resize set 1334 568, sticky enable
+for_window [class="^Google-chrome$" title="^Jellyfin$"]      floating enable, resize set 1334 568, sticky enable
+for_window [class="^work-meet$"]                             floating enable, resize set 1334 568, sticky enable
+#for_window [class="^mpv$"]                                  floating enable, resize set 250 250, sticky enable
+#for_window [app_id="^mpv$"]                                 floating enable, resize set 250 250, sticky enable
 
-## Controles de brillo, volumen y musica
+## Controles de volumen
 bindsym XF86AudioLowerVolume  exec amixer -c 0 set Master 1%- unmute
 bindsym XF86AudioRaiseVolume  exec amixer -c 0 set Master 1%+ unmute
 bindsym XF86AudioMute         exec amixer -c 0 set Master toggle
 bindsym XF86AudioMicMute      exec amixer -c 0 set Capture toggle
+
+## Controles de brillo
 bindsym XF86MonBrightnessDown exec light -U 5
 bindsym XF86MonBrightnessUp   exec light -A 5 
+
+## Controlar musica con playerctl (controla reproductores de musca playerctl -l)
 bindsym XF86AudioPlay         exec playerctl play-pause
-bindsym XF86AudioStop         exec playerctl stop
+bindsym XF86AudioPause        exec playerctl play-pause
 bindsym XF86AudioNext         exec playerctl next
 bindsym XF86AudioPrev         exec playerctl previous
 
-##s Applicaciones ejecutables
-bindsym $mod+Return 	exec $terminal
-bindsym $mod+d		exec $lanzador
-bindsym $mod+Shift+d	exec $dmenu_desktop
-bindsym $mod+p		exec $dmenu_clipboard
+## Applicaciones ejecutables
+bindsym $mod+Return           exec $terminal
+bindsym $mod+d                exec $lanzador
+bindsym $mod+Shift+d          exec $dmenu_desktop
+bindsym $mod+p                exec $dmenu_clipboard
 
 ## Screenshots
 ## Captura de pantalla fullscreen
@@ -435,13 +442,35 @@ exec_always {
     gsettings set $gnome-schema document-font-name '$default_font'
     gsettings set org.gnome.desktop.wm.preferences titlebar-font '$default_font'
     gsettings set org.gnome.desktop.wm.preferences button-layout ''
+    gsettings set org.gnome.nautilus.preferences always-use-location-entry 'true'
     gsettings set org.gnome.desktop.default-applications.terminal exec '$terminal'
     gsettings set org.gtk.Settings.FileChooser window-size '(800,500)'
 }
 
-exec_always export GTK_USE_PORTAL="0"
-exec_always export XDG_CURRENT_DESKTOP=sway
-exec_always export MOZ_ENABLE_WAYLAND=1
+exec_always "hash dbus-update-activation-environment 2>/dev/null; \
+    dbus-update-activation-environment --all; \
+    dbus-update-activation-environment --systemd; \
+    systemctl --user start sway-session.target"
+
+## Autoarranque
+exec wl-paste --watch cliphist store
+
+set $imp_vars "DISPLAY WAYLAND_DISPLAY SWAYSOCK SSH_AUTH_SOCK XDG_CURRENT_DESKTOP XDG_SESSION_TYPE"
+exec_always systemctl --user import-environment "$imp_vars"
+exec_always hash dbus-update-activation-environment 2>/dev/null && \
+    dbus-update-activation-environment --systemd "$imp_vars"
+
+#exec export MOZ_ENABLE_WAYLAND=1
+#exec export QT_QPA_PLATFORM=wayland-egl
+#exec export CLUTTER_BACKEND=wayland
+#exec export ECORE_EVAS_ENGINE=wayland-egl
+#exec export ELM_ENGINE=wayland_egl
+#exec export SDL_VIDEODRIVER=wayland
+#exec export NO_AT_BRIDGE=1
+#exec export _JAVA_AWT_WM_NONREPARENTING=1
+#exec export QT_AUTO_SCREEN_SCALE_FACTOR=0
+#exec export TDESKTOP_DISABLE_GTK_INTEGRATION=1
+#exec export DISPLAY=:0
 
 exec_always 'pkill kanshi; exec kanshi'
 exec_always 'pkill mako; exec mako \
@@ -465,6 +494,3 @@ exec swayidle -w \
     timeout 300  "$lock" \
     before-sleep "$lock"
 
-## Autoarranque
-exec wl-paste --watch cliphist store
-include /etc/sway/config.d/*
