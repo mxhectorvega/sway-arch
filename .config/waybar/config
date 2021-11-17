@@ -12,6 +12,7 @@
     "layer": "top",
     "height": 25,
     "margin-top": 5,
+    "margin-button": 5,
     "margin-left": 5,
     "margin-right": 5, 
     "modules-left": ["network", "cpu", "temperature", "memory","sway/mode"],
@@ -46,7 +47,7 @@
         "states": {
             // "good": 95,
             "warning": 30,
-            "critical": 15
+            "critical": 10
         },
         "format": "{icon} {capacity}%",
         "format-charging": "🔌 {capacity}%",
@@ -74,10 +75,11 @@
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": "📡 {essid} {signalStrength}%",
         //"format-wifi": "📡 {signalStrength}%",
-        "format-ethernet": "🥨 {ipaddr}",
+        "format-ethernet": "🥨 Ethernet conect.",
         "tooltip-format": "🥨 {ifname} via {gwaddr}",
         "format-linked": "🥨 {ifname} (No IP)",
         "format-disconnected": "😵 Sin internet",
+        "format-alt": "💀 {ipaddr}/{cidr}"
     },
     "pulseaudio": {
         "format": "{icon} {volume}%",
@@ -96,6 +98,7 @@
         "on-click": "pavucontrol"
   },
     "memory": {
+        "interval": 5,
         "format": "🐏 {}%"
        },
     "idle_inhibitor": {
@@ -111,7 +114,7 @@
         "critical-threshold": 80,
         // "format-critical": "{icon} {temperatureC}°C",
         "format": "{icon} {temperatureC}°C",
-        "format-icons": ["", "🔥", ""]
+        "format-icons": ["🔥"]
         },
     "cpu": {
         "interval": 2,

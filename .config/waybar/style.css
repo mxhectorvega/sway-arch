@@ -119,7 +119,7 @@ window#waybar.chromium {
 
 @keyframes blink {
     to {
-        background-color: #eb4d4b;
+        background-color: #e7e910;
         color: #000000;
     }
 }
@@ -128,7 +128,7 @@ window#waybar.chromium {
     background-color: rgba(20, 20, 20, 0.8);
     color: #ffffff;
     animation-name: blink;
-    animation-duration: 0.5s;
+    animation-duration: 0.9s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-direction: alternate;

@@ -14,6 +14,10 @@ set $alt Mod1
 set $block-wall $HOME/.config/wall.*
 set $desktop-wall $HOME/.config/wall.*
 
+## Declarar tema gtk e iconos
+set $theme_gtk Yaru-remix-dark
+set $theme_icons Papirus-Dark
+
 ## Pantalla de bloqueo
 set $lock_warning exec notify-send -t 10000 -i $HOME/.config/user.png "SystemCtl" "La pantalla se bloqueará en 10 segundos, mueva el cursor o siga en lo que estaba..."
 set $lock swaylock \
@@ -33,7 +37,25 @@ set $font_dmenu Iosevka-9
 set $terminal alacritty
 
 ## Declara el lanzador de aplicaciones
-set $lanzador wofi -a -b -I 
+set $menu wofi \
+     --no-actions \
+     --show drun \
+     --width 400 \
+     --lines 8
+
+## Declara menu gestor de portapapeles
+set $menu_clipboard cliphist \
+     list | wofi --no-actions \
+     --dmenu \
+     --width 600 \
+     --lines 8 | cliphist decode | wl-copy
+
+## Limpiar menu portapales
+set $clipboard_clean cliphist \
+     list | wofi --no-actions \
+     --dmenu \
+     --width 600 \
+     --lines 8 | cliphist delete
 
 ## Apariencia basica
 smart_borders on
@@ -286,8 +308,9 @@ assign [app_id="^DesktopEditors$"]          workspace number 2
 assign [app_id="^tm$"]                      workspace number 2
 assign [class="^pm$"]                       workspace number 2
 assign [class="^libreoffice-writer$"]       workspace number 2
-assign [class="libreoffice-writer"]         workspace number 2
+assign [app_id="libreoffice-writer"]        workspace number 2
 assign [class="^libreoffice-calc$"]         workspace number 2
+assign [app_id="libreoffice-calc"]          workspace number 2
 assign [class="^libreoffice$"]              workspace number 2
 assign [app_id="^MuPDF$"]                   workspace number 2
 assign [app_id="^org.pwmt.zathura$"]        workspace number 2
@@ -411,9 +434,9 @@ bindsym XF86AudioPrev         exec playerctl previous
 
 ## Applicaciones ejecutables
 bindsym $mod+Return           exec $terminal
-bindsym $mod+d                exec $lanzador
-bindsym $mod+Shift+d          exec $dmenu_desktop
-bindsym $mod+p                exec $dmenu_clipboard
+bindsym $mod+d                exec $menu
+bindsym $mod+p                exec $menu_clipboard
+bindsym $mod+Shift+p          exec $clean_clipboard
 
 ## Screenshots
 ## Captura de pantalla fullscreen
@@ -435,8 +458,8 @@ bindsym --release Ctrl+Shift+Print exec \
 ## Definir temas y fuentes gnome
 set $gnome-schema org.gnome.desktop.interface
 exec_always {
-    gsettings set $gnome-schema gtk-theme 'Materia-dark-compact'
-    gsettings set $gnome-schema icon-theme 'Papirus-Dark'
+    gsettings set $gnome-schema gtk-theme '$theme_gtk'
+    gsettings set $gnome-schema icon-theme '$theme_icons'
     gsettings set $gnome-schema font-name '$default_font'
     gsettings set $gnome-schema monospace-font-name '$default_font'
     gsettings set $gnome-schema document-font-name '$default_font'
@@ -481,10 +504,10 @@ exec_always 'pkill mako; exec mako \
     --width 360 \
     --height 150 \
     --padding 10 \
-    --border-radius 7 \
+    --border-radius 5 \
     --border-color "$colour_blanco" \
     --text-color "$colour_blanco" \
-    --anchor top-right \
+    --anchor top-center \
     --ignore-timeout 1 \
     --default-timeout 5000'
 
