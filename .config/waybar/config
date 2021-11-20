@@ -5,14 +5,14 @@
 ## mxhectorvega@gmail.com
 ## https://github.com/mxhectorvega
 ## Version:
-## v1.5: 14/11/2021
+## v2.0: 20/11/2021
 */
 
 {
     "layer": "top",
     "height": 25,
     "margin-top": 5,
-    "margin-button": 5,
+    "margin-bottom": 5,
     "margin-left": 5,
     "margin-right": 5, 
     "modules-left": ["network", "cpu", "temperature", "memory","sway/mode"],

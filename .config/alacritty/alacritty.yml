@@ -180,7 +180,7 @@ font:
 colors:
   # Default colors
   primary:
-    background: '#141414'
+    background: '#000000'
     foreground: '#ffffff'
 
   normal:

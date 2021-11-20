@@ -5,37 +5,37 @@
 ## mxhectorvega@gmail.com
 ## https://github.com/mxhectorvega
 ## Version:
-## v1.5: 14/11/2021
+## v2.0: 20/11/2021
 */
 
 window {
 
-    border-radius: 5;
-    background-color: rgba(20, 20, 20, 1.9);
+    border-radius: 3;
+    background-color: rgba(0, 0, 0, 0.92);
 }
 
 #input {
     color: #ffffff;
-    border-radius: 5;
-    background-color: rgba(20, 20, 20, 1.9);
+    border-radius: 3;
+    background-color: rgba(0, 0, 0, 0.92);
     font-size: 13;
 }
 
 
 #outer-box {
-    border-radius: 5;
+    border-radius: 3;
     margin: 5;
 }
 
 
 
 #scroll label {
-    border-radius: 5;
+    border-radius: 3;
     margin: 1 1;
 }
 
 #entry:selected {
-    border-radius: 3;
+    border-radius: 2;    
     color: #ffffff;
     background-color: #6d72ab;
 }

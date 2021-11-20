@@ -4,7 +4,7 @@
 ## mxhectorvega@gmail.com
 ## https://github.com/mxhectorvega
 ## Version:
-## v1.5: 14/11/2021
+## v2.0: 20/11/2021
 
 ## Delara teclas super y alt
 set $mod Mod4
@@ -15,8 +15,8 @@ set $block-wall $HOME/.config/wall.*
 set $desktop-wall $HOME/.config/wall.*
 
 ## Declarar tema gtk e iconos
-set $theme_gtk Yaru-remix-dark
-set $theme_icons Papirus-Dark
+set $theme_gtk Mint-Y-Dark-Blue
+set $theme_icons Mint-Y-Dark-Blue
 
 ## Pantalla de bloqueo
 set $lock_warning exec notify-send -t 10000 -i $HOME/.config/user.png "SystemCtl" "La pantalla se bloqueará en 10 segundos, mueva el cursor o siga en lo que estaba..."
@@ -26,8 +26,9 @@ set $lock swaylock \
     --image $block-wall
 
 ## Delara los espacios entre ventanas
-set $gap_ext 1
+set $gap_ext 5
 set $gap_int 5
+set $gap_top 0
 
 ## Delara tu tipografia
 set $default_font Iosevka 9
@@ -51,28 +52,34 @@ set $menu_clipboard cliphist \
      --lines 8 | cliphist decode | wl-copy
 
 ## Limpiar menu portapales
-set $clipboard_clean cliphist \
-     list | wofi --no-actions \
-     --dmenu \
-     --width 600 \
-     --lines 8 | cliphist delete
+set $clean_clipboard rm .cache/cliphist/db && exec \
+    notify-send -t 10000 -i $HOME/.config/user.png \
+    "Clipboard" "El historial del portapapeles se a borrado con exito."
 
 ## Apariencia basica
 smart_borders on
 smart_gaps off
 titlebar_border_thickness 0
-titlebar_padding 1
+titlebar_padding 4
 default_border pixel 0
-gaps inner $gap_int
-gaps outer $gap_ext
+#gaps inner $gap_int
+gaps top $gap_top
+gaps bottom $gap_int
+gaps left $gap_int
+gaps right $gap_int
 font $default_font
 popup_during_fullscreen smart
 
+## Bordes redondos (sway fork sway-borders) desde AUR
+#border_images.focused $HOME/.config/sway/bordes/redondo.png
+#border_images.focused_inactive $HOME/.config/sway/bordes/redondo.png
+#border_images.unfocused $HOME/.config/sway/bordes/redondo.png
+#border_images.urgent $HOME/.config/sway/bordes/redondo.png
 
 ## Colores basicos
 set $colour_blanco       #ffffff
-set $colour_gris         #141414
-set $colour_gris_alpha   #14141499
+set $colour_gris         #000000
+set $colour_gris_alpha   #000000E6
 set $colour_azul         #0088CC
 set $colour_rojo         #BC5858
 set $colour_inactive     #8D8D8D
@@ -80,8 +87,8 @@ set $colour_inactive     #8D8D8D
 ## Confuracion de teclado y velocidad de escritura
 input * {
     xkb_layout latam
-    repeat_delay 235
-    repeat_rate 85
+    repeat_delay 200
+    repeat_rate 150
 }
 
 ## Configuracion de trackpad o touchpad 
@@ -97,24 +104,40 @@ bar {
 }
 
 ## Otput configuration
-## Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+## Configuracion de fondo de escritorio .config/wall.* delcarado en la linea 14 y 15.
 ## output * bg #808080  solid_color
 output * {
     bg $desktop-wall fill
-    resolution 1366x768
-    scale 0
 }
 
-## window colours         border            background         text               indicator          child
-client.focused            $colour_gris      $colour_gris       $colour_blanco     $colour_blanco     $colour_gris
-client.focused_inactive   $colour_gris      $colour_gris       $colour_gris       $colour_gris       $colour_gris
-client.unfocused          $colour_gris      $colour_inactive   $colour_gris       $colour_inactive   $colour_gris
-client.urgent             $colour_rojo      $colour_rojo       $colour_blanco     $colour_rojo       $colour_gris
+## Configurar 2 monitores
+## Monitor primario de Latop en caso de ser diferente podra 
+## identificarlos con swaymsg -t get_outputs
+## la escala normal es 1 es de 100% (normal) y 1.5 es de 150%
+output eDP-1 {
+    pos 0 0
+    scale 1
+}
+
+## Monitor secundario HDMI en caso de ser diferente podra 
+## identificarlos con swaymsg -t get_outputs
+output HDMI-A-1 {
+    pos 1366 0
+    scale 1.4
+}
+
+
+## Colores de ventanas    borde                   background               text               indicator          child
+client.focused            #ff0000                 $colour_gris_alpha       $colour_blanco     $colour_blanco     $colour_gris_alpha
+client.focused_inactive   $colour_gris_alpha      $colour_gris_alpha       $colour_gris       $colour_gris       $colour_gris_alpha
+client.unfocused          $colour_gris_alpha      $colour_gris_alpha       $colour_inactive   $colour_inactive   $colour_gris_alpha
+client.urgent             $colour_rojo            $colour_rojo             $colour_blanco     $colour_rojo       $colour_gris_alpha
 
 ## Transparencia
 set $opacity 0.9
 for_window [app_id="Alacritty"]        opacity $opacity
 for_window [app_id="mousepad"]         opacity $opacity
+for_window [app_id="geany"]            opacity $opacity
 
 ## Teclas de direccion al estilo VIM
 set $left h
@@ -131,7 +154,7 @@ floating_modifier $mod normal
 ## Recargar configuracion
 bindsym $mod+Shift+c reload
 
-## Moverr ventanas de lugar
+## Mover ventanas de lugar
 bindsym $mod+$left focus left
 bindsym $mod+$down focus down
 bindsym $mod+$up focus up
@@ -339,6 +362,7 @@ assign [app_id="Sxiv"]                      workspace number 5
 assign [class="^obs$"]                      workspace number 5
 assign [app_id="^obs$"]                     workspace number 5
 assign [class="^Gimp$"]                     workspace number 5
+assign [app_id="gimp$"]                     workspace number 5
 assign [class="^Kdenlive$"]                 workspace number 5
 
 ## Don't lock for video
@@ -470,11 +494,6 @@ exec_always {
     gsettings set org.gtk.Settings.FileChooser window-size '(800,500)'
 }
 
-exec_always "hash dbus-update-activation-environment 2>/dev/null; \
-    dbus-update-activation-environment --all; \
-    dbus-update-activation-environment --systemd; \
-    systemctl --user start sway-session.target"
-
 ## Autoarranque
 exec wl-paste --watch cliphist store
 
@@ -483,22 +502,10 @@ exec_always systemctl --user import-environment "$imp_vars"
 exec_always hash dbus-update-activation-environment 2>/dev/null && \
     dbus-update-activation-environment --systemd "$imp_vars"
 
-#exec export MOZ_ENABLE_WAYLAND=1
-#exec export QT_QPA_PLATFORM=wayland-egl
-#exec export CLUTTER_BACKEND=wayland
-#exec export ECORE_EVAS_ENGINE=wayland-egl
-#exec export ELM_ENGINE=wayland_egl
-#exec export SDL_VIDEODRIVER=wayland
-#exec export NO_AT_BRIDGE=1
-#exec export _JAVA_AWT_WM_NONREPARENTING=1
-#exec export QT_AUTO_SCREEN_SCALE_FACTOR=0
-#exec export TDESKTOP_DISABLE_GTK_INTEGRATION=1
-#exec export DISPLAY=:0
-
 exec_always 'pkill kanshi; exec kanshi'
 exec_always 'pkill mako; exec mako \
-    --background-color "$colour_gris" \
-    --margin "$gap_ext" \
+    --background-color "$colour_gris_alpha" \
+    --margin "$gap_top" \
     --font "$default_font" \
     --border-size 0 \
     --width 360 \
@@ -516,4 +523,3 @@ exec swayidle -w \
     timeout 290  "$lock_warning" \
     timeout 300  "$lock" \
     before-sleep "$lock"
-

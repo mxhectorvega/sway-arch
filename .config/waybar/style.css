@@ -5,12 +5,12 @@
 ## mxhectorvega@gmail.com
 ## https://github.com/mxhectorvega
 ## Version:
-## v1.5: 14/11/2021
+## v2.0: 20/11/2021
 */
 
 * {
     border: none;
-    border-radius: 4;
+    border-radius: 3;
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: Iosevka;
     font-size: 12;
@@ -22,7 +22,7 @@ window#waybar {
 }
 
 window#waybar.hidden {
-    opacity: 0.2;
+    opacity: 0.5;
 }
 
 /*
@@ -35,7 +35,7 @@ window#waybar.solo {
 */
 
 window#waybar.termite {
-    background-color: rgba(20, 20, 20, 0.8);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 window#waybar.chromium {
@@ -43,7 +43,7 @@ window#waybar.chromium {
 }
 
 #workspaces button {
-    background-color: rgba(20, 20, 20, 0.8);
+    background-color: rgba(0, 0, 0, 0.5);
     padding: 0 7px;
     color: #ffffff;
     margin-right: 3;
@@ -52,7 +52,7 @@ window#waybar.chromium {
 
 
 #workspaces button:hover {
-    background: rgba(20, 20, 20, 0.8);
+    background: rgba(0, 0, 0, 0.5);
     padding: 0 7px;
     /* Use box-shadow instead of border so the text isn't offset */
     box-shadow: inset 0 -3px #6d72ab;
@@ -70,7 +70,7 @@ window#waybar.chromium {
 }
 
 #mode {
-    background-color: rgba(20, 20, 20, 0.8);
+    background-color: rgba(0, 0, 0, 0.5);
     padding: 0 7px;
 }
 
@@ -84,7 +84,6 @@ window#waybar.chromium {
 #network,
 #pulseaudio,
 #custom-media,
-#tray,
 #mode,
 #idle_inhibitor,
 #mpd {
@@ -105,16 +104,16 @@ window#waybar.chromium {
 }
 
 #clock {
-    background-color: rgba(20, 20, 20, 0.8);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 #battery {
-    background-color: rgba(20, 20, 20, 0.8);
+    background-color: rgba(0, 0, 0, 0.5);
 
 }
 
 #battery.charging, #battery.plugged {
-    background-color: rgba(20, 20, 20, 0.8);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 @keyframes blink {
@@ -125,117 +124,119 @@ window#waybar.chromium {
 }
 
 #battery.critical:not(.charging) {
-    background-color: rgba(20, 20, 20, 0.8);
+    background-color: rgba(0, 0, 0, 0.5);
     color: #ffffff;
     animation-name: blink;
-    animation-duration: 0.9s;
+    animation-duration: 0.5s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-direction: alternate;
 }
 
 label:focus {
-    background-color: rgba(20, 20, 20, 0.8);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 #cpu {
-    background-color: rgba(20, 20, 20, 0.8);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 #memory {
-    background-color: rgba(20, 20, 20, 0.8);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 #disk {
-    background-color: rgba(20, 20, 20, 0.8);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 #backlight {
-    background-color: rgba(20, 20, 20, 0.8);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 #network {
-    background-color: rgba(20, 20, 20, 0.8);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 #network.disconnected {
-    background-color: rgba(20, 20, 20, 0.8);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 #pulseaudio {
-    background-color: rgba(20, 20, 20, 0.8);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 #pulseaudio.muted {
-    background-color: rgba(20, 20, 20, 0.8);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 #custom-media {
-    background-color: rgba(20, 20, 20, 0.8);
+    background-color: rgba(0, 0, 0, 0.5);
     color: #2a5c45;
     min-width: 100px;
 }
 
 #custom-media.custom-spotify {
-    background-color: rgba(20, 20, 20, 0.8);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 #custom-media.custom-vlc {
-    background-color: rgba(20, 20, 20, 0.8);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 #temperature {
-    background-color: rgba(20, 20, 20, 0.8);
+    background-color: rgba(0, 0, 0, 0.5);
 
 }
 
 #temperature.critical {
-    background-color: rgba(20, 20, 20, 0.8);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 #tray {
-    background-color: rgba(20, 20, 20, 0.8);
-
-
+    background-color: rgba(0, 0, 0, 0.5);
+        padding: 0 7px;
+    color: #ffffff;
+    margin-right: 0;
 }
 
 #tray > .passive {
     -gtk-icon-effect: dim;
+
 }
 
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
-    background-color: rgba(20, 20, 20, 0.8);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 #idle_inhibitor {
-    background-color: rgba(20, 20, 20, 0.8);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 #idle_inhibitor.activated {
-    background-color: rgba(20, 20, 20, 0.8);
+    background-color: rgba(0, 0, 0, 0.5);
 
 }
 
 #mpd {
-    background-color: rgba(20, 20, 20, 0.8);
+    background-color: rgba(0, 0, 0, 0.5);
     color: #2a5c45;
 }
 
 #mpd.disconnected {
-    background-color: rgba(20, 20, 20, 0.8);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 #mpd.stopped {
-    background-color: rgba(20, 20, 20, 0.8);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 #mpd.paused {
-    background-color: rgba(20, 20, 20, 0.8);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 #language {
-    background: rgba(20, 20, 20, 0.8);
+    background: rgba(0, 0, 0, 0.5);
     color: #740864;
     padding: 0 5px;
     margin: 0 5px;
@@ -243,7 +244,7 @@ label:focus {
 }
 
 #keyboard-state {
-    background: rgba(20, 20, 20, 0.8);
+    background: rgba(0, 0, 0, 0.5);
     color: #000000;
     padding: 0 0px;
     margin: 0 5px;
@@ -255,5 +256,5 @@ label:focus {
 }
 
 #keyboard-state > label.locked {
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.5);
 }
