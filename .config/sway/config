@@ -15,7 +15,7 @@ set $block-wall $HOME/.config/wall.*
 set $desktop-wall $HOME/.config/wall.*
 
 ## Declarar tema gtk e iconos
-set $theme_gtk Mint-Y-Dark-Blue
+set $theme_gtk Orchis-dark-compact
 set $theme_icons Mint-Y-Dark-Blue
 
 ## Pantalla de bloqueo
@@ -134,11 +134,12 @@ client.unfocused          $colour_gris_alpha      $colour_gris_alpha       $colo
 client.urgent             $colour_rojo            $colour_rojo             $colour_blanco     $colour_rojo       $colour_gris_alpha
 
 ## Transparencia
-set $opacity 0.80
-for_window [app_id="Alacritty"]    opacity $opacity
-for_window [app_id="mousepad"]     opacity $opacity
-for_window [app_id="geany"]        opacity $opacity
-for_window [app_id="thunar"]       opacity $opacity
+for_window [app_id="Alacritty"]    opacity 0.80
+for_window [app_id="kitty"]        opacity 0.95
+for_window [app_id="mousepad"]     opacity 0.90
+for_window [app_id="geany"]        opacity 0.90
+for_window [app_id="thunar"]       opacity 0.95
+for_window [app_id="pcmanfm"]      opacity 0.95
 
 ## Teclas de direccion al estilo VIM
 set $left h

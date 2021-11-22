@@ -13,8 +13,9 @@
     border-radius: 3;
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: Iosevka;
-    font-size: 12;
-    min-height: 0;
+    font-size: 12px;
+    min-height: 5px;
+    min-width: 5px;
 }
 
 window#waybar {
@@ -44,7 +45,7 @@ window#waybar.chromium {
 
 #workspaces button {
     background-color: rgba(0, 0, 0, 0.7);
-    padding: 3px;
+    padding: 0 7 0 7px;
     color: #ffffff;
     margin-right: 3;
 }
@@ -53,7 +54,7 @@ window#waybar.chromium {
 
 #workspaces button:hover {
     background: rgba(0, 0, 0, 0.7);
-    padding: 3px;
+    padding: 0 7 0 7px;
     /* Use box-shadow instead of border so the text isn't offset */
     box-shadow: inset 0 -3px #6d72ab;
 }
@@ -61,17 +62,17 @@ window#waybar.chromium {
 
 #workspaces button.focused {
     background-color: #6d72ab;
-    padding: 3px;
+    padding: 0 7 0 7px;
 }
 
 #workspaces button.urgent {
     background-color: #eb4d4b;
-    padding: 3px;
+    padding: 0 7 0 7px;
 }
 
 #mode {
     background-color: rgba(0, 0, 0, 0.7);
-    padding: 33px;
+    padding: 3px;
 }
 
 #clock,
@@ -90,7 +91,7 @@ window#waybar.chromium {
 #custom-menu,
 #custom-grabar,
 #mpd {
-    padding: 0 5px;
+    padding: 0 5 0 5px;
     color: #ffffff;
     margin-right: 3;
 }
@@ -208,7 +209,7 @@ label:focus {
 
 #tray {
     background-color: rgba(0, 0, 0, 0.7);
-        padding: 0 5px;
+        padding: 0 5 0 5px;
     color: #ffffff;
     margin-right: 0;
 }
