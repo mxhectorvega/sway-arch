@@ -17,5 +17,5 @@ Esta configuracion fue probada en #ArchLinux, estamos trabajando para portarla a
 
 **Screenshot:**
 <center>
-<img src="https://raw.githubusercontent.com/mxhectorvega/sway-arch/main/arch.png" style="max-width:100%;width:auto;height:auto;">
+<img src="https://raw.githubusercontent.com/mxhectorvega/sway-arch/main/captura.png" style="max-width:100%;width:auto;height:auto;">
 </center>
