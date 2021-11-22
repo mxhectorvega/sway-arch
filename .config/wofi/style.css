@@ -11,13 +11,13 @@
 window {
 
     border-radius: 3;
-    background-color: rgba(0, 0, 0, 0.92);
+    background-color: rgba(0, 0, 0, 0.75);
 }
 
 #input {
     color: #ffffff;
     border-radius: 3;
-    background-color: rgba(0, 0, 0, 0.92);
+    background-color: rgba(0, 0, 0, 0.75);
     font-size: 13;
 }
 

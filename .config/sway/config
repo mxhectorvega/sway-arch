@@ -79,7 +79,7 @@ popup_during_fullscreen smart
 ## Colores basicos
 set $colour_blanco       #ffffff
 set $colour_gris         #000000
-set $colour_gris_alpha   #000000E6
+set $colour_gris_alpha   #000000bf
 set $colour_azul         #0088CC
 set $colour_rojo         #BC5858
 set $colour_inactive     #8D8D8D
@@ -134,10 +134,11 @@ client.unfocused          $colour_gris_alpha      $colour_gris_alpha       $colo
 client.urgent             $colour_rojo            $colour_rojo             $colour_blanco     $colour_rojo       $colour_gris_alpha
 
 ## Transparencia
-set $opacity 0.9
-for_window [app_id="Alacritty"]        opacity $opacity
-for_window [app_id="mousepad"]         opacity $opacity
-for_window [app_id="geany"]            opacity $opacity
+set $opacity 0.80
+for_window [app_id="Alacritty"]    opacity $opacity
+for_window [app_id="mousepad"]     opacity $opacity
+for_window [app_id="geany"]        opacity $opacity
+for_window [app_id="thunar"]       opacity $opacity
 
 ## Teclas de direccion al estilo VIM
 set $left h
@@ -216,7 +217,7 @@ mode $mode_resize_tile {
 }
 
 ## Modo: menu de apagado
-set $mode_system "👤 [B]loq. [S]usp. [R]einic. [A]pag."
+set $mode_system "👤 [B]loq. [S]usp. [R]eini. [A]pag."
 bindsym $mod+$alt+q     mode $mode_system
 mode $mode_system {
     bindsym b exec $lock;               mode default
@@ -252,7 +253,7 @@ mode $mode_move_floating {
 set $mode_scrot "🎥 [G]rabar, [D]etener"
 bindsym $mod+$alt+s     mode $mode_scrot
 mode $mode_scrot {
-    bindsym g exec wf-recorder -a -f "$HOME/Vídeos/screencast-$(date +'%Y-%m-%d %H-%M-%S').mp4", mode "default"
+    bindsym g exec "wf-recorder -a -f $(xdg-user-dir VIDEOS)/$(date +'screencast_%Y-%m-%d_%H-%M-%S.mp4'), mode "default"
     bindsym d exec killall --signal SIGINT wf-recorder, mode "default"
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -361,8 +362,10 @@ assign [class="^spotify$"]                  workspace number 5
 assign [app_id="Sxiv"]                      workspace number 5
 assign [class="^obs$"]                      workspace number 5
 assign [app_id="^obs$"]                     workspace number 5
-assign [class="^Gimp$"]                     workspace number 5
-assign [app_id="gimp$"]                     workspace number 5
+assign [class="Gimp$"]                      workspace number 5
+assign [class="gimp$"]                      workspace number 5
+assign [app_id="Gimp"]                      workspace number 5
+assign [app_id="gimp"]                      workspace number 5
 assign [class="^Kdenlive$"]                 workspace number 5
 
 ## Don't lock for video
@@ -465,7 +468,7 @@ bindsym $mod+Shift+p          exec $clean_clipboard
 ## Screenshots
 ## Captura de pantalla fullscreen
 bindsym --release Print exec \
-    grim $HOME/Imágenes/"captura $(date +'%Y-%m-%d %H-%M-%S')".png
+    grim $(xdg-user-dir PICTURES)/$(date +'captura_%Y-%m-%d_%H-%M-%S.png')
 
 ## Captura de pantalla fullscreen + portapapeles.
 bindsym --release Ctrl+Print exec \
@@ -473,7 +476,7 @@ bindsym --release Ctrl+Print exec \
 
 ## Seleccion (drag to select)
 bindsym --release Shift+Print exec \
-    grim -g "$(slurp)" $HOME/Imágenes/"recorte $(date +'%Y-%m-%d %H-%M-%S')".png
+    grim -g "$(slurp)" $(xdg-user-dir PICTURES)/$(date +'recorte_%Y-%m-%d_%H-%M-%S.png')
 
 ## Seleccion (drag to select) + portapapeles.
 bindsym --release Ctrl+Shift+Print exec \
