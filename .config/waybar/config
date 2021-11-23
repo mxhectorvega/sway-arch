@@ -15,7 +15,7 @@
     "margin-bottom": 5,
     "margin-left": 5,
     "margin-right": 5, 
-    "modules-left": ["custom/menu", "network", "cpu", "temperature", "memory", "custom/grabar", "sway/mode"],
+    "modules-left": ["custom/menu", "network", "cpu", "temperature", "memory", "custom/grabar", "video", "sway/mode"],
     "modules-center": ["sway/workspaces"],
     "modules-right": ["idle_inhibitor", "backlight", "pulseaudio", "battery", "clock", "custom/power", "tray"],
 
@@ -134,15 +134,15 @@
      "custom/grabar":{
        "format": "{icon}",
        "format-icons": "🔴",
-       "on-click": "wf-recorder -a -f $(xdg-user-dir VIDEOS)/$(date +'screencast_%Y-%m-%d_%H-%M-%S.mp4')",
-        "on-click-right": "killall --signal SIGINT wf-recorder"
+       "on-click": "wf-recorder -a -f $(xdg-user-dir VIDEOS)/$(date +'screencast_%Y-%m-%d_%H-%M-%S.mp4' ; exec notify-send -t 10000 -i $HOME/.config/user.png 'Screenrecorder' 'Se ha iniciado screenrecorder, presione click derecho sobre el mismo boton para cancelar')",
+        "on-click-right": "killall --signal SIGINT wf-recorder ; exec notify-send -t 10000 -i $HOME/.config/user.png 'Screenrecorder' 'La grabacion ha finalizado y se ha guardado en el directorio Videos'"
     },    
       "custom/menu":{ 
-         "format":"♾️", 
-	  "on-click": "wofi --no-actions --show drun --width 400 --lines 8" },
+         "format":"🐧", 
+	  "on-click": "pkill -9 wofi ; wofi --no-actions --show drun --width 400 --lines 8" },
       "custom/power":{ 
          "format":"🔐", 
-	  "on-click": "swaynag -t warning -m 'Menu de apagado' -b 'Cerrar sesion' 'swaymsg exit' -b 'Reiniciar' 'shutdown -r now' -b 'Apagar'  'shutdown -h now' --text=#ffffff --background=#000000bf --button-background=#6d72ab --button-border=#6d72ab --border-bottom=#6d72ab --font 'Iosevka 9' --button-padding 3 --message-padding 6 --button-gap 10 --button-dismiss-gap 0 --button-margin-right 0"    },
+	  "on-click": "pkill -9 wofi ; sh .config/waybar/custom/power"    },
     "cpu": {
         "format": "🐌 {usage}%",
     }

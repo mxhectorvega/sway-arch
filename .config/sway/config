@@ -6,7 +6,7 @@
 ## Version:
 ## v2.0: 20/11/2021
 
-## Delara teclas super y alt
+## Delara teclas super y altinput * xkb_numlock enable
 set $mod Mod4
 set $alt Mod1
 
@@ -19,7 +19,8 @@ set $theme_gtk Orchis-dark-compact
 set $theme_icons Mint-Y-Dark-Blue
 
 ## Pantalla de bloqueo
-set $lock_warning exec notify-send -t 10000 -i $HOME/.config/user.png "SystemCtl" "La pantalla se bloqueará en 10 segundos, mueva el cursor o siga en lo que estaba..."
+set $lock_warning notify-send --expire-time 10000 --icon $HOME/.config/user.png 'SystemCtl' 'La pantalla se bloqueará en 10 segundos, mueva el cursor o siga en lo que estaba...'
+
 set $lock swaylock \
     --daemonize \
     --no-unlock-indicator \
@@ -38,18 +39,19 @@ set $font_dmenu Iosevka-9
 set $terminal alacritty
 
 ## Declara el lanzador de aplicaciones
-set $menu wofi \
+set $menu "pkill -9 wofi ; wofi \
      --no-actions \
      --show drun \
      --width 400 \
-     --lines 8
+     --lines 8"
 
 ## Declara menu gestor de portapapeles
-set $menu_clipboard cliphist \
+set $menu_clipboard "pkill -9 wofi ; cliphist \
      list | wofi --no-actions \
      --dmenu \
      --width 600 \
-     --lines 8 | cliphist decode | wl-copy
+     --lines 8 \
+     --prompt Clipboard | cliphist decode | wl-copy"
 
 ## Limpiar menu portapales
 set $clean_clipboard rm .cache/cliphist/db && exec \
@@ -87,6 +89,7 @@ set $colour_inactive     #8D8D8D
 ## Confuracion de teclado y velocidad de escritura
 input * {
     xkb_layout latam
+    xkb_numlock enable
     repeat_delay 200
     repeat_rate 150
 }
@@ -116,6 +119,7 @@ output * {
 ## la escala normal es 1 es de 100% (normal) y 1.5 es de 150%
 output eDP-1 {
     pos 0 0
+    adaptive_sync on
     scale 1
 }
 
@@ -123,6 +127,7 @@ output eDP-1 {
 ## identificarlos con swaymsg -t get_outputs
 output HDMI-A-1 {
     pos 1366 0
+    adaptive_sync on
     scale 1.4
 }
 
@@ -254,8 +259,8 @@ mode $mode_move_floating {
 set $mode_scrot "🎥 [G]rabar, [D]etener"
 bindsym $mod+$alt+s     mode $mode_scrot
 mode $mode_scrot {
-    bindsym g exec "wf-recorder -a -f $(xdg-user-dir VIDEOS)/$(date +'screencast_%Y-%m-%d_%H-%M-%S.mp4'), mode "default"
-    bindsym d exec killall --signal SIGINT wf-recorder, mode "default"
+    bindsym g exec "wf-recorder -a -f $(xdg-user-dir VIDEOS)/$(date +'screencast_%Y-%m-%d_%H-%M-%S.mp4') && exec notify-send -t 10000 -i $HOME/.config/user.png 'Screenrecorder' 'Se ha iniciado screenrecorder, presione click derecho sobre el mismo boton para cancelar', mode "default"
+    bindsym d exec killall --signal SIGINT wf-recorder && exec notify-send -t 10000 -i $HOME/.config/user.png 'Screenrecorder' 'La grabacion ha finalizado y se ha guardado en el directorio Videos', mode "default"
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
@@ -469,19 +474,19 @@ bindsym $mod+Shift+p          exec $clean_clipboard
 ## Screenshots
 ## Captura de pantalla fullscreen
 bindsym --release Print exec \
-    grim $(xdg-user-dir PICTURES)/$(date +'captura_%Y-%m-%d_%H-%M-%S.png')
+    grim $(xdg-user-dir PICTURES)/$(date +'captura_%Y-%m-%d_%H-%M-%S.png') && exec notify-send -t 10000 -i $HOME/.config/user.png 'Screenshot' 'La captura de pantalla se ha guardado en el directorio Imagenes'
 
 ## Captura de pantalla fullscreen + portapapeles.
 bindsym --release Ctrl+Print exec \
-    grim - | wl-copy
+    grim - | wl-copy && exec notify-send -t 10000 -i $HOME/.config/user.png 'Clipoard' 'La captura de pantalla se ha guardado en el directorio Imagenes'
 
 ## Seleccion (drag to select)
 bindsym --release Shift+Print exec \
-    grim -g "$(slurp)" $(xdg-user-dir PICTURES)/$(date +'recorte_%Y-%m-%d_%H-%M-%S.png')
+    grim -g "$(slurp)" $(xdg-user-dir PICTURES)/$(date +'recorte_%Y-%m-%d_%H-%M-%S.png') && exec notify-send -t 10000 -i $HOME/.config/user.png 'Screenshot' 'La captura de pantalla se ha guardado en el directorio Imagenes'
 
 ## Seleccion (drag to select) + portapapeles.
 bindsym --release Ctrl+Shift+Print exec \
-    grim -g "$(slurp)" - | wl-copy
+    grim -g "$(slurp)" - | wl-copy && exec notify-send -t 10000 -i $HOME/.config/user.png 'Clipoard' 'La captura de pantalla se ha guardado en el directorio Imagenes'
 
 ## Definir temas y fuentes gnome
 set $gnome-schema org.gnome.desktop.interface
@@ -493,20 +498,18 @@ exec_always {
     gsettings set $gnome-schema document-font-name '$default_font'
     gsettings set org.gnome.desktop.wm.preferences titlebar-font '$default_font'
     gsettings set org.gnome.desktop.wm.preferences button-layout ''
-    gsettings set org.gnome.nautilus.preferences always-use-location-entry 'true'
     gsettings set org.gnome.desktop.default-applications.terminal exec '$terminal'
     gsettings set org.gtk.Settings.FileChooser window-size '(800,500)'
 }
 
 ## Autoarranque
-exec wl-paste --watch cliphist store
-
 set $imp_vars "DISPLAY WAYLAND_DISPLAY SWAYSOCK SSH_AUTH_SOCK XDG_CURRENT_DESKTOP XDG_SESSION_TYPE"
 exec_always systemctl --user import-environment "$imp_vars"
 exec_always hash dbus-update-activation-environment 2>/dev/null && \
     dbus-update-activation-environment --systemd "$imp_vars"
 
-exec_always 'pkill kanshi; exec kanshi'
+exec wl-paste --watch cliphist store
+
 exec_always 'pkill mako; exec mako \
     --background-color "$colour_gris_alpha" \
     --margin "$gap_top" \
@@ -523,7 +526,8 @@ exec_always 'pkill mako; exec mako \
     --default-timeout 5000'
 
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
 exec swayidle -w \
-    timeout 290  "$lock_warning" \
-    timeout 300  "$lock" \
+    timeout 180 "$lock_warning" \
+    timeout 190 "$lock" \
     before-sleep "$lock"

@@ -1,0 +1,23 @@
+#!/bin/bash
+
+loco=$(printf "Cerrar sesion\nApagar\nReiniciar\nSuspender\nHibernar\nSuspencion hibrida\nSuspender y luego hibernar" | wofi \
+      --dmenu \
+      --width 400 \
+      --lines 7 \
+      --prompt Powermenu)
+
+if [[ $loco = "Cerrar sesion" ]]; then
+	swaymsg exit
+elif [[ $loco = "Apagar" ]]; then
+	systemctl poweroff
+elif [[ $loco = "Reiniciar" ]]; then
+	systemctl reboot
+elif [[ $loco = "Suspender" ]]; then
+	systemctl suspend
+elif [[ $loco = "Hibernar" ]]; then
+	systemctl hibernate
+elif [[ $loco = "Suspencion hibrida" ]]; then
+	systemctl hybrid-sleep
+elif [[ $loco = "Suspender y luego hibernar" ]]; then
+	systemctl suspend-then-hibernate
+fi
