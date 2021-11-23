@@ -139,7 +139,7 @@
     },    
       "custom/menu":{ 
          "format":"🐧", 
-	  "on-click": "pkill -9 wofi ; wofi --no-actions --show drun --width 400 --lines 8" },
+	  "on-click": "pkill -9 wofi ; wofi --no-actions --allow-images --show drun --width 400 --lines 6" },
       "custom/power":{ 
          "format":"🔐", 
 	  "on-click": "pkill -9 wofi ; sh .config/waybar/custom/power"    },
