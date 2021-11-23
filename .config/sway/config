@@ -36,14 +36,15 @@ set $default_font Iosevka 9
 set $font_dmenu Iosevka-9
 
 ## Delara la terminal por defecto
-set $terminal alacritty
+set $terminal kitty
 
 ## Declara el lanzador de aplicaciones
 set $menu "pkill -9 wofi ; wofi \
+     --allow-images \
      --no-actions \
      --show drun \
      --width 400 \
-     --lines 8"
+     --lines 6"
 
 ## Declara menu gestor de portapapeles
 set $menu_clipboard "pkill -9 wofi ; cliphist \
@@ -97,8 +98,10 @@ input * {
 ## Configuracion de trackpad o touchpad 
 ## (habilita tab ligero a 1 dedo, menu contextual a 2 dedos y scroll click a 3 dedos)
 input type:touchpad {
+    dwt enabled
     tap enabled
     natural_scroll enabled
+    middle_emulation enabled
 }
 
 ## Status Bar:
@@ -130,7 +133,6 @@ output HDMI-A-1 {
     adaptive_sync on
     scale 1.4
 }
-
 
 ## Colores de ventanas    borde                   background               text               indicator          child
 client.focused            #ff0000                 $colour_gris_alpha       $colour_blanco     $colour_blanco     $colour_gris_alpha
@@ -255,6 +257,7 @@ mode $mode_move_floating {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
+
 ## Modo: menu captura de pantalla
 set $mode_scrot "🎥 [G]rabar, [D]etener"
 bindsym $mod+$alt+s     mode $mode_scrot
@@ -319,6 +322,7 @@ bindsym $mod+Shift+5 move container to workspace number 5
 ## Reglas para las ventanas
 bindcode 66 [app_id="^scratchpad-.*"]       scratchpad show
 assign [class="^kitty$"]                    workspace number 1
+assign [app_id="kitty"]                     workspace number 1
 assign [class="^URxvt$"]                    workspace number 1
 assign [class="^XTerm$"]                    workspace number 1
 assign [app_id="^Alacritty$"]               workspace number 1
@@ -387,8 +391,8 @@ for_window [app_id="^org.qutebrowser.qutebrowser$"]     inhibit_idle fullscreen
 for_window [class="^jellyfin$"]                         inhibit_idle fullscreen
 for_window [class="^Google-chrome$" title="^Jellyfin$"] inhibit_idle fullscreen
 for_window [class="^Chromium-browser$"]                 inhibit_idle fullscreen
-for_window [class="^mpv$"]                              inhibit_idle visible
-for_window [app_id="^mpv$"]                             inhibit_idle visible
+for_window [class="mpv$"]                               inhibit_idle fullscreen
+for_window [app_id="mpv"]                               inhibit_idle fullscreen
 for_window [class="^jellyfin$"]                         inhibit_idle visible
 for_window [class="^Google-chrome$" title="^Jellyfin$"] inhibit_idle visible
 
@@ -503,6 +507,9 @@ exec_always {
 }
 
 ## Autoarranque
+exec export TERM="kitty"
+exec export EDITOR="vim"
+
 set $imp_vars "DISPLAY WAYLAND_DISPLAY SWAYSOCK SSH_AUTH_SOCK XDG_CURRENT_DESKTOP XDG_SESSION_TYPE"
 exec_always systemctl --user import-environment "$imp_vars"
 exec_always hash dbus-update-activation-environment 2>/dev/null && \
@@ -528,6 +535,7 @@ exec_always 'pkill mako; exec mako \
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 exec swayidle -w \
-    timeout 180 "$lock_warning" \
-    timeout 190 "$lock" \
+    timeout 290 "$lock_warning" \
+    timeout 300 "$lock" \
     before-sleep "$lock"
+
