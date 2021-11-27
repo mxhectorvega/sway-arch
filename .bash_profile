@@ -8,3 +8,8 @@
 if [ "$(tty)" = "/dev/tty1" ]; then
 	exec sway
 fi
+
+[daemon]
+    # Enabling automatic login
+    AutomaticLoginEnable=true
+    AutomaticLogin=$USERNAME
