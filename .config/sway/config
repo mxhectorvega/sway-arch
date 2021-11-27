@@ -147,6 +147,7 @@ for_window [app_id="mousepad"]     opacity 0.90
 for_window [app_id="geany"]        opacity 0.90
 for_window [app_id="thunar"]       opacity 0.95
 for_window [app_id="pcmanfm"]      opacity 0.95
+for_window [app_id="qvidcap"]      opacity 1.0
 
 ## Teclas de direccion al estilo VIM
 set $left h
