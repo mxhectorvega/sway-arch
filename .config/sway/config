@@ -16,7 +16,7 @@ set $desktop-wall $HOME/.config/wall.*
 
 ## Declarar tema gtk e iconos
 set $theme_gtk Orchis-dark-compact
-set $theme_icons Mint-Y-Dark-Blue
+set $theme_icons Papirus-Dark
 
 ## Pantalla de bloqueo
 set $lock_warning notify-send --expire-time 10000 --icon $HOME/.config/user.png 'SystemCtl' 'La pantalla se bloqueará en 10 segundos, mueva el cursor o siga en lo que estaba...'
@@ -57,6 +57,9 @@ set $menu_clipboard "pkill -9 wofi ; cliphist \
 set $clean_clipboard rm .cache/cliphist/db && exec \
     notify-send -t 10000 -i $HOME/.config/user.png \
     "Clipboard" "El historial del portapapeles se a borrado con exito."
+   
+## Power menmu
+set $menu_power "pkill -9 wofi ; sh .config/waybar/custom/power   
 
 ## Apariencia basica
 smart_borders on
@@ -475,6 +478,7 @@ bindsym $mod+Return           exec $terminal
 bindsym $mod+d                exec $menu
 bindsym $mod+p                exec $menu_clipboard
 bindsym $mod+Shift+p          exec $clean_clipboard
+bindsym $mod+backspace        exec $menu_power
 
 ## Screenshots
 ## Captura de pantalla fullscreen

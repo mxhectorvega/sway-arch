@@ -80,6 +80,7 @@
         "tooltip-format": "🥨 {ifname} via {gwaddr}",
         "format-linked": "🥨 {ifname} (No IP)",
         "format-disconnected": "😵 desconectado",
+        "on-click": "kitty -e nmtui"
       },
     "pulseaudio": {
         "format": "{icon} {volume}%",
