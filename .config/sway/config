@@ -371,8 +371,7 @@ assign [class="Telegram-Desktop"]           workspace number 4
 assign [app_id="^mpv$"]                     workspace number 5
 assign [class="^vlc$"]                      workspace number 5
 assign [class="^Kodi$"]                     workspace number 5
-assign [class="^Spotify$"]                  workspace number 5
-assign [class="^spotify$"]                  workspace number 5
+assign [class="Spotify"]                    workspace number 5
 assign [app_id="Sxiv"]                      workspace number 5
 assign [class="^obs$"]                      workspace number 5
 assign [app_id="^obs$"]                     workspace number 5
@@ -468,10 +467,10 @@ bindsym XF86MonBrightnessDown exec light -U 5
 bindsym XF86MonBrightnessUp   exec light -A 5 
 
 ## Controlar musica con playerctl (controla reproductores de musca playerctl -l)
-bindsym XF86AudioPlay         exec playerctl play-pause
-bindsym XF86AudioPause        exec playerctl play-pause
-bindsym XF86AudioNext         exec playerctl next
-bindsym XF86AudioPrev         exec playerctl previous
+bindsym XF86AudioPlay         exec playerctl play-pause ; exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+bindsym XF86AudioPause        exec playerctl play-pause ; exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+bindsym XF86AudioNext         exec playerctl next ; exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
+bindsym XF86AudioPrev         exec playerctl previous ; exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
 
 ## Applicaciones ejecutables
 bindsym $mod+Return           exec $terminal
