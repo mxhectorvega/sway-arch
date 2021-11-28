@@ -27,11 +27,11 @@ sleep 1
 
 # SwayWM
 sudo pacman -Syu --noconfirm
-sudo pacman -S vim python-pillowfight man bc tmux polkit-gnome lxappearance telegram-desktop firefox cmus playerctl git imv mpv zathura-pdf-mupdf neofetch geany htop bpytop ranger gcc make xdg-user-dirs gvfs --noconfirm --needed
+sudo pacman -S vim python-pillowfight man bc polkit-gnome lxappearance telegram-desktop firefox cmus playerctl git imv mpv zathura-pdf-mupdf neofetch geany htop bpytop ranger gcc make xdg-user-dirs gvfs --noconfirm --needed
 sudo pacman -S xorg-xwayland sway kanshi swaylock swayidle wofi mako waybar alacritty grim slurp wl-clipboard wf-recorder gammastep swappy light v4l2loopback-dkms --noconfirm --needed
 sudo pacman -S alsa-utils pipewire-alsa pipewire-pulse bluez bluez-utils pavucontrol --noconfirm --needed
 sudo pacman -S thunar thunar-archive-plugin thunar-volman thunar-archive-plugin tumbler ffmpegthumbnailer xarchiver zip unzip unrar unarj p7zip lzop lzip lrzip lha cpio arj --noconfirm --needed
-sudo pacman -S ttf-{dejavu,hack,roboto,liberation} wqy-microhei bdf-unifont unicode-character-database --noconfirm --needed
+sudo pacman -S ttf-{dejavu,hack,roboto,liberation} terminus-font wqy-microhei bdf-unifont unicode-character-database --noconfirm --needed
 
 # Paru AUR helper
 clear 
@@ -170,3 +170,4 @@ printf '\n \n'
 # En caso de que usted use maquina virtual o tenga un computador que genere problemas, 
 # debe instalar estos 2 paquetes:
 #paru -S sway-git wlroots
+#paru -S terminus-font-ttf

@@ -17,7 +17,7 @@
     "margin-right": 5, 
     "modules-left": ["custom/menu", "network", "cpu", "temperature", "memory", "custom/grabar", "video", "sway/mode"],
     "modules-center": ["sway/workspaces"],
-    "modules-right": ["idle_inhibitor", "backlight", "pulseaudio", "battery", "clock", "custom/power", "tray"],
+    "modules-right": ["backlight", "pulseaudio", "battery", "clock", "custom/power", "tray"],
 
     "sway/mode": {
         "format": "{}"
@@ -74,18 +74,17 @@
     },
    "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "📡 {essid} {signalStrength}%",
+        "format-wifi": "📡 {ipaddr} {signalStrength}%",
         //"format-wifi": "📡 {signalStrength}%",
-        "format-ethernet": "🥨 Ethernet conect.",
+        "format-ethernet": "🥨 {ipaddr} Eth",
         "tooltip-format": "🥨 {ifname} via {gwaddr}",
         "format-linked": "🥨 {ifname} (No IP)",
-        "format-disconnected": "😵 Sin internet",
-        "format-alt": "💀 {ipaddr}/{cidr}"
-    },
+        "format-disconnected": "😵 desconectado",
+      },
     "pulseaudio": {
         "format": "{icon} {volume}%",
         "format-bluetooth": "🎧 {volume}% ",
-        "format-muted": "🔈",
+        "format-muted": "🔇",
         "format-icons": {
           "headphone": "",
           "hands-free": "",
@@ -96,7 +95,7 @@
        "pulseaudio": {
         "format": "{icon} {volume}%",
         "format-bluetooth": "🎧 {volume}% ",
-        "format-muted": "🔈",
+        "format-muted": "🔇",
         "format-icons": {
           "headphone": "",
           "hands-free": "",
@@ -104,11 +103,11 @@
           "phone": "📞",
           "portable": "📞",
           "car": "📞🚘",
-          "default": ["🔉", "🔊"]
+          "default": ["🔈","🔉","🔊"]
            },
         "scroll-step": 1,
         "on-click": "pavucontrol"
-  },       "default": ["🔉", "🔊"]
+  },       "default": ["🔈","🔉","🔊"]
            },
         "scroll-step": 1,
         "on-click": "pavucontrol"

@@ -6,7 +6,7 @@
 ## Version:
 ## v2.0: 20/11/2021
 
-## Delara teclas super y altinput * xkb_numlock enable
+## Delara teclas super y altinput * xkCozetteb_numlock enable
 set $mod Mod4
 set $alt Mod1
 
@@ -32,8 +32,7 @@ set $gap_int 5
 set $gap_top 0
 
 ## Delara tu tipografia
-set $default_font Iosevka 9
-set $font_dmenu Iosevka-9
+set $default_font Terminus 8
 
 ## Delara la terminal por defecto
 set $terminal kitty
@@ -142,7 +141,8 @@ client.urgent             $colour_rojo            $colour_rojo             $colo
 
 ## Transparencia
 for_window [app_id="Alacritty"]    opacity 0.80
-for_window [app_id="kitty"]        opacity 0.95
+#for_window [app_id="kitty"]        opacity 0.80
+for_window [app_id="foot"]         opacity 0.80
 for_window [app_id="mousepad"]     opacity 0.90
 for_window [app_id="geany"]        opacity 0.90
 for_window [app_id="thunar"]       opacity 0.95
