@@ -62,7 +62,7 @@ sudo cp /tmp/zram-arch/zram-config-on /usr/local/bin/
 sudo cp /tmp/zram-arch/zram-config-off /usr/local/bin/
 sudo cp /tmp/zram-arch/zram-config.service /etc/systemd/system/
 sudo chmod +x /usr/local/bin/zram-config-on
-sudo chmod +x /usr/local/bin/zram-config-on
+sudo chmod +x /usr/local/bin/zram-config-off
 sudo systemctl enable --now zram-config
 sudo systemctl enable lightdm 
 
