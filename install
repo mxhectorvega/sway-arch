@@ -56,6 +56,8 @@ sleep 1
 git clone https://github.com/mxhectorvega/sway-arch /tmp/sway-arch
 git clone https://github.com/mxhectorvega/tipografias  /tmp/tipografias
 git clone https://github.com/mxhectorvega/zram-arch /tmp/zram-arch
+git clone https://github.com/mxhectorvega/temas /tmp/temas
+cp -rp /tmp/temas/.* "$HOME"
 cp -rp /tmp/sway-arch/.* "$HOME"
 cp -rp /tmp/tipografias/.* "$HOME"/.local/share/fonts
 sudo cp /tmp/zram-arch/zram-config-on /usr/local/bin/
