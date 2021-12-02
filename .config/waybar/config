@@ -24,6 +24,7 @@
     },
     "sway/workspaces": {
         "disable-scroll": true,
+        "current-only": false,
         "all-outputs": false,
         "disable-markup": false,
         "format": "{icon}",
@@ -33,7 +34,14 @@
             "3": "📁",
             "4": "🌎",
             "5": "🎹",
-        }
+            },
+        "persistent_workspaces": {
+            "1": "💻",
+            "2": "📝",
+            "3": "📁",
+            "4": "🌎",
+            "5": "🎹",
+            }
     },
     "sway/window": {
         "max-length": 20,
@@ -84,7 +92,7 @@
       },
     "pulseaudio": {
         "format": "{icon} {volume}%",
-        "format-bluetooth": "🎧 {volume}% ",
+        "format-bluetooth": "🎧 {volume}%",
         "format-muted": "🔇",
         "format-icons": {
           "headphone": "",
@@ -95,7 +103,7 @@
           "car": "📞🚘",
        "pulseaudio": {
         "format": "{icon} {volume}%",
-        "format-bluetooth": "🎧 {volume}% ",
+        "format-bluetooth": "🎧 {volume}%",
         "format-muted": "🔇",
         "format-icons": {
           "headphone": "",
