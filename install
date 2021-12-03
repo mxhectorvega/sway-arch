@@ -67,7 +67,7 @@ cp -rp /tmp/tipografias/.* "$HOME"/.local/share/fonts
 #sudo chmod +x /usr/local/bin/zram-config-on
 #sudo chmod +x /usr/local/bin/zram-config-off
 #sudo systemctl enable --now zram-config
-#sudo systemctl enable lightdm 
+sudo systemctl enable lightdm 
 
 # Todo el SO en español
 clear 
@@ -118,10 +118,17 @@ sleep 2
 # Cambiando de fuente y wallpaper ligthDM
 sudo cp $HOME/.config/wall.* /usr/share/backgrounds/wall.jpg
 sudo tee /etc/lightdm/lightdm-gtk-greeter.conf <<EOF
+[greeter]
 background=/usr/share/backgrounds/wall.jpg
 theme-name=Orchis-dark-compact
 icon-theme-name=Papirus-Dark
 font-name=Terminus 9
+xft-antialias=true
+xft-dpi=96
+xft-hintstyle=hintslight
+xft-rgba=rgb
+indicators=~spacer;~clock;~spacer;separator;~session;~a11y;~power;
+clock-format=%a, %b %d, %H:%M
 EOF
 
 clear
@@ -140,4 +147,3 @@ printf '\n \n'
 # En caso de que usted use maquina virtual o tenga un computador que genere problemas, 
 # debe instalar estos 2 paquetes:
 #paru -S sway-git wlroots
-#paru -S terminus-font-ttf
