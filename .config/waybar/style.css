@@ -11,7 +11,6 @@
 * {
     border: none;
     border-radius: 3;
-    /* `otf-font-awesome` is required to be installed for icons */
     font-family: terminus;
     font-size: 12px;
     min-height: 5px;
@@ -23,17 +22,15 @@ window#waybar {
 }
 
 window#waybar.hidden {
-    opacity: 0.7;
+    opacity: 0.0;
 }
 
-/*
 window#waybar.empty {
     background-color: transparent;
 }
 window#waybar.solo {
     background-color: #FFFFFF;
 }
-*/
 
 #workspaces button {
     background-color: rgba(0, 0, 0, 0.7);
@@ -61,6 +58,7 @@ window#waybar.solo {
     padding: 0 3 0 3px;
 }
 
+#tray,
 #clock,
 #battery,
 #cpu,
@@ -73,15 +71,14 @@ window#waybar.solo {
 #custom-media,
 #mode,
 #idle_inhibitor,
-#custom-power,
 #custom-menu,
 #custom-grabar,
 #mpd {
+    background-color: rgba(0, 0, 0, 0.7);
     padding: 0 5 0 5px;
     color: #ffffff;
     margin-right: 3;
 }
-
 
 /* If workspaces is the leftmost module, omit left margin */
 .modules-left > widget:first-child > #workspaces {
@@ -91,26 +88,6 @@ window#waybar.solo {
 /* If workspaces is the rightmost module, omit right margin */
 .modules-right > widget:last-child > #workspaces {
     margin-right: 0;
-}
-
-#clock {
-    background-color: rgba(0, 0, 0, 0.7);
-}
-
-#custom-power {
-    background-color: rgba(0, 0, 0, 0.7);
-}
-
-#custom-menu {
-    background-color: rgba(0, 0, 0, 0.7);
-}
-#battery {
-    background-color: rgba(0, 0, 0, 0.7);
-
-}
-
-#battery.charging, #battery.plugged {
-    background-color: rgba(0, 0, 0, 0.7);
 }
 
 @keyframes blink {
@@ -130,132 +107,18 @@ window#waybar.solo {
     animation-direction: alternate;
 }
 
-label:focus {
+#custom-power {
     background-color: rgba(0, 0, 0, 0.7);
-}
-
-#custom-grabar {
-    background-color: rgba(0, 0, 0, 0.7);
-}
-
-#cpu {
-    background-color: rgba(0, 0, 0, 0.7);
-}
-
-#memory {
-    background-color: rgba(0, 0, 0, 0.7);
-}
-
-#disk {
-    background-color: rgba(0, 0, 0, 0.7);
-}
-
-#backlight {
-    background-color: rgba(0, 0, 0, 0.7);
-}
-
-#network {
-    background-color: rgba(0, 0, 0, 0.7);
-}
-
-#network.disconnected {
-    background-color: rgba(0, 0, 0, 0.7);
-}
-
-#pulseaudio {
-    background-color: rgba(0, 0, 0, 0.7);
-}
-
-#pulseaudio.muted {
-    background-color: rgba(0, 0, 0, 0.7);
-}
-
-#custom-media {
-    background-color: rgba(0, 0, 0, 0.7);
-    color: #2a5c45;
-    min-width: 100px;
-}
-
-#custom-media.custom-spotify {
-    background-color: rgba(0, 0, 0, 0.7);
-}
-
-#custom-media.custom-vlc {
-    background-color: rgba(0, 0, 0, 0.7);
-}
-
-#temperature {
-    background-color: rgba(0, 0, 0, 0.7);
-
-}
-
-#temperature.critical {
-    background-color: rgba(0, 0, 0, 0.7);
-}
-
-#tray {
-    background-color: rgba(0, 0, 0, 0.7);
-        padding: 0 5 0 5px;
+    padding: 0 5 0 5px;
     color: #ffffff;
     margin-right: 0;
 }
 
 #tray > .passive {
     -gtk-icon-effect: dim;
-
 }
 
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
     background-color: rgba(0, 0, 0, 0.7);
-}
-
-#idle_inhibitor {
-    background-color: rgba(0, 0, 0, 0.7);
-}
-
-#idle_inhibitor.activated {
-    background-color: rgba(0, 0, 0, 0.7);
-
-}
-
-#mpd {
-    background-color: rgba(0, 0, 0, 0.7);
-    color: #2a5c45;
-}
-
-#mpd.disconnected {
-    background-color: rgba(0, 0, 0, 0.7);
-}
-
-#mpd.stopped {
-    background-color: rgba(0, 0, 0, 0.7);
-}
-
-#mpd.paused {
-    background-color: rgba(0, 0, 0, 0.7);
-}
-
-#language {
-    background: rgba(0, 0, 0, 0.7);
-    color: #740864;
-    padding: 0 5px;
-    margin: 0 5px;
-    min-width: 16px;
-}
-
-#keyboard-state {
-    background: rgba(0, 0, 0, 0.7);
-    color: #000000;
-    padding: 0 0px;
-    margin: 0 5px;
-    min-width: 16px;
-}
-
-#keyboard-state > label {
-    padding: 0 5px;
-}
-
-#keyboard-state > label.locked {
-    background: rgba(0, 0, 0, 0.7);
 }

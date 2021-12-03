@@ -33,10 +33,11 @@ sudo pacman -S alsa-utils pipewire-alsa pipewire-pulse bluez bluez-utils pavucon
 sudo pacman -S thunar thunar-archive-plugin thunar-volman thunar-archive-plugin tumbler ffmpegthumbnailer xarchiver zip unzip unrar unarj p7zip lzop lzip lrzip lha cpio arj --noconfirm --needed
 sudo pacman -S ttf-{dejavu,hack,roboto,liberation} terminus-font wqy-microhei bdf-unifont unicode-character-database --noconfirm --needed
 sudo pacman -S lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings --noconfirm
+sudo pacman -Rs alacritty dmenu --noconfirm
 
 # Paru AUR helper
 clear 
-printf '\n \nnstalando el gestor de paquetes Paru...\n'
+printf '\n \nInstalando el gestor de paquetes Paru...\n'
 sleep 1
 cd ; git clone https://aur.archlinux.org/paru-bin.git ; cd paru-bin ; makepkg -si --noconfirm ; cd ; rm -rf paru-bin
 
@@ -55,18 +56,18 @@ printf '\n \nClonando repositorios mxhectorvega...\n'
 sleep 1
 git clone https://github.com/mxhectorvega/sway-arch /tmp/sway-arch
 git clone https://github.com/mxhectorvega/tipografias  /tmp/tipografias
-git clone https://github.com/mxhectorvega/zram-arch /tmp/zram-arch
+#git clone https://github.com/mxhectorvega/zram-arch /tmp/zram-arch
 git clone https://github.com/mxhectorvega/temas /tmp/temas
 cp -rp /tmp/temas/.* "$HOME"
 cp -rp /tmp/sway-arch/.* "$HOME"
 cp -rp /tmp/tipografias/.* "$HOME"/.local/share/fonts
-sudo cp /tmp/zram-arch/zram-config-on /usr/local/bin/
-sudo cp /tmp/zram-arch/zram-config-off /usr/local/bin/
-sudo cp /tmp/zram-arch/zram-config.service /etc/systemd/system/
-sudo chmod +x /usr/local/bin/zram-config-on
-sudo chmod +x /usr/local/bin/zram-config-off
-sudo systemctl enable --now zram-config
-sudo systemctl enable lightdm 
+#sudo cp /tmp/zram-arch/zram-config-on /usr/local/bin/
+#sudo cp /tmp/zram-arch/zram-config-off /usr/local/bin/
+#sudo cp /tmp/zram-arch/zram-config.service /etc/systemd/system/
+#sudo chmod +x /usr/local/bin/zram-config-on
+#sudo chmod +x /usr/local/bin/zram-config-off
+#sudo systemctl enable --now zram-config
+#sudo systemctl enable lightdm 
 
 # Todo el SO en español
 clear 
@@ -113,6 +114,15 @@ clear
 printf '\n \nCreando directorios de usuario...\n'
 xdg-user-dirs-update --force
 sleep 2
+
+# Cambiando de fuente y wallpaper ligthDM
+sudo cp $HOME/.config/wall.* /usr/share/backgrounds/wall.jpg
+sudo tee /etc/lightdm/lightdm-gtk-greeter.conf <<EOF
+background=/usr/share/backgrounds/wall.jpg
+theme-name=Orchis-dark-compact
+icon-theme-name=Papirus-Dark
+font-name=Terminus 9
+EOF
 
 clear
 printf '\n \nConfiguraciones aplicadas!'
