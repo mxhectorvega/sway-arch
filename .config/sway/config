@@ -520,6 +520,8 @@ exec_always {
 }
 
 ## Autoarranque
+exec nm-applet --indicator
+
 exec export TERM="kitty"
 exec export EDITOR="vim"
 

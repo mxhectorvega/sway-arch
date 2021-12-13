@@ -72,6 +72,7 @@ window#waybar.solo {
 #mode,
 #idle_inhibitor,
 #custom-menu,
+#bluetooth,
 #custom-grabar,
 #mpd {
     background-color: rgba(0, 0, 0, 0.7);

@@ -15,9 +15,9 @@
     "margin-bottom": 5,
     "margin-left": 5,
     "margin-right": 5, 
-    "modules-left": ["custom/menu", "network", "cpu", "temperature", "memory", "custom/grabar", "video", "sway/mode"],
+    "modules-left": ["custom/menu", "temperature", "cpu", "memory", "battery", "bluetooth", "custom/grabar", "video", "idle_inhibitor", "sway/mode"],
     "modules-center": ["sway/workspaces"],
-    "modules-right": ["idle_inhibitor", "backlight", "pulseaudio", "battery", "clock", "tray", "custom/power" ],
+    "modules-right": ["backlight", "pulseaudio", "clock", "tray", "custom/power" ],
 
     "sway/mode": {
         "format": "{}"
@@ -76,9 +76,19 @@
         "on-scroll-down": "exec light -A 5 ",
         "format-icons": ["🌙", "🔅", "🔆"]
     },
+    "bluetooth": {
+        "interval": 30,
+        "format": "{icon}",
+        // "format-alt": "{status}",
+        "format-icons": {
+            "enabled": "📎",
+            "disabled": "📎"
+        },
+        "on-click": "blueberry"
+    },
      "tray": {
         "icon-size": 14,
-        "spacing": 10
+        "spacing": 5
     },
    "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface

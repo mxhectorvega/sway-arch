@@ -25,14 +25,28 @@ clear
 printf '\n \nInstalando paquetes adicionales...\n'
 sleep 1
 
-# SwayWM
+# Actualizacion del SO
 sudo pacman -Syu --noconfirm
-sudo pacman -S pacman-contrib gnome-disk-utility blueberry kitty transmission-gtk vim python-pillowfight imagemagick man bc polkit-gnome lxappearance telegram-desktop firefox cmus playerctl git imv mpv zathura-pdf-mupdf neofetch geany htop bpytop ranger gcc make xdg-user-dirs gvfs --noconfirm --needed
+
+# Software adicional
+sudo pacman -S blueberry network-manager-applet pacman-contrib gnome-disk-utility blueberry kitty transmission-gtk vim python-pillowfight imagemagick man bc polkit-gnome lxappearance telegram-desktop firefox cmus playerctl git imv mpv zathura-pdf-mupdf neofetch geany htop bpytop ranger gcc make xdg-user-dirs gvfs --noconfirm --needed
+
+# SwayWM
 sudo pacman -S xorg-xwayland sway kanshi swaylock swayidle wofi mako waybar alacritty grim slurp wl-clipboard wf-recorder gammastep swappy light v4l2loopback-dkms --noconfirm --needed
+
+# Pipewire utilities
 sudo pacman -S alsa-utils pipewire-alsa pipewire-pulse bluez bluez-utils pavucontrol --noconfirm --needed
+
+# Thunar extras
 sudo pacman -S thunar thunar-archive-plugin thunar-volman thunar-archive-plugin tumbler ffmpegthumbnailer xarchiver zip unzip unrar unarj p7zip lzop lzip lrzip lha cpio arj --noconfirm --needed
+
+# Fuentes basicas
 sudo pacman -S ttf-{dejavu,hack,roboto,liberation} terminus-font wqy-microhei bdf-unifont unicode-character-database --noconfirm --needed
+
+# Display manager (pantalla de inicio de sesion)
 sudo pacman -S lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings --noconfirm
+
+# Desinstalar terminal y menu obsoletos
 sudo pacman -Rs alacritty dmenu --noconfirm
 
 # Paru AUR helper
@@ -56,18 +70,20 @@ printf '\n \nClonando repositorios mxhectorvega...\n'
 sleep 1
 git clone https://github.com/mxhectorvega/sway-arch /tmp/sway-arch
 git clone https://github.com/mxhectorvega/tipografias  /tmp/tipografias
-#git clone https://github.com/mxhectorvega/zram-arch /tmp/zram-arch
+git clone https://github.com/mxhectorvega/zram-arch /tmp/zram-arch
 git clone https://github.com/mxhectorvega/temas /tmp/temas
 cp -rp /tmp/temas/.* "$HOME"
 cp -rp /tmp/sway-arch/.* "$HOME"
 cp -rp /tmp/tipografias/.* "$HOME"/.local/share/fonts
-#sudo cp /tmp/zram-arch/zram-config-on /usr/local/bin/
-#sudo cp /tmp/zram-arch/zram-config-off /usr/local/bin/
-#sudo cp /tmp/zram-arch/zram-config.service /etc/systemd/system/
-#sudo chmod +x /usr/local/bin/zram-config-on
-#sudo chmod +x /usr/local/bin/zram-config-off
-#sudo systemctl enable --now zram-config
-sudo systemctl enable lightdm 
+sudo cp /tmp/zram-arch/zram-config-on /usr/local/bin/
+sudo cp /tmp/zram-arch/zram-config-off /usr/local/bin/
+sudo cp /tmp/zram-arch/zram-config.service /etc/systemd/system/
+sudo chmod +x /usr/local/bin/zram-config-on
+sudo chmod +x /usr/local/bin/zram-config-off
+sudo systemctl enable --now zram-config
+sudo systemctl enable lightdm
+sudo systemctl enable bluetooth.service                                                     
+sudo systemctl start bluetooth.service
 
 # Todo el SO en español
 clear 
