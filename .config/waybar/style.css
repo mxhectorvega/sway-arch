@@ -44,12 +44,12 @@ window#waybar.solo {
 }
 
 #workspaces button.focused {
-    background-color: #6d72ab;
+    background-color: #5999bd;
     padding: 0 6 0 6px;
 }
 
 #workspaces button.urgent {
-    background-color: #eb4d4b;
+    background-color: #5999bd;
     padding: 0 6 0 6px;
 }
 
@@ -93,7 +93,7 @@ window#waybar.solo {
 
 @keyframes blink {
     to {
-        background-color: #6d72ab;;
+        background-color: #5999bd;;
         color: #000000;
     }
 }

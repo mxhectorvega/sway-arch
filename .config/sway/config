@@ -15,7 +15,7 @@ set $block-wall $HOME/.config/wall.*
 set $desktop-wall $HOME/.config/wall.*
 
 ## Declarar tema gtk e iconos
-set $theme_gtk Orchis-dark-compact
+set $theme_gtk Matcha-dark-aliz
 set $theme_icons Papirus-Dark
 
 ## Pantalla de bloqueo
@@ -90,11 +90,11 @@ set $colour_rojo         #eb4d4b
 set $colour_inactive     #8D8D8D
 
 ## Confuracion de teclado y velocidad de escritura
+## repeat_delay 300
 input * {
     xkb_layout latam
     xkb_numlock enable
-    repeat_delay 200
-    repeat_rate 150
+    repeat_rate 350
 }
 
 ## Configuracion de trackpad o touchpad 
@@ -363,6 +363,10 @@ assign [class="^Firefox$"]                  workspace number 4
 assign [class="^firefox$"]                  workspace number 4
 assign [app_id="^Firefox$"]                 workspace number 4
 assign [app_id="^firefox$"]                 workspace number 4
+assign [app_id="Brave-browser-nightly"]     workspace number 4
+assign [class="Brave-browser-nightly"]      workspace number 4
+assign [app_id="^Brave-browser-nightly$"]   workspace number 4
+assign [class="^Brave-browser-nightly$"]    workspace number 4
 assign [class="^Surf$"]                     workspace number 4
 assign [app_id="^Navigator$"]               workspace number 4
 assign [app_id="telegramdesktop"]           workspace number 4

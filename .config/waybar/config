@@ -15,7 +15,7 @@
     "margin-bottom": 5,
     "margin-left": 5,
     "margin-right": 5, 
-    "modules-left": ["custom/menu", "battery", "memory", "temperature", "cpu", "idle_inhibitor", "bluetooth", "custom/grabar", "sway/mode"],
+    "modules-left": ["custom/menu", "battery", "memory", "temperature", "cpu", "idle_inhibitor", "custom/grabar", "sway/mode"],
     "modules-center": ["sway/workspaces"],
     "modules-right": ["backlight", "pulseaudio", "clock", "tray", "custom/power" ],
 

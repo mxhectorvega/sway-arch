@@ -70,17 +70,10 @@ printf '\n \nClonando repositorios mxhectorvega...\n'
 sleep 1
 git clone https://github.com/mxhectorvega/sway-arch /tmp/sway-arch
 git clone https://github.com/mxhectorvega/tipografias  /tmp/tipografias
-git clone https://github.com/mxhectorvega/zram-arch /tmp/zram-arch
 git clone https://github.com/mxhectorvega/temas /tmp/temas
 cp -rp /tmp/temas/.* "$HOME"
 cp -rp /tmp/sway-arch/.* "$HOME"
 cp -rp /tmp/tipografias/.* "$HOME"/.local/share/fonts
-sudo cp /tmp/zram-arch/zram-config-on /usr/local/bin/
-sudo cp /tmp/zram-arch/zram-config-off /usr/local/bin/
-sudo cp /tmp/zram-arch/zram-config.service /etc/systemd/system/
-sudo chmod +x /usr/local/bin/zram-config-on
-sudo chmod +x /usr/local/bin/zram-config-off
-sudo systemctl enable --now zram-config
 sudo systemctl enable lightdm
 sudo systemctl enable bluetooth.service                                                     
 sudo systemctl start bluetooth.service
