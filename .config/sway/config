@@ -4,7 +4,7 @@
 ## mxhectorvega@gmail.com
 ## https://github.com/mxhectorvega
 ## Version:
-## v2.0: 20/11/2021
+## v4.0: 26/02/2022
 
 ## Delara teclas super y altinput * xkCozetteb_numlock enable
 set $mod Mod4
@@ -21,24 +21,19 @@ set $theme_icons Papirus-Dark
 ## Declara gesror de archivos GUI
 set $filemanager thunar
 
-## Pantalla de bloqueo
-set $lock_warning notify-send --expire-time 10000 --icon $HOME/.config/user.png 'SystemCtl' 'La pantalla se bloqueará en 10 segundos, mueva el cursor o siga en lo que estaba...'
+## Delara la terminal por defecto
+set $terminal kitty
 
-set $lock swaylock \
-    --daemonize \
-    --no-unlock-indicator \
-    --image $block-wall
+## Delara el editor de texto en terminal por defecto
+set $editor vim
+
+## Delara tipo y tamaño de texto
+set $default_font Terminus 8
 
 ## Delara los espacios entre ventanas
 set $gap_ext 5
 set $gap_int 5
 set $gap_top 0
-
-## Delara tu tipografia
-set $default_font Terminus 8
-
-## Delara la terminal por defecto
-set $terminal kitty
 
 ## Declara el lanzador de aplicaciones
 set $menu "pkill -9 wofi ; wofi \
@@ -64,6 +59,14 @@ set $clean_clipboard rm .cache/cliphist/db && exec \
 ## Power menmu
 set $menu_power "pkill -9 wofi ; sh .config/waybar/custom/power   
 
+## Pantalla de bloqueo
+set $lock_warning notify-send --expire-time 10000 --icon $HOME/.config/user.png 'SystemCtl' 'La pantalla se bloqueará en 10 segundos, mueva el cursor o siga en lo que estaba...'
+
+set $lock swaylock \
+    --daemonize \
+    --no-unlock-indicator \
+    --image $block-wall
+
 ## Apariencia basica
 smart_borders on
 smart_gaps off
@@ -77,20 +80,6 @@ gaps left $gap_int
 gaps right $gap_int
 font $default_font
 popup_during_fullscreen smart
-
-## Bordes redondos (sway fork sway-borders) desde AUR
-#border_images.focused $HOME/.config/sway/bordes/redondo.png
-#border_images.focused_inactive $HOME/.config/sway/bordes/redondo.png
-#border_images.unfocused $HOME/.config/sway/bordes/redondo.png
-#border_images.urgent $HOME/.config/sway/bordes/redondo.png
-
-## Colores basicos
-set $colour_blanco       #ffffff
-set $colour_gris         #000000
-set $colour_gris_alpha   #000000bf
-set $colour_azul         #0088CC
-set $colour_rojo         #eb4d4b
-set $colour_inactive     #8D8D8D
 
 ## Confuracion de teclado y velocidad de escritura
 ## repeat_delay 300
@@ -114,30 +103,29 @@ bar {
    status_command pkill -9 waybar && waybar
 }
 
-## Otput configuration
+## Otput configuration general de todos los monitores
 ## Configuracion de fondo de escritorio .config/wall.* delcarado en la linea 14 y 15.
 ## output * bg #808080  solid_color
 output * {
     bg $desktop-wall fill
+    adaptive_sync on
 }
 
-## Configurar 2 monitores
-## Monitor primario de Latop en caso de ser diferente podra 
-## identificarlos con swaymsg -t get_outputs
-## la escala normal es 1 es de 100% (normal) y 1.5 es de 150%
+## Configuracion de 2 monitores
+## Podra identificar los monitores conectados con swaymsg -t get_outputs
+## la escala es 1 es de 100% (normal) y 1.5 es de 150%
+
+## Monitorprimario eDP-1 en caso de ser diferente podra 
 output eDP-1 {
-    pos 0 0
-    adaptive_sync on
+    pos 1920 1080
     scale 1
 #   transform 90
 }
 
 ## Monitor secundario HDMI en caso de ser diferente podra 
-## identificarlos con swaymsg -t get_outputs
 output HDMI-A-1 {
-    pos 1366 0
-    adaptive_sync on
-    scale 1.4
+    pos 0 0
+    scale 1
 #   transform 90    
 }
 
@@ -147,21 +135,43 @@ bindsym $mod+$alt+Down output - transform 180
 bindsym $mod+$alt+Left output - transform 270
 bindsym $mod+$alt+Right output - transform 90
 
+## Colores basicos
+set $colour_blanco       #ffffff
+set $colour_gris         #000000
+set $colour_gris_alpha   #000000bf
+set $colour_azul         #0088CC
+set $colour_rojo         #eb4d4b
+set $colour_inactive     #8D8D8D
+set $colour_rojo_sangre  #ff0000
+
 ## Colores de ventanas    borde                   background               text               indicator          child
-client.focused            #ff0000                 $colour_gris_alpha       $colour_blanco     $colour_blanco     $colour_gris_alpha
+client.focused            $colour_rojo_sangre     $colour_gris_alpha       $colour_blanco     $colour_blanco     $colour_gris_alpha
 client.focused_inactive   $colour_gris_alpha      $colour_gris_alpha       $colour_gris       $colour_gris       $colour_gris_alpha
 client.unfocused          $colour_gris_alpha      $colour_gris_alpha       $colour_inactive   $colour_inactive   $colour_gris_alpha
 client.urgent             $colour_rojo            $colour_rojo             $colour_blanco     $colour_rojo       $colour_gris_alpha
 
 ## Transparencia
 for_window [app_id="Alacritty"]    opacity 0.80
-#for_window [app_id="kitty"]        opacity 0.80
 for_window [app_id="foot"]         opacity 0.80
 for_window [app_id="mousepad"]     opacity 0.90
 for_window [app_id="geany"]        opacity 0.90
 for_window [app_id="thunar"]       opacity 0.95
 for_window [app_id="pcmanfm"]      opacity 0.95
 for_window [app_id="qvidcap"]      opacity 1.0
+
+## Configuracion de temas y fuentes (no tocar, la informacion es tomada de las primeras lineas en donde declaro lo temas manualmente)
+set $gnome-schema org.gnome.desktop.interface
+exec_always {
+    gsettings set $gnome-schema gtk-theme '$theme_gtk'
+    gsettings set $gnome-schema icon-theme '$theme_icons'
+    gsettings set $gnome-schema font-name '$default_font'
+    gsettings set $gnome-schema monospace-font-name '$default_font'
+    gsettings set $gnome-schema document-font-name '$default_font'
+    gsettings set org.gnome.desktop.wm.preferences titlebar-font '$default_font'
+    gsettings set org.gnome.desktop.wm.preferences button-layout :
+    gsettings set org.gnome.desktop.default-applications.terminal exec '$terminal'
+    gsettings set org.gtk.Settings.FileChooser window-size '(800,500)'
+}
 
 ## Teclas de direccion al estilo VIM
 set $left h
@@ -519,25 +529,11 @@ bindsym --release Shift+Print exec \
 bindsym --release Ctrl+Shift+Print exec \
     grim -g "$(slurp)" - | wl-copy && exec notify-send -t 10000 -i $HOME/.config/user.png 'Clipoard' 'La captura de pantalla se ha guardado en el directorio Imagenes'
 
-## Definir temas y fuentes gnome
-set $gnome-schema org.gnome.desktop.interface
-exec_always {
-    gsettings set $gnome-schema gtk-theme '$theme_gtk'
-    gsettings set $gnome-schema icon-theme '$theme_icons'
-    gsettings set $gnome-schema font-name '$default_font'
-    gsettings set $gnome-schema monospace-font-name '$default_font'
-    gsettings set $gnome-schema document-font-name '$default_font'
-    gsettings set org.gnome.desktop.wm.preferences titlebar-font '$default_font'
-    gsettings set org.gnome.desktop.wm.preferences button-layout ''
-    gsettings set org.gnome.desktop.default-applications.terminal exec '$terminal'
-    gsettings set org.gtk.Settings.FileChooser window-size '(800,500)'
-}
-
 ## Autoarranque
 exec nm-applet --indicator
 
-exec export TERM="kitty"
-exec export EDITOR="vim"
+exec export TERM="$terminal"
+exec export EDITOR="$editor"
 
 set $imp_vars "DISPLAY WAYLAND_DISPLAY SWAYSOCK SSH_AUTH_SOCK XDG_CURRENT_DESKTOP XDG_SESSION_TYPE"
 exec_always systemctl --user import-environment "$imp_vars"
