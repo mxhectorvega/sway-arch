@@ -15,7 +15,7 @@ sleep 1
 sudo sed -i "s/#Color/Color/g" /etc/pacman.conf 
 sudo sed -i "s/#TotalDownload/TotalDownload/g" /etc/pacman.conf 
 sudo sed -i "s/#VerbosePkgLists/VerbosePkgLists/g" /etc/pacman.conf 
-sudo sed -i "s/#ParallelDownloads/ParallelDownloads/g" /etc/pacman.conf
+sudo sed -i "s/#ParallelDownloads = 5/ParallelDownloads = 50/g" /etc/pacman.conf
 sudo sed -i "38i ILoveCandy" /etc/pacman.conf 
 sudo sed -i "s/#[multilib]/[multilib]/g" /etc/pacman.conf 
 sudo sed -i "s/#Include = /etc/pacman.d/mirrorlist /Include = /etc/pacman.d/mirrorlist/g" /etc/pacman.conf
@@ -29,13 +29,14 @@ sleep 1
 sudo pacman -Syu --noconfirm
 
 # Software adicional
-sudo pacman -S blueberry network-manager-applet pacman-contrib gnome-disk-utility blueberry kitty transmission-gtk vim python-pillowfight imagemagick man bc polkit-gnome lxappearance telegram-desktop firefox cmus playerctl git imv mpv zathura-pdf-mupdf neofetch geany htop bpytop ranger gcc make xdg-user-dirs gvfs --noconfirm --needed
+sudo pacman -S blueberry network-manager-applet pacman-contrib gnome-disk-utility blueberry kitty transmission-gtk vim python-pillowfight imagemagick man bc polkit-gnome lxappearance telegram-desktop git imv mpv zathura-pdf-mupdf geany xdg-user-dirs gvfs --noconfirm --needed
 
 # SwayWM
-sudo pacman -S xorg-xwayland sway kanshi swaylock swayidle wofi mako waybar alacritty grim slurp wl-clipboard wf-recorder gammastep swappy light v4l2loopback-dkms --noconfirm --needed
+sudo pacman -S qt5-wayland xorg-xwayland kanshi swaylock swayidle wofi mako waybar grim slurp wl-clipboard wf-recorder gammastep swappy light --noconfirm --needed
+sudo pacman -S xdg-desktop-portal xdg-desktop-portal-wlr --noconfirm --needed
 
 # Pipewire utilities
-sudo pacman -S alsa-utils pipewire-alsa pipewire-pulse bluez bluez-utils pavucontrol --noconfirm --needed
+#sudo pacman -S alsa-utils pipewire-alsa pipewire-pulse bluez bluez-utils pavucontrol --noconfirm --needed
 
 # Thunar extras
 sudo pacman -S thunar thunar-archive-plugin thunar-volman thunar-archive-plugin tumbler ffmpegthumbnailer xarchiver zip unzip unrar unarj p7zip lzop lzip lrzip lha cpio arj --noconfirm --needed
@@ -47,7 +48,7 @@ sudo pacman -S ttf-{dejavu,hack,roboto,liberation} terminus-font wqy-microhei bd
 sudo pacman -S lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings --noconfirm
 
 # Desinstalar terminal y menu obsoletos
-sudo pacman -Rs alacritty dmenu --noconfirm
+sudo pacman -Rs dmenu --noconfirm
 
 # Paru AUR helper
 clear 

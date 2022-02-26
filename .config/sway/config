@@ -18,6 +18,9 @@ set $desktop-wall $HOME/.config/wall.*
 set $theme_gtk Matcha-dark-aliz
 set $theme_icons Papirus-Dark
 
+## Declara gesror de archivos GUI
+set $filemanager thunar
+
 ## Pantalla de bloqueo
 set $lock_warning notify-send --expire-time 10000 --icon $HOME/.config/user.png 'SystemCtl' 'La pantalla se bloqueará en 10 segundos, mueva el cursor o siga en lo que estaba...'
 
@@ -94,7 +97,7 @@ set $colour_inactive     #8D8D8D
 input * {
     xkb_layout latam
     xkb_numlock enable
-    repeat_rate 350
+#    repeat_rate 350
 }
 
 ## Configuracion de trackpad o touchpad 
@@ -126,6 +129,7 @@ output eDP-1 {
     pos 0 0
     adaptive_sync on
     scale 1
+#   transform 90
 }
 
 ## Monitor secundario HDMI en caso de ser diferente podra 
@@ -134,7 +138,14 @@ output HDMI-A-1 {
     pos 1366 0
     adaptive_sync on
     scale 1.4
+#   transform 90    
 }
+
+## Atajos para rotar pantalla en el monitor activo
+bindsym $mod+$alt+Up output - transform 0
+bindsym $mod+$alt+Down output - transform 180
+bindsym $mod+$alt+Left output - transform 270
+bindsym $mod+$alt+Right output - transform 90
 
 ## Colores de ventanas    borde                   background               text               indicator          child
 client.focused            #ff0000                 $colour_gris_alpha       $colour_blanco     $colour_blanco     $colour_gris_alpha
@@ -391,7 +402,6 @@ assign [app_id="Sxiv"]                      workspace number 5
 assign [class="^obs$"]                      workspace number 5
 assign [app_id="^obs$"]                     workspace number 5
 
-
 ## Don't lock for video
 for_window [class="Firefox"]                            inhibit_idle fullscreen
 for_window [app_id="^firefox$"]                         inhibit_idle fullscreen
@@ -470,10 +480,9 @@ for_window [class="^work-meet$"]                             floating enable, re
 #for_window [app_id="^mpv$"]                                 floating enable, resize set 250 250, sticky enable
 
 ## Controles de volumen
-bindsym XF86AudioLowerVolume  exec amixer -c 0 set Master 1%- unmute
-bindsym XF86AudioRaiseVolume  exec amixer -c 0 set Master 1%+ unmute
-bindsym XF86AudioMute         exec amixer -c 0 set Master toggle
-bindsym XF86AudioMicMute      exec amixer -c 0 set Capture toggle
+bindsym XF86AudioLowerVolume  exec pactl set-sink-volume @DEFAULT_SINK@ -1%
+bindsym XF86AudioRaiseVolume  exec pactl set-sink-volume @DEFAULT_SINK@ +1%
+bindsym XF86AudioMute         exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 ## Controles de brillo
 bindsym XF86MonBrightnessDown exec light -U 5
@@ -490,6 +499,7 @@ bindsym $mod+Return           exec $terminal
 bindsym $mod+d                exec $menu
 bindsym $mod+p                exec $menu_clipboard
 bindsym $mod+Shift+p          exec $clean_clipboard
+bindsym $mod+Shift+e          exec $filemanager
 bindsym $mod+backspace        exec $menu_power
 
 ## Screenshots
