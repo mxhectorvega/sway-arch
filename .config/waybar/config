@@ -15,9 +15,9 @@
     "margin-bottom": 5,
     "margin-left": 5,
     "margin-right": 5, 
-    "modules-left": ["custom/menu", "battery", "temperature", "cpu", "memory", "idle_inhibitor", "custom/grabar", "sway/mode"],
+    "modules-left": ["custom/menu", "battery", "temperature", "cpu", "memory", "idle_inhibitor", "custom/grabar", "custom/layout", "sway/mode"],
     "modules-center": ["sway/workspaces"],
-    "modules-right": ["backlight", "pulseaudio", "clock", "tray", "custom/power" ],
+    "modules-right": ["backlight", "pulseaudio", "clock", "bluetooth", "custom/portapapeles", "tray", "custom/power" ],
 
     "sway/mode": {
         "format": "{}"
@@ -29,18 +29,19 @@
         "disable-markup": false,
         "format": "{icon}",
         "format-icons": {
-            "1": "💻",
-            "2": "📝",
-            "3": "📁",
-            "4": "🌎",
-            "5": "🎹",
+
+            "1": "◻️",
+            "2": "◻️",
+            "3": "◻️",
+            "4": "◻️",
+            "5": "◻️",
             },
         "persistent_workspaces": {
-            "1": "💻",
-            "2": "📝",
-            "3": "📁",
-            "4": "🌎",
-            "5": "🎹",
+            "1": "◻️",
+            "2": "◻️",
+            "3": "◻️",
+            "4": "◻️",
+            "5": "◻️",
             }
     },
     "sway/window": {
@@ -137,10 +138,15 @@
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
-            "activated": "🏁",
-            "deactivated": "🏳️"
+            "activated": "⚡️",
+            "deactivated": "✨"
         }
       },
+    "custom/portapapeles": {
+        "format": "📎",
+        "on-click": "pkill -9 wofi ; cliphist list | wofi --no-actions --dmenu --width 600 --lines 8 --prompt Clipboard | cliphist decode | wl-copy",
+        "on-click-right": "rm .cache/cliphist/db && exec notify-send -t 10000 -i $HOME/.config/user.png 'Clipboard' 'El historial del portapapeles se a borrado con exito.'"
+        },      
     "temperature": {
         //"thermal-zone": 2,
         // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
@@ -151,16 +157,23 @@
         },
      "custom/grabar":{
        "format": "{icon}",
-       "format-icons": "🎥",
+       "format-icons": "🔴",
        "on-click": "wf-recorder -a -f $(xdg-user-dir VIDEOS)/$(date +'screencast_%Y-%m-%d_%H-%M-%S.mp4' ; exec notify-send -t 10000 -i $HOME/.config/user.png 'Screenrecorder' 'Se ha iniciado screenrecorder, presione click derecho sobre el mismo boton para cancelar')",
         "on-click-right": "killall --signal SIGINT wf-recorder ; exec notify-send -t 10000 -i $HOME/.config/user.png 'Screenrecorder' 'La grabacion ha finalizado y se ha guardado en el directorio Videos'"
-    },    
+    },
+      "custom/layout":{ 
+         "format":"📐", 
+         "on-click": "swaymsg floating toggle",
+         "on-click-right": "swaymsg layout toggle split"
+         },        
       "custom/menu":{ 
          "format":"🐧", 
-         "on-click": "pkill -9 wofi ; wofi --no-actions --allow-images --show drun --width 400 --lines 6" },
+         "on-click": "pkill -9 wofi ; wofi --no-actions --allow-images --show drun --width 400 --lines 6" 
+         },
       "custom/power":{ 
          "format":"🔐", 
-         "on-click": "pkill -9 wofi ; sh .config/waybar/custom/power"    },
+         "on-click": "pkill -9 wofi ; sh .config/waybar/custom/power"
+         },
       "cpu": {
          "format": "🐌 {usage}%",
     }

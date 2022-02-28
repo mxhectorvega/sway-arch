@@ -344,91 +344,23 @@ bindsym $mod+Shift+3 move container to workspace number 3
 bindsym $mod+Shift+4 move container to workspace number 4
 bindsym $mod+Shift+5 move container to workspace number 5
 
-## Reglas para las ventanas
-bindcode 66 [app_id="^scratchpad-.*"]       scratchpad show
-assign [class="^kitty$"]                    workspace number 1
-assign [app_id="kitty"]                     workspace number 1
-assign [class="^URxvt$"]                    workspace number 1
-assign [class="^XTerm$"]                    workspace number 1
-assign [app_id="^Alacritty$"]               workspace number 1
-assign [class="^st-256color$"]              workspace number 1
-assign [app_id="^Virt-manager$"]            workspace number 1
-assign [app_id="Pavucontrol"]               workspace number 1
-assign [class="Xfce4-settings-manager"]     workspace number 1
-assign [class="Transmission-gtk"]           workspace number 1
-
-assign [app_id="^mousepad$"]                workspace number 2
-assign [class="^mousepad$"]                 workspace number 2
-assign [class="^geany$"]                    workspace number 2
-assign [class="^SublimeText3$"]             workspace number 2
-assign [class="^Code$"]                     workspace number 2
-assign [app_id="^DesktopEditors$"]          workspace number 2
-assign [app_id="^tm$"]                      workspace number 2
-assign [class="^pm$"]                       workspace number 2
-assign [class="^libreoffice-writer$"]       workspace number 2
-assign [app_id="libreoffice-writer"]        workspace number 2
-assign [class="^libreoffice-calc$"]         workspace number 2
-assign [app_id="libreoffice-calc"]          workspace number 2
-assign [class="^libreoffice$"]              workspace number 2
-assign [app_id="^MuPDF$"]                   workspace number 2
-assign [app_id="^org.pwmt.zathura$"]        workspace number 2
-assign [class="^geany$"]                    workspace number 2
-assign [app_id="^geany$"]                   workspace number 2
-assign [class="tm"]                         workspace number 2
-assign [class="^tm$"]                       workspace number 2
-
-assign [app_id="thunar"]                    workspace number 3
-assign [class="^thunar$"]                   workspace number 3
-
-assign [class="^Firefox$"]                  workspace number 4
-assign [class="^firefox$"]                  workspace number 4
-assign [app_id="^Firefox$"]                 workspace number 4
-assign [app_id="^firefox$"]                 workspace number 4
-assign [app_id="Brave-browser-nightly"]     workspace number 4
-assign [class="Brave-browser-nightly"]      workspace number 4
-assign [app_id="^Brave-browser-nightly$"]   workspace number 4
-assign [class="^Brave-browser-nightly$"]    workspace number 4
-assign [class="^Surf$"]                     workspace number 4
-assign [app_id="^Navigator$"]               workspace number 4
-assign [app_id="telegramdesktop"]           workspace number 4
-assign [class="Telegram-Desktop"]           workspace number 4
-
-assign [app_id="null"]                      workspace number 5
-assign [app_id="^mpv$"]                     workspace number 5
-assign [class="^vlc$"]                      workspace number 5
-assign [class="^Kodi$"]                     workspace number 5
-assign [app_id="org.kde.kdenlive"]          workspace number 5
-assign [app_id="^org.kde.kdenlive$"]        workspace number 5
-assign [app_id="org.inkscape.Inkscape"]     workspace number 5
-assign [app_id="^org.inkscape.Inkscape$"]   workspace number 5
-assign [class="Spotify"]                    workspace number 5
-assign [class="^Spotify$"]                  workspace number 5
-assign [class="spotify"]                    workspace number 5
-assign [class="^spotify$"]                  workspace number 5
-assign [class="Gimp-2.10"]                  workspace number 5
-assign [class="^Gimp-2.10$"]                workspace number 5
-
-assign [app_id="Sxiv"]                      workspace number 5
-assign [class="^obs$"]                      workspace number 5
-assign [app_id="^obs$"]                     workspace number 5
-
-## Don't lock for video
-for_window [class="Firefox"]                            inhibit_idle fullscreen
-for_window [app_id="^firefox$"]                         inhibit_idle fullscreen
-for_window [class="^Nightly$"]                          inhibit_idle fullscreen
-for_window [class="Chromium"]                           inhibit_idle fullscreen
-for_window [app_id="^Chromium-browser$"]                inhibit_idle fullscreen
-for_window [app_id="^chromium-browser$"]                inhibit_idle fullscreen
-for_window [app_id="^Google-chrome$"]                   inhibit_idle fullscreen
-for_window [class="Google-chrome"]                      inhibit_idle fullscreen
-for_window [app_id="^org.qutebrowser.qutebrowser$"]     inhibit_idle fullscreen
-for_window [class="^jellyfin$"]                         inhibit_idle fullscreen
-for_window [class="^Google-chrome$" title="^Jellyfin$"] inhibit_idle fullscreen
-for_window [class="^Chromium-browser$"]                 inhibit_idle fullscreen
-for_window [class="mpv$"]                               inhibit_idle fullscreen
-for_window [app_id="mpv"]                               inhibit_idle fullscreen
-for_window [class="^jellyfin$"]                         inhibit_idle visible
-for_window [class="^Google-chrome$" title="^Jellyfin$"] inhibit_idle visible
+## Incluir software donde no debe entrar el bloqueo de pantalla
+for_window [class="Firefox"]                                          inhibit_idle fullscreen
+for_window [app_id="^firefox$"]                                       inhibit_idle fullscreen
+for_window [class="^Nightly$"]                                        inhibit_idle fullscreen
+for_window [class="Chromium"]                                         inhibit_idle fullscreen
+for_window [app_id="^Chromium-browser$"]                              inhibit_idle fullscreen
+for_window [app_id="^chromium-browser$"]                              inhibit_idle fullscreen
+for_window [app_id="^Google-chrome$"]                                 inhibit_idle fullscreen
+for_window [class="Google-chrome"]                                    inhibit_idle fullscreen
+for_window [app_id="^org.qutebrowser.qutebrowser$"]                   inhibit_idle fullscreen
+for_window [class="^jellyfin$"]                                       inhibit_idle fullscreen
+for_window [class="^Google-chrome$" title="^Jellyfin$"]               inhibit_idle fullscreen
+for_window [class="^Chromium-browser$"]                               inhibit_idle fullscreen
+for_window [class="mpv$"]                                             inhibit_idle fullscreen
+for_window [app_id="mpv"]                                             inhibit_idle fullscreen
+for_window [class="^jellyfin$"]                                       inhibit_idle visible
+for_window [class="^Google-chrome$" title="^Jellyfin$"]               inhibit_idle visible
 
 ## Ventanas flotantes
 for_window [window_type="menu"]                                       floating enable
@@ -482,12 +414,12 @@ for_window [app_id="imv"]                                             floating e
 for_window [class="imv"]                                              floating enable, resize set 900 500
 for_window [app_id="blueberry.py"]                                    floating enable
 
-## floating sticky
-for_window [class="^jellyfin$"]                              floating enable, resize set 1334 568, sticky enable
-for_window [class="^Google-chrome$" title="^Jellyfin$"]      floating enable, resize set 1334 568, sticky enable
-for_window [class="^work-meet$"]                             floating enable, resize set 1334 568, sticky enable
-#for_window [class="^mpv$"]                                  floating enable, resize set 250 250, sticky enable
-#for_window [app_id="^mpv$"]                                 floating enable, resize set 250 250, sticky enable
+## ventana flotante en todos los espacios de trabajo
+for_window [class="^jellyfin$"]                                       floating enable, resize set 1334 568, sticky enable
+for_window [class="^Google-chrome$" title="^Jellyfin$"]               floating enable, resize set 1334 568, sticky enable
+for_window [class="^work-meet$"]                                      floating enable, resize set 1334 568, sticky enable
+#for_window [class="^mpv$"]                                           floating enable, resize set 250 250, sticky enable
+#for_window [app_id="^mpv$"]                                          floating enable, resize set 250 250, sticky enable
 
 ## Controles de volumen
 bindsym XF86AudioLowerVolume  exec pactl set-sink-volume @DEFAULT_SINK@ -1%

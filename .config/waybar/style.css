@@ -74,6 +74,8 @@ window#waybar.solo {
 #custom-menu,
 #bluetooth,
 #custom-grabar,
+#custom-portapapeles,
+#custom-layout,
 #mpd {
     background-color: rgba(0, 0, 0, 0.7);
     padding: 0 5 0 5px;
