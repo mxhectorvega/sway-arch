@@ -395,7 +395,7 @@ for_window [title="^bobby$"]                                          floating e
 for_window [app_id="^firefox$" title="Picture-in-Picture"]            floating enable, sticky enable, inhibit_idle visible, border pixel 0
 for_window [app_id="firefox" title="^Firefox — Sharing Indicator$"]   floating enable
 for_window [class="firefox" title="Picture-in-Picture"]               floating enable, sticky enable, inhibit_idle visible, border pixel 0
-for_window [app_id="^thunar$" title="File Operation Progress"]        floating enable
+for_window [app_id="^thunar$" title="Progreso de las operaciones de archivo"]  floating enable
 for_window [class="^Pinentry-gtk-2$"]                                 floating enable
 for_window [app_id="^qjackctl$"]                                      floating enable
 for_window [app_id="^Manjaro.manjaro-settings-manager$"]              floating enable
