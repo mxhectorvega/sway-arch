@@ -32,8 +32,9 @@ sudo pacman -Syu --noconfirm
 sudo pacman -S blueberry network-manager-applet pacman-contrib gnome-disk-utility blueberry kitty transmission-gtk vim python-pillowfight imagemagick man bc polkit-gnome lxappearance telegram-desktop git imv mpv zathura-pdf-mupdf geany xdg-user-dirs gvfs --noconfirm --needed
 
 # SwayWM
-sudo pacman -S qt5-wayland xorg-xwayland kanshi swaylock swayidle wofi mako waybar grim slurp wl-clipboard wf-recorder gammastep swappy light --noconfirm --needed
+sudo pacman -S rtkit qt5-wayland xorg-xwayland kanshi swaylock swayidle wofi mako waybar grim slurp wl-clipboard wf-recorder gammastep swappy light --noconfirm --needed
 sudo pacman -S xdg-desktop-portal xdg-desktop-portal-wlr --noconfirm --needed
+sudo pacman -S wireplumber --noconfirm --needed
 
 # Pipewire utilities
 #sudo pacman -S alsa-utils pipewire-alsa pipewire-pulse bluez bluez-utils pavucontrol --noconfirm --needed

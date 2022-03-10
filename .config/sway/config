@@ -15,7 +15,7 @@ set $block-wall $HOME/.config/wall.*
 set $desktop-wall $HOME/.config/wall.*
 
 ## Declarar tema gtk e iconos
-set $theme_gtk Matcha-dark-azul
+set $theme_gtk Matcha-dark-aliz
 set $theme_icons Papirus-Dark
 
 ## Declara gesror de archivos GUI
