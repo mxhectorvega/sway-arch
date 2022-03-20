@@ -32,7 +32,7 @@ sudo pacman -Syu --noconfirm
 sudo pacman -S blueberry network-manager-applet pacman-contrib gnome-disk-utility blueberry kitty transmission-gtk vim python-pillowfight imagemagick man bc polkit-gnome lxappearance telegram-desktop git imv mpv zathura-pdf-mupdf geany xdg-user-dirs gvfs --noconfirm --needed
 
 # SwayWM
-sudo pacman -S rtkit qt5-wayland xorg-xwayland kanshi swaylock swayidle wofi mako waybar grim slurp wl-clipboard wf-recorder gammastep swappy light --noconfirm --needed
+sudo pacman -S rtkit qt5-wayland xorg-xwayland kanshi swaylock swayidle wofi mako waybar grim slurp wl-clipboard wf-recorder gammastep swappy brightnessctl --noconfirm --needed
 sudo pacman -S xdg-desktop-portal xdg-desktop-portal-wlr --noconfirm --needed
 sudo pacman -S wireplumber --noconfirm --needed
 
@@ -108,12 +108,6 @@ sudo locale-gen
 sudo timedatectl set-timezone America/Mexico_City
 sudo timedatectl set-ntp yes
 
-# Otorgando permisos para cambiar brillo de pantalla
-clear
-printf '\n \nOtorgando permisos al gestor de brillo'
-sleep 1
-sudo chmod +s /usr/bin/light
-
 # Gestor de portapapeles (paquete unicamente disponible en AUR)
 clear
 printf '\n \nInstalando gestor de portapapeles para Wayland desde AUR'
@@ -131,14 +125,14 @@ sudo cp $HOME/.config/wall.* /usr/share/backgrounds/wall.jpg
 sudo tee /etc/lightdm/lightdm-gtk-greeter.conf <<EOF
 [greeter]
 background=/usr/share/backgrounds/wall.jpg
-theme-name=Orchis-dark-compact
+theme-name=Matcha-dark-aliz
 icon-theme-name=Papirus-Dark
 font-name=Terminus 9
 xft-antialias=true
 xft-dpi=96
 xft-hintstyle=hintslight
 xft-rgba=rgb
-indicators=~spacer;~clock;~spacer;separator;~session;~a11y;~power;
+indicators=~spacer;separator;~clock;~spacer;separator;~session;~a11y;~power;
 clock-format=%a, %b %d, %H:%M
 EOF
 

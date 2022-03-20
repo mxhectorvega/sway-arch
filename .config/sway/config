@@ -85,15 +85,16 @@ popup_during_fullscreen smart
 ## repeat_delay 300
 input * {
     xkb_layout latam
-    xkb_numlock enable
-#    repeat_rate 350
+    xkb_numlock enabled
 }
 
 ## Configuracion de trackpad o touchpad 
 ## (habilita tab ligero a 1 dedo, menu contextual a 2 dedos y scroll click a 3 dedos)
 input type:touchpad {
+    events disabled_on_external_mouse 
     dwt enabled
     tap enabled
+    drag enabled
     natural_scroll enabled
     middle_emulation enabled
 }
@@ -102,6 +103,13 @@ input type:touchpad {
 bar {
    status_command pkill -9 waybar && waybar
 }
+
+## Esta configuracion es para desactivar el monitor de a portatil cuando se cierra y 
+## dejar activo el monitor secundario
+## Declara el identificador del monitor de la laptop
+set $laptop eDP-1
+bindswitch --reload --locked lid:on output $laptop disable
+bindswitch --reload --locked lid:off output $laptop enable
 
 ## Otput configuration general de todos los monitores
 ## Configuracion de fondo de escritorio .config/wall.* delcarado en la linea 14 y 15.
@@ -427,8 +435,8 @@ bindsym XF86AudioRaiseVolume  exec pactl set-sink-volume @DEFAULT_SINK@ +1%
 bindsym XF86AudioMute         exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 ## Controles de brillo
-bindsym XF86MonBrightnessDown exec light -U 5
-bindsym XF86MonBrightnessUp   exec light -A 5 
+bindsym XF86MonBrightnessUp exec brightnessctl -m set +5%
+bindsym XF86MonBrightnessDown exec brightnessctl -m set 5%-
 
 ## Controlar musica con playerctl (controla reproductores de musca playerctl -l)
 bindsym XF86AudioPlay         exec playerctl play-pause ; exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PausePlay
