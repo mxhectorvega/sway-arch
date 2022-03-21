@@ -132,7 +132,7 @@ xft-antialias=true
 xft-dpi=96
 xft-hintstyle=hintslight
 xft-rgba=rgb
-indicators=~session;~a11y;~spacer;separator;~clock;~spacer;separator;~power;
+indicators=~session;~spacer;separator;~clock;~spacer;separator;~power;
 clock-format=%a, %b %d, %H:%M
 EOF
 
