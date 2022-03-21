@@ -65,6 +65,7 @@ set $lock_warning notify-send --expire-time 10000 --icon $HOME/.config/user.png 
 set $lock swaylock \
     --daemonize \
     --no-unlock-indicator \
+    --ignore-empty-password \
     --image $block-wall
 
 ## Apariencia basica
@@ -117,6 +118,8 @@ bindswitch --reload --locked lid:off output $laptop enable
 output * {
     bg $desktop-wall fill
     adaptive_sync on
+    scale_filter linear
+    render_bit_depth 8
 }
 
 ## Configuracion de 2 monitores
@@ -126,14 +129,14 @@ output * {
 ## Monitorprimario eDP-1 en caso de ser diferente podra 
 output eDP-1 {
     pos 1920 1080
-    scale 1
+#    scale 1
 #   transform 90
 }
 
 ## Monitor secundario HDMI en caso de ser diferente podra 
 output HDMI-A-1 {
     pos 0 0
-    scale 1
+#    scale 1
 #   transform 90    
 }
 
@@ -500,7 +503,8 @@ exec_always 'pkill mako; exec mako \
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 exec swayidle -w \
-    timeout 290 "$lock_warning" \
-    timeout 300 "$lock" \
+    timeout 110 "$lock_warning" \
+    timeout 120 "$lock" \
+    timeout 130 "swaymsg 'output * dpms off'" resume "swaymsg 'output * dpms on'" \
     before-sleep "$lock"
 

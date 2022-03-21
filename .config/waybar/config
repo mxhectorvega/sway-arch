@@ -17,7 +17,7 @@
     "margin-right": 5, 
     "modules-left": ["custom/menu", "battery", "temperature", "cpu", "memory", "idle_inhibitor", "custom/grabar", "custom/layout", "sway/mode"],
     "modules-center": ["sway/workspaces"],
-    "modules-right": ["backlight", "pulseaudio", "clock", "bluetooth", "custom/portapapeles", "tray", "custom/power" ],
+    "modules-right": ["backlight", "pulseaudio#mic", "pulseaudio", "clock", "bluetooth", "custom/portapapeles", "tray", "custom/power" ],
 
     "sway/mode": {
         "format": "{}"
@@ -130,6 +130,13 @@
            },
         "scroll-step": 1,
         "on-click": "pavucontrol"
+  },
+    "pulseaudio#mic": {
+        "format": "{format_source}",
+        "format-source": "🎤",
+        "format-source-muted": "​🤐​",
+        "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+        "tooltip": false
   },
     "memory": {
         "format": "🐏 {}%"
