@@ -66,8 +66,11 @@
     "battery#bat2": {
         "bat": "BAT2"
     },  
-  "clock": {
-        "format": "📅 {:%a, %d %b %H:%M}",
+    "clock": {
+        // "timezone": "America/Mexico_City",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "{:🕦 %H:%M}",
+        "format-alt": "{:📅 %a, %d %b}"
     },
      "backlight": {
         "device": "intel_backlight",

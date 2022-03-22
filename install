@@ -29,7 +29,7 @@ sleep 1
 sudo pacman -Syu --noconfirm
 
 # Software adicional
-sudo pacman -S git make gcc htop vim ranger handbrake blueberry network-manager-applet pacman-contrib gnome-disk-utility kitty transmission-gtk python-pillowfight imagemagick man bc polkit-gnome lxappearance telegram-desktop imv mpv zathura-pdf-mupdf geany xdg-user-dirs gvfs --noconfirm --needed
+sudo pacman -S git make gcc htop vim ranger neofetch handbrake blueberry network-manager-applet pacman-contrib gnome-disk-utility kitty transmission-gtk python-pillowfight imagemagick man bc polkit-gnome lxappearance telegram-desktop imv mpv zathura-pdf-mupdf geany xdg-user-dirs gvfs --noconfirm --needed
 
 # SwayWM
 sudo pacman -S rtkit qt5-wayland xorg-xwayland kanshi swaylock swayidle wofi mako waybar grim slurp wl-clipboard wf-recorder gammastep swappy brightnessctl --noconfirm --needed
@@ -50,6 +50,7 @@ sudo pacman -S lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings --noconf
 
 # Desinstalar terminal y menu obsoletos
 sudo pacman -Rs dmenu --noconfirm
+sudo pacman -Rs alacritty --noconfirm
 
 # Paru AUR helper
 clear 
