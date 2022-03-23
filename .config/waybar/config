@@ -15,7 +15,7 @@
     "margin-bottom": 5,
     "margin-left": 5,
     "margin-right": 5, 
-    "modules-left": ["custom/menu", "battery", "temperature", "cpu", "memory", "idle_inhibitor", "custom/grabar", "custom/layout", "sway/mode"],
+    "modules-left": ["custom/menu", "battery", "temperature", "cpu", "memory", "idle_inhibitor", "custom/grabar", "custom/pacman", "custom/layout", "sway/mode"],
     "modules-center": ["sway/workspaces"],
     "modules-right": ["backlight", "pulseaudio#mic", "pulseaudio", "clock", "bluetooth", "custom/portapapeles", "tray", "custom/power" ],
 
@@ -75,19 +75,18 @@
      "backlight": {
         "device": "intel_backlight",
         "format": "{icon} {percent}%",
-         "on-scroll-up": "exec light -U 5",
+        "on-scroll-up": "exec light -U 5",
         "on-scroll-down": "exec light -A 5 ",
-        "format-icons": ["🌙", "🌙", "🌙"]
+        "format-icons": "🌙",
+        "tooltip-format": "Bluethooth"
     },
-    "bluetooth": {
-        "interval": 30,
-        "format": "{icon}",
-        // "format-alt": "{status}",
-        "format-icons": {
-            "enabled": "💎",
-            "disabled": "💎"
-        },
-        "on-click": "blueberry"
+       "bluetooth": {
+          "format": "{icon}",
+          "format-icons": {
+          "enabled": "💙",
+          "disabled": "🖤" },
+          "on-click": "blueberry",
+          "tooltip-format": "Bluethooth"
     },
      "tray": {
         "icon-size": 14,
@@ -138,8 +137,8 @@
         "format": "{format_source}",
         "format-source": "🎤",
         "format-source-muted": "​🤐​",
-        "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
-        "tooltip": false
+        "tooltip-format": "Microfono",
+        "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
   },
     "memory": {
         "format": "🐏 {}%"
@@ -154,7 +153,8 @@
     "custom/portapapeles": {
         "format": "📎",
         "on-click": "pkill -9 wofi ; cliphist list | wofi --no-actions --dmenu --width 600 --lines 8 --prompt Clipboard | cliphist decode | wl-copy",
-        "on-click-right": "rm .cache/cliphist/db && exec notify-send -t 10000 -i $HOME/.config/user.png 'Clipboard' 'El historial del portapapeles se a borrado con exito.'"
+        "on-click-right": "rm .cache/cliphist/db && exec notify-send -t 10000 -i $HOME/.config/user.png 'Clipboard' 'El historial del portapapeles se a borrado con exito.'",
+          "tooltip-format": "Bluethooth"
         },      
     "temperature": {
         //"thermal-zone": 2,
@@ -168,7 +168,8 @@
        "format": "{icon}",
        "format-icons": "🔴",
        "on-click": "wf-recorder -a -f $(xdg-user-dir VIDEOS)/$(date +'screencast_%Y-%m-%d_%H-%M-%S.mp4' ; exec notify-send -t 10000 -i $HOME/.config/user.png 'Screenrecorder' 'Se ha iniciado screenrecorder, presione click derecho sobre el mismo boton para cancelar')",
-        "on-click-right": "killall --signal SIGINT wf-recorder ; exec notify-send -t 10000 -i $HOME/.config/user.png 'Screenrecorder' 'La grabacion ha finalizado y se ha guardado en el directorio Videos'"
+        "on-click-right": "killall --signal SIGINT wf-recorder ; exec notify-send -t 10000 -i $HOME/.config/user.png 'Screenrecorder' 'La grabacion ha finalizado y se ha guardado en el directorio Videos'",
+        "tooltip-format": "Screenrecorder"
     },
       "custom/layout":{ 
          "format":"📐", 
@@ -177,11 +178,22 @@
          },        
       "custom/menu":{ 
          "format":"🐧", 
-         "on-click": "pkill -9 wofi ; wofi --no-actions --allow-images --show drun --width 400 --lines 6" 
+         "on-click": "pkill -9 wofi ; wofi --no-actions --allow-images --show drun --width 400 --lines 6",
+         "tooltip-format": "Bluethooth",
+         "tooltip": true
+        },
+      "custom/pacman": {
+         "format": "📦 {}",
+         "interval": 3600,                     // every hour
+         "exec": "checkupdates | wc -l",       // # of updates
+         "exec-if": "exit 0",                  // always run; consider advanced run conditions
+         "on-click": "termite -e 'sudo pacman -Syu'; pkill -SIGRTMIN+8 waybar", // update system
+         "signal": 8
          },
       "custom/power":{ 
          "format":"🔐", 
-         "on-click": "pkill -9 wofi ; sh .config/waybar/custom/power"
+         "on-click": "pkill -9 wofi ; sh .config/waybar/custom/power",
+         "tooltip-format": "Bluethooth"
          },
       "cpu": {
          "format": "🐌 {usage}%",
