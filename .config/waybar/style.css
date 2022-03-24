@@ -77,7 +77,9 @@ window#waybar.solo {
 #custom-portapapeles,
 #custom-pacman,
 #custom-layout,
-#mpd {
+#custom-wf-recorder,
+#mpd
+{
     background-color: rgba(0, 0, 0, 0.7);
     padding: 0 5 0 5px;
     color: #ffffff;
