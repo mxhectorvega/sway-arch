@@ -15,7 +15,7 @@
     "margin-bottom": 5,
     "margin-left": 5,
     "margin-right": 5, 
-    "modules-left": ["custom/menu", "battery", "temperature", "cpu", "memory", "idle_inhibitor", "custom/grabar", "custom/pacman", "custom/layout", "sway/mode"],
+    "modules-left": ["custom/menu", "battery", "temperature", "cpu", "memory", "idle_inhibitor", "custom/grabar", "custom/pacman", "sway/mode"],
     "modules-center": ["sway/workspaces"],
     "modules-right": ["backlight", "pulseaudio#mic", "pulseaudio", "clock", "bluetooth", "custom/portapapeles", "tray", "custom/power" ],
 
@@ -167,7 +167,7 @@
      "custom/grabar":{
        "format": "{icon}",
        "format-icons": "🔴",
-       "on-click": "wf-recorder -a -f $(xdg-user-dir VIDEOS)/$(date +'screencast_%Y-%m-%d_%H-%M-%S.mp4' ; exec notify-send -t 10000 -i $HOME/.config/user.png 'Screenrecorder' 'Se ha iniciado screenrecorder, presione click derecho sobre el mismo boton para cancelar')",
+       "on-click": "wf-recorder -a -f $(xdg-user-dir VIDEOS)/$(date +'screencast_%Y-%m-%d_%H-%M-%S.mp4)' ; exec notify-send -t 10000 -i $HOME/.config/user.png 'Screenrecorder' 'Se ha iniciado screenrecorder, presione click derecho sobre el mismo boton para cancelar')",
         "on-click-right": "killall --signal SIGINT wf-recorder ; exec notify-send -t 10000 -i $HOME/.config/user.png 'Screenrecorder' 'La grabacion ha finalizado y se ha guardado en el directorio Videos'",
         "tooltip-format": "Screenrecorder"
     },
