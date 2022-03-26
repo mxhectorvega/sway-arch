@@ -15,8 +15,9 @@ set $block-wall $HOME/.config/wall.*
 set $desktop-wall $HOME/.config/wall.*
 
 ## Declarar tema gtk e iconos
-set $theme_gtk Matcha-dark-aliz
-set $theme_icons Papirus-Dark
+set $theme_gtk Orchis-light-compact
+set $theme_icons Papirus-Light
+set $theme_sway claro
 
 ## Declara gesror de archivos GUI
 set $filemanager thunar
@@ -33,7 +34,7 @@ set $default_font Terminus 8
 ## Delara los espacios entre ventanas
 set $gap_ext 5
 set $gap_int 5
-set $gap_top 0
+set $gap_top 5
 
 ## Declara el lanzador de aplicaciones
 set $menu "pkill -9 wofi ; wofi \
@@ -41,7 +42,7 @@ set $menu "pkill -9 wofi ; wofi \
      --no-actions \
      --show drun \
      --width 400 \
-     --lines 6"
+     --lines 6 \"
 
 ## Declara menu gestor de portapapeles
 set $menu_clipboard "pkill -9 wofi ; cliphist \
@@ -57,7 +58,7 @@ set $clean_clipboard rm .cache/cliphist/db && exec \
     "Clipboard" "El historial del portapapeles se a borrado con exito."
    
 ## Power menmu
-set $menu_power "pkill -9 wofi ; sh .config/waybar/custom/power   
+set $menu_power "pkill -9 wofi ; sh $HOME/.config/waybar/custom/power"
 
 ## Pantalla de bloqueo
 set $lock_warning notify-send --expire-time 10000 --icon $HOME/.config/user.png 'SystemCtl' 'La pantalla se bloqueará en 10 segundos, mueva el cursor o siga en lo que estaba...'
@@ -146,33 +147,19 @@ bindsym $mod+$alt+Down output - transform 180
 bindsym $mod+$alt+Left output - transform 270
 bindsym $mod+$alt+Right output - transform 90
 
-## Colores basicos
-set $colour_blanco       #ffffff
-set $colour_gris         #000000
-set $colour_gris_alpha   #000000bf
-set $colour_azul         #0088CC
-set $colour_rojo         #eb4d4b
-set $colour_inactive     #8D8D8D
-set $colour_rojo_sangre  #ff0000
-
-## Colores de ventanas    borde                   background               text               indicator          child
-client.focused            $colour_rojo_sangre     $colour_gris_alpha       $colour_blanco     $colour_blanco     $colour_gris_alpha
-client.focused_inactive   $colour_gris_alpha      $colour_gris_alpha       $colour_gris       $colour_gris       $colour_gris_alpha
-client.unfocused          $colour_gris_alpha      $colour_gris_alpha       $colour_inactive   $colour_inactive   $colour_gris_alpha
-client.urgent             $colour_rojo            $colour_rojo             $colour_blanco     $colour_rojo       $colour_gris_alpha
-
 ## Transparencia
 for_window {
 [app_id="Alacritty"]    opacity 0.95
 [app_id="foot"]         opacity 0.95
 [app_id="mousepad"]     opacity 0.95
-[app_id="geany"]        opacity 0.95
-[app_id="thunar"]       opacity 0.95
-[app_id="pcmanfm"]      opacity 0.95
+[app_id="geany"]        opacity 0.75
+[app_id="thunar"]       opacity 0.75
+[app_id="pcmanfm"]      opacity 0.75
 [app_id="qvidcap"]      opacity 1.0
 }
 
-## Configuracion de temas y fuentes (no tocar, la informacion es tomada de las primeras lineas en donde declaro lo temas manualmente)
+## Configuracion de temas y fuentes (no tocar, la informacion es tomada de 
+## las primeras lineas en donde declaro lo temas manualmente)
 set $gnome-schema org.gnome.desktop.interface
 exec_always {
     gsettings set $gnome-schema gtk-theme '$theme_gtk'
@@ -186,42 +173,68 @@ exec_always {
     gsettings set org.gtk.Settings.FileChooser window-size '(800,500)'
 }
 
+## Cerrar ventana actual
+bindsym $mod+q kill
+
+## La tecla super (windows) arrastra ventanas flotantes con 
+## el mouse o trackpad (clic izquierdo).
+floating_modifier $mod normal
+
+## Ocultar waybar
+bindsym $mod+x exec pkill -9 waybar
+
+## Mostrar waybar
+bindsym $mod+z exec waybar
+
+## Recargar configuracion
+bindsym $mod+Shift+c reload
+
 ## Teclas de direccion al estilo VIM
 set $left h
 set $down j
 set $up k
 set $right l
 
-## Cerrar ventana actual
-bindsym $mod+Shift+q kill
-
-## La tecla mod (super) arrastra ventanas flotantes con el mouse.
-floating_modifier $mod normal
-
-## Recargar configuracion
-bindsym $mod+Shift+c reload
-
-## Mover ventanas de lugar
+## Mover ventanas mosaico con teclas H,J,K,L
 bindsym $mod+$left focus left
 bindsym $mod+$down focus down
 bindsym $mod+$up focus up
 bindsym $mod+$right focus right
+
+## Mover ventanas mosaico con teclas de direccion
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
+
+## Mover ventanas flotantes con teclas H,J,K,L
 bindsym $mod+Shift+$left move left
 bindsym $mod+Shift+$down move down
 bindsym $mod+Shift+$up move up
 bindsym $mod+Shift+$right move right
+
+## Mover ventanas flotantes  con teclas teclas de direccion
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-## You can "split" the current object of your focus with
-## $mod+b or $mod+v, for horizontal and vertical splits
-## respectively.
+## Redimencionar con teclas H,J,K,L
+bindsym $mod+Ctrl+$left resize shrink width 5 px or 5 ppt
+bindsym $mod+Ctrl+$down resize grow height 5 px or 5 ppt
+bindsym $mod+Ctrl+$up resize shrink height 5 px or 5 ppt
+bindsym $mod+Ctrl+$right resize grow width 5 px or 5 ppt
+
+## Redimencionar ventanas flotates con teclas de direccion
+bindsym $mod+Ctrl+Left resize shrink width 5 px or 5 ppt
+bindsym $mod+Ctrl+Down resize grow height 5 px or 5 ppt
+bindsym $mod+Ctrl+Up resize shrink height 5 px or 5 ppt
+bindsym $mod+Ctrl+Right resize grow width 5 px or 5 ppt
+
+## Puedes "dividir" el objeto actual de tu enfoque con
+## $mod+b o $mod+v, es para divisiones horizontales y verticales
+## $mod+Shift+minus, es para ocultar ventana activa
+## respectivamente.
 bindsym $mod+b splith
 bindsym $mod+v splitv
 bindsym $mod+s layout stacking
@@ -234,123 +247,14 @@ bindsym $mod+a focus parent
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
-## Resizing containers:
-mode "resize" {
-bindsym $right resize shrink width 10px
-bindsym $down resize grow height 10px
-bindsym $up resize shrink height 10px
-bindsym $left resize grow width 10px
-bindsym Right resize shrink width 10px
-bindsym Down resize grow height 10px
-bindsym Up resize shrink height 10px
-bindsym Left resize grow width 10px
-
-## Return to default mode
-bindsym Return mode "default"
-bindsym Escape mode "default"
-}
-
-## Modo: cambiar de tamaño las ventanas
-set $mode_resize_tile "🪟 Resizer: h|j|k|l"
-bindsym $mod+$alt+r     mode $mode_resize_tile
-mode $mode_resize_tile {
-    bindsym h resize shrink width 10 px or 10 ppt
-    bindsym j resize grow height 10 px or 10 ppt
-    bindsym k resize shrink height 10 px or 10 ppt
-    bindsym l resize grow width 10 px or 10 ppt
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-
-## Modo: menu de apagado
-set $mode_system "👤 [B]loq. [S]usp. [R]eini. [A]pag."
-bindsym $mod+$alt+q     mode $mode_system
-mode $mode_system {
-    bindsym b exec $lock;               mode default
-    bindsym a exec systemctl poweroff;  mode default
-    bindsym r exec systemctl reboot;    mode default
-    bindsym s exec systemctl suspend;   mode default
-    bindsym Return mode default
-    bindsym Escape mode default
-}
-
-## Modo: menu i3 cerrar sesion y recargar configuracion
-set $mode_i3 "⚙️ [R]ecargar [S]alir"
-bindsym $mod+$alt+i     mode $mode_i3
-mode $mode_i3 {
-    bindsym s exit
-    bindsym r reload
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-
-## Modo: mover ventana flotante
-set $mode_move_floating "✨ Flotante: h|j|k|l"
-bindsym $mod+$alt+space   mode $mode_move_floating
-mode $mode_move_floating {
-    bindsym h move left
-    bindsym j move down
-    bindsym k move up
-    bindsym l move right
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-
-## Modo: menu captura de pantalla
-set $mode_scrot "🎥 [G]rabar, [D]etener"
-bindsym $mod+$alt+s     mode $mode_scrot
-mode $mode_scrot {
-    bindsym g exec "wf-recorder -a -f $(xdg-user-dir VIDEOS)/$(date +'screencast_%Y-%m-%d_%H-%M-%S.mp4') && exec notify-send -t 10000 -i $HOME/.config/user.png 'Screenrecorder' 'Se ha iniciado screenrecorder, presione click derecho sobre el mismo boton para cancelar', mode "default"
-    bindsym d exec killall --signal SIGINT wf-recorder && exec notify-send -t 10000 -i $HOME/.config/user.png 'Screenrecorder' 'La grabacion ha finalizado y se ha guardado en el directorio Videos', mode "default"
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-
-## Modo: manipular gaps (espacios entre ventanas)
-set $mode_gaps_inner "🔩 Gaps int.: -|+|0"
-mode $mode_gaps_inner {
-    bindsym minus         gaps inner current plus 5
-    bindsym equal         gaps inner current minus 5
-    bindsym 0             gaps inner current set 0
-    bindsym $alt+minus    gaps inner all plus 5
-    bindsym $alt+equal    gaps inner all minus 5
-    bindsym $alt+space    gaps inner all set 0
-    bindsym Return mode   "default"
-    bindsym Escape mode   "default"
-}
-
-## Modo: manipular gaps (espacios entre ventanas)
-set $mode_gaps_outer "🔩 Gaps ext.: -|+|0"
-mode $mode_gaps_outer {
-    bindsym minus        gaps outer current plus 5
-    bindsym equal        gaps outer current minus 5
-    bindsym 0            gaps outer current set 0
-    bindsym $alt+minus   gaps outer all plus 5
-    bindsym $alt+equal   gaps outer all minus 5
-    bindsym $alt+space   gaps outer all set 0
-    bindsym Return mode  "default"
-    bindsym Escape mode  "default"
-}
-
-## Modo: manipular gaps (espacios entre ventanas)
-set $mode_gaps "🔩 Gaps: [I]terior, [E]xterior"
-bindsym $mod+$alt+g      mode $mode_gaps
-mode $mode_gaps {
-    bindsym e            mode $mode_gaps_outer
-    bindsym i            mode $mode_gaps_inner
-    bindsym Return       mode "default"
-    bindsym Escape       mode "default"
-}
-
-## Manejo de espacios de trabajo
-## Switch to workspace
+## Cambiar a otro espacio de trabajo
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
 bindsym $mod+3 workspace number 3
 bindsym $mod+4 workspace number 4
 bindsym $mod+5 workspace number 5
 
-## Move focused container to workspace
+## Mover ventanas a otro espacio de trabajo
 bindsym $mod+Shift+1 move container to workspace number 1
 bindsym $mod+Shift+2 move container to workspace number 2
 bindsym $mod+Shift+3 move container to workspace number 3
@@ -359,6 +263,7 @@ bindsym $mod+Shift+5 move container to workspace number 5
 
 ## Apariencia y pocicion de ventanas:
 for_window {
+
 ## Ventanas en las que nunca se apaga la pantalla
 [class="^.*"] inhibit_idle fullscreen
 [app_id="^.*"] inhibit_idle fullscreen
@@ -417,7 +322,7 @@ bindsym XF86AudioMute         exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86MonBrightnessUp exec brightnessctl -m set +5%
 bindsym XF86MonBrightnessDown exec brightnessctl -m set 5%-
 
-## Controlar musica con playerctl (controla reproductores de musca playerctl -l)
+## Controlar musica (incliyendo reproductores CLI y Spotify GUI).
 bindsym XF86AudioPlay         exec playerctl play-pause ; exec \
 dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PausePlay
 
@@ -456,6 +361,10 @@ bindsym --release Ctrl+Shift+Print exec \
     grim -g "$(slurp)" - | wl-copy && exec notify-send -t 10000 -i $HOME/.config/user.png 'Clipoard' 'La captura de pantalla se ha guardado en el directorio Imagenes'
 
 ## Autoarranque
+
+## Incluyendo temas
+include colors.$theme_sway
+
 exec nm-applet --indicator
 
 exec export TERM="$terminal"
@@ -469,7 +378,7 @@ exec_always hash dbus-update-activation-environment 2>/dev/null && \
 exec wl-paste --watch cliphist store
 
 exec_always 'pkill mako; exec mako \
-    --background-color "$colour_gris_alpha" \
+    --background-color "$transparent" \
     --margin "$gap_top" \
     --font "$default_font" \
     --border-size 0 \
@@ -477,8 +386,8 @@ exec_always 'pkill mako; exec mako \
     --height 150 \
     --padding 10 \
     --border-radius 5 \
-    --border-color "$colour_blanco" \
-    --text-color "$colour_blanco" \
+    --border-color "$transparent" \
+    --text-color "$foreground" \
     --anchor top-center \
     --ignore-timeout 1 \
     --default-timeout 5000'
@@ -490,4 +399,3 @@ exec swayidle -w \
     timeout 120 "$lock" \
     timeout 130 "swaymsg 'output * dpms off'" resume "swaymsg 'output * dpms on'" \
     before-sleep "$lock"
-

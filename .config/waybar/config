@@ -9,10 +9,9 @@
 */
 
 {
-    "layer": "top",
     "height": 25,
     "margin-top": 5,
-    "margin-bottom": 5,
+    "margin-bottom": 0,
     "margin-left": 5,
     "margin-right": 5, 
     
@@ -216,7 +215,7 @@
          },
       "custom/power":{ 
          "format":"🔐", 
-         "on-click": "pkill -9 wofi ; sh .config/waybar/custom/power",
+         "on-click": "pkill -9 wofi ; sh $HOME/.config/waybar/custom/power",
          "tooltip-format": "Bluethooth"
          },
       "cpu": {
