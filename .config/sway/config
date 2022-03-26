@@ -15,9 +15,9 @@ set $block-wall $HOME/.config/wall.*
 set $desktop-wall $HOME/.config/wall.*
 
 ## Declarar temas e iconos
-set $theme_gtk Orchis-dark-compact
-set $theme_icons Papirus-Dark
-set $theme_sway obscuro
+set $theme_gtk Orchis-light-compact
+set $theme_icons Papirus-Light
+set $theme_sway claro
 
 ## Declara gesror de archivos GUI
 set $filemanager thunar
@@ -159,7 +159,7 @@ for_window {
 }
 
 ## Configuracion de temas y fuentes (no tocar, la informacion es tomada de 
-## las primeras lineas en donde deobscuro lo temas manualmente)
+## las primeras lineas en donde declaro lo temas manualmente)
 set $gnome-schema org.gnome.desktop.interface
 exec_always {
     gsettings set $gnome-schema gtk-theme '$theme_gtk'

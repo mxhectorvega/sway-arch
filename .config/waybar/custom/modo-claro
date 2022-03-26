@@ -2,13 +2,18 @@
 
 rm -rf $HOME/.config/waybar/style.css
 rm -rf $HOME/.config/wofi/style.css
+rm -rf $HOME/.config/wall.*
+
+cp $HOME/.config/wallpaper/claro.* $HOME/.config/wall.jpg
 cp $HOME/.config/wofi/temas/claro.css $HOME/.config/wofi/style.css
 cp $HOME/.config/waybar/temas/claro.css $HOME/.config/waybar/style.css
 
-sed -i "s/lightOrchis-dark/Orchis-light/g" $HOME/.config/sway/config
+sed -i "s/Orchis-dark/Orchis-light/g" $HOME/.config/sway/config
 sed -i "s/Papirus-Dark/Papirus-Light/g" $HOME/.config/sway/config
 sed -i "s/obscuro/claro/g" $HOME/.config/sway/config
 
 sed -i "s/obscuro/claro/g" $HOME/.config/kitty/kitty.conf
+
+notify-send --expire-time 10000 --icon $HOME/.config/user.png 'Cambiado a modo claro' 'La configuracion se aplicara en unos segundos...'
 
 swaymsg reload
