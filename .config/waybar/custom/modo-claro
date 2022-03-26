@@ -1,5 +1,7 @@
 #!/bin/bash
 
+notify-send --expire-time 10000 --icon $HOME/.config/user.png 'Cambiado a modo claro' 'La configuracion se aplicara en unos segundos...'
+
 rm -rf $HOME/.config/waybar/style.css
 rm -rf $HOME/.config/wofi/style.css
 rm -rf $HOME/.config/wall.*
@@ -13,7 +15,5 @@ sed -i "s/Papirus-Dark/Papirus-Light/g" $HOME/.config/sway/config
 sed -i "s/obscuro/claro/g" $HOME/.config/sway/config
 
 sed -i "s/obscuro/claro/g" $HOME/.config/kitty/kitty.conf
-
-notify-send --expire-time 10000 --icon $HOME/.config/user.png 'Cambiado a modo claro' 'La configuracion se aplicara en unos segundos...'
 
 swaymsg reload
