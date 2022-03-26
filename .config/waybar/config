@@ -33,7 +33,8 @@
     
     "modules-right": [
     "custom/wf-recorder", 
-    "backlight", 
+    "backlight",
+    "custom/darkmode",
     "pulseaudio#mic", 
     "pulseaudio", 
     "clock", 
@@ -99,8 +100,8 @@
      "backlight": {
         "device": "intel_backlight",
         "format": "{icon} {percent}%",
-        "on-scroll-up": "exec light -U 5",
-        "on-scroll-down": "exec light -A 5 ",
+        "on-scroll-down": "exec light -U 5",
+        "on-scroll-up": "exec light -A 5 ",
         "format-icons": "🌙",
         "tooltip-format": "Bluethooth"
     },
@@ -220,5 +221,10 @@
          },
       "cpu": {
          "format": "🐌 {usage}%",
-    }
+    },
+      "custom/darkmode":{ 
+         "format":"🌗", 
+         "on-click": "sh $HOME/.config/waybar/custom/modo-obscuro",
+         "on-click-right": "sh $HOME/.config/waybar/custom/modo-claro"
+    }    
 }

@@ -33,13 +33,13 @@ window#waybar.solo {
 }
 
 #workspaces button {
-    background-color: rgba(255,255,255,0.5);
+    background-color: rgba(0, 0, 0, 0.7);
     padding: 0 6 0 6px;
     margin-right: 3;
 }
 
 #workspaces button.hover {
-    background-color: rgba(255,255,255,0.5);
+    background-color: rgba(0, 0, 0, 0.7);
     padding: 0 6 0 6px;
 }
 
@@ -54,7 +54,7 @@ window#waybar.solo {
 }
 
 #mode {
-    background-color: rgba(255,255,255,0.5);
+    background-color: rgba(0, 0, 0, 0.7);
     padding: 0 3 0 3px;
 }
 
@@ -78,11 +78,12 @@ window#waybar.solo {
 #custom-pacman,
 #custom-layout,
 #custom-wf-recorder,
+#custom-darkmode,
 #mpd
 {
-    background-color: rgba(255,255,255,0.5);
+    background-color: rgba(0, 0, 0, 0.7);
     padding: 0 5 0 5px;
-    color: black;
+    color: #ffffff;
     margin-right: 3;
 }
 
@@ -99,13 +100,13 @@ window#waybar.solo {
 @keyframes blink {
     to {
         background-color: #5999bd;;
-        color: black;
+        color: #000000;
     }
 }
 
 #battery.critical:not(.charging) {
-    background-color: rgba(255,255,255,0.5);
-    color: black;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #ffffff;
     animation-name: blink;
     animation-duration: 0.9s;
     animation-timing-function: linear;
@@ -114,9 +115,9 @@ window#waybar.solo {
 }
 
 #custom-power {
-    background-color: rgba(255,255,255,0.5);
+    background-color: rgba(0, 0, 0, 0.7);
     padding: 0 5 0 5px;
-    color: black;
+    color: #ffffff;
     margin-right: 0;
 }
 
@@ -126,5 +127,5 @@ window#waybar.solo {
 
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
-    background-color: rgba(255,255,255,0.5);
+    background-color: rgba(0, 0, 0, 0.7);
 }
