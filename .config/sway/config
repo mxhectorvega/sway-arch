@@ -390,6 +390,4 @@ exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 exec swayidle -w \
     timeout 120 "$lock_warning" \
-    timeout 140 'dm-tool lock' \
-    timeout 145 'swaymsg "output * dpms off"' \
-    resume 'swaymsg "output * dpms on"'
+    timeout 140 "dm-tool lock"

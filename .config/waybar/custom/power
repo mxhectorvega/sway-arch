@@ -1,12 +1,14 @@
 #!/bin/bash
 
-loco=$(printf "Cerrar sesion\nApagar\nReiniciar\nSuspender\nHibernar\nSuspencion hibrida\nSuspender y luego hibernar" | wofi \
+loco=$(printf "Bloquear\nCerrar sesion\nApagar\nReiniciar\nSuspender\nHibernar\nSuspencion hibrida\nSuspender y luego hibernar" | wofi \
       --dmenu \
-      --width 400 \
-      --lines 7 \
+      --width 200 \
+      --lines 8 \
       --prompt Powermenu)
 
-if [[ $loco = "Cerrar sesion" ]]; then
+if [[ $loco = "Bloquear" ]]; then
+	dm-tool lock
+elif [[ $loco = "Cerrar sesion" ]]; then
 	swaymsg exit
 elif [[ $loco = "Apagar" ]]; then
 	systemctl poweroff

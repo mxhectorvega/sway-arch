@@ -126,7 +126,7 @@ sudo cp $HOME/.config/wall.* /usr/share/backgrounds/wall.jpg
 sudo tee /etc/lightdm/lightdm-gtk-greeter.conf <<EOF
 [greeter]
 background=/usr/share/backgrounds/wall.jpg
-theme-name=Matcha-dark-aliz
+theme-name=Orchis-light-compact
 icon-theme-name=Papirus-Dark
 font-name=Terminus 9
 xft-antialias=true
