@@ -13,7 +13,10 @@ cp $HOME/.config/waybar/temas/obscuro.css $HOME/.config/waybar/style.css
 sed -i "s/Orchis-light/Orchis-dark/g" $HOME/.config/sway/config
 sed -i "s/Papirus-Light/Papirus-Dark/g" $HOME/.config/sway/config
 sed -i "s/claro/obscuro/g" $HOME/.config/sway/config
-
 sed -i "s/claro/obscuro/g" $HOME/.config/kitty/kitty.conf
+sed -i "s/Orchis-light/Orchis-dark/g" $HOME/.gtkrc-2.0
+sed -i "s/Papirus-Light/Papirus-Dark/g" $HOME/.gtkrc-2.0
+sed -i "s/Orchis-light/Orchis-dark/g" $HOME/.config/gtk-3.0/settings.ini
+sed -i "s/Papirus-Light/Papirus-Dark/g" $HOME/.config/gtk-3.0/settings.ini
 
 swaymsg reload
