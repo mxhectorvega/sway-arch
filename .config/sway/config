@@ -61,13 +61,7 @@ set $clean_clipboard rm .cache/cliphist/db && exec \
 set $menu_power "pkill -9 wofi ; sh $HOME/.config/waybar/custom/power"
 
 ## Pantalla de bloqueo
-set $lock_warning notify-send --expire-time 10000 --icon $HOME/.config/user.png 'SystemCtl' 'La pantalla se bloqueará en 10 segundos, mueva el cursor o siga en lo que estaba...'
-
-set $lock swaylock \
-    --daemonize \
-    --no-unlock-indicator \
-    --ignore-empty-password \
-    --image $block-wall
+set $lock_warning notify-send --expire-time 10000 --icon $HOME/.config/user.png 'SystemCtl' 'La pantalla se bloqueará en 20 segundos, mueva el cursor o siga en lo que estaba...'
 
 ## Apariencia basica
 smart_borders on
@@ -237,7 +231,7 @@ bindsym $mod+Ctrl+Right resize grow width 5 px or 5 ppt
 ## respectivamente.
 bindsym $mod+b splith
 bindsym $mod+v splitv
-bindsym $mod+s layout stacking
+bindsym $mod+s sticky toggle
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 bindsym $mod+f fullscreen
@@ -395,7 +389,6 @@ exec_always 'pkill mako; exec mako \
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 exec swayidle -w \
-    timeout 110 "$lock_warning" \
-    timeout 120 "$lock" \
-    timeout 130 "swaymsg 'output * dpms off'" resume "swaymsg 'output * dpms on'" \
-    before-sleep "$lock"
+    timeout 120 "$lock_warning" \
+    timeout 140 "swaymsg 'output * dpms off'" resume "swaymsg 'output * dpms on'" \
+    before-sleep "dm-tool lock"
