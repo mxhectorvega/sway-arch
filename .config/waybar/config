@@ -23,7 +23,8 @@
     "memory", 
     "idle_inhibitor", 
     "custom/grabar", 
-    "custom/pacman", 
+    "custom/pacman",
+    "custom/ayuda",
     "sway/mode"
     ],
     
@@ -223,8 +224,18 @@
          "format": "🐌 {usage}%",
     },
       "custom/darkmode":{ 
-         "format":"🌗", 
+         "format": "{icon}",
+         "format-icons": "🌗",
          "on-click": "sh $HOME/.config/waybar/custom/modo-obscuro",
-         "on-click-right": "sh $HOME/.config/waybar/custom/modo-claro"
+         "on-click-right": "sh $HOME/.config/waybar/custom/modo-claro",
+         "tooltip-format": "Click normal modo obscuro",
+         "tooltip": "true"
+    },
+         "custom/ayuda":{ 
+         "format": "{icon}",
+         "format-icons": "📘",
+         "on-click": "zathura $HOME/.config/sway-mxhectorvega.pdf &",
+         "tooltip-format": "Archivo de ayuda",
+         "tooltip": "true"
     }    
 }

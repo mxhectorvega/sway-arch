@@ -15,9 +15,9 @@ set $block-wall $HOME/.config/wall.*
 set $desktop-wall $HOME/.config/wall.*
 
 ## Declarar temas e iconos
-set $theme_gtk Orchis-light-compact
-set $theme_icons Papirus-Light
-set $theme_sway claro
+set $theme_gtk Orchis-dark-compact
+set $theme_icons Papirus-Dark
+set $theme_sway obscuro
 
 ## Declara gesror de archivos GUI
 set $filemanager thunar
@@ -114,6 +114,7 @@ output * {
     bg $desktop-wall fill
     adaptive_sync on
     scale_filter linear
+    subpixel none
     render_bit_depth 8
 }
 
@@ -123,17 +124,18 @@ output * {
 
 ## Monitorprimario eDP-1 en caso de ser diferente podra 
 output eDP-1 {
-    pos 1920 1080
+#    pos 1920 1080
 #    scale 1
-#   transform 90
+#    transform 90
+    mode 1366x720
 }
 
 ## Monitor secundario HDMI en caso de ser diferente podra 
-output HDMI-A-1 {
-    pos 0 0
+#output HDMI-A-1 {
+#    pos 0 0
 #    scale 1
 #   transform 90    
-}
+#}
 
 ## Atajos para rotar pantalla en el monitor activo
 bindsym $mod+$alt+Up output - transform 0
@@ -153,7 +155,7 @@ for_window {
 }
 
 ## Configuracion de temas y fuentes (no tocar, la informacion es tomada de 
-## las primeras lineas en donde declaro lo temas manualmente)
+## las primeras lineas en donde deobscuro lo temas manualmente)
 set $gnome-schema org.gnome.desktop.interface
 exec_always {
     gsettings set $gnome-schema gtk-theme '$theme_gtk'
@@ -185,15 +187,15 @@ bindsym $mod+Shift+c reload
 
 ## Teclas de direccion al estilo VIM
 set $left h
+set $right l
 set $down j
 set $up k
-set $right l
 
 ## Mover ventanas mosaico con teclas H,J,K,L
 bindsym $mod+$left focus left
+bindsym $mod+$right focus right
 bindsym $mod+$down focus down
 bindsym $mod+$up focus up
-bindsym $mod+$right focus right
 
 ## Mover ventanas mosaico con teclas de direccion
 bindsym $mod+Left focus left
@@ -363,6 +365,7 @@ exec nm-applet --indicator
 
 exec export TERM="$terminal"
 exec export EDITOR="$editor"
+exec export WLR_NO_HARDWARE_CURSORS=1
 
 set $imp_vars "DISPLAY WAYLAND_DISPLAY SWAYSOCK SSH_AUTH_SOCK XDG_CURRENT_DESKTOP XDG_SESSION_TYPE"
 exec_always systemctl --user import-environment "$imp_vars"
