@@ -3,7 +3,7 @@
 set $border #ffffffbf
 set $border_inactive #ffffffbf
 set $foreground #111111
-set $foreground_inactive #141414
+set $foreground_inactive #808080
 set $transparent #ffffffbf
 
 # class
