@@ -123,12 +123,12 @@ output * {
 ## la escala es 1 es de 100% (normal) y 1.5 es de 150%
 
 ## Monitorprimario eDP-1 en caso de ser diferente podra 
-output eDP-1 {
+#output eDP-1 {
 #    pos 1920 1080
 #    scale 1
 #    transform 90
-    mode 1366x720
-}
+#    mode 1366x720
+#}
 
 ## Monitor secundario HDMI en caso de ser diferente podra 
 #output HDMI-A-1 {
