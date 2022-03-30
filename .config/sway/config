@@ -29,7 +29,8 @@ set $terminal kitty
 set $editor vim
 
 ## Delara tipo y tamaño de texto
-set $default_font Terminus 8
+#set $default_font Terminus 8
+set $default_font Iosevka 10
 
 ## Delara los espacios entre ventanas
 set $gap_ext 5
@@ -109,13 +110,15 @@ bindswitch --reload --locked lid:off output $laptop enable
 
 ## Otput configuration general de todos los monitores
 ## Configuracion de fondo de escritorio .config/wall.* delcarado en la linea 14 y 15.
-## output * bg #808080  solid_color
+## output * bg #404040 lid_color
 output * {
+#    bg #202020 solid_color
     bg $desktop-wall fill
     adaptive_sync on
     scale_filter linear
     subpixel none
     render_bit_depth 8
+#    scale 1.5
 }
 
 ## Configuracion de 2 monitores
@@ -145,12 +148,12 @@ bindsym $mod+$alt+Right output - transform 90
 
 ## Transparencia
 for_window {
-[app_id="Alacritty"]    opacity 0.95
-[app_id="foot"]         opacity 0.95
-[app_id="mousepad"]     opacity 0.95
-[app_id="geany"]        opacity 0.75
-[app_id="thunar"]       opacity 0.75
-[app_id="pcmanfm"]      opacity 0.75
+[app_id="Alacritty"]    opacity 0.90
+[app_id="foot"]         opacity 0.90
+[app_id="mousepad"]     opacity 0.90
+[app_id="geany"]        opacity 0.90
+[app_id="thunar"]       opacity 0.90
+[app_id="pcmanfm"]      opacity 0.90
 [app_id="qvidcap"]      opacity 1.0
 }
 

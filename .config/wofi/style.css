@@ -11,14 +11,14 @@
 window {
 
     border-radius: 3;
-    background-color: rgba(0, 0, 0, 0.75);
+    background-color: rgba(0, 0, 0, 0.90);
 }
 
 #input {
-    color: #ffffff;
+    color: white;
     border-radius: 3;
-    background-color: rgba(0, 0, 0, 0.75);
-    font-size: 13;
+    background-color: rgba(0, 0, 0, 0.90);
+    font-size: 12;
 }
 
 
@@ -34,7 +34,7 @@ window {
 
 #entry:selected {
     border-radius: 2;    
-    color: #ffffff;
+    color: white;
     background-color: #5999bd;
 }
 

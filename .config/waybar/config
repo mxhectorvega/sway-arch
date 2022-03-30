@@ -8,15 +8,18 @@
 ## v2.0: 20/11/2021
 */
 
-{
+[{
+    "layer": "top", 
+    "position": "top", // Waybar position (top|bottom|left|right)
+
     "height": 25,
     "margin-top": 5,
     "margin-bottom": 0,
     "margin-left": 5,
     "margin-right": 5, 
-    
+
     "modules-left": [
-    "custom/menu", 
+    "custom/menu",
     "battery", 
     "temperature", 
     "cpu", 
@@ -74,8 +77,12 @@
         "format":" {}",
         "tooltip": false
     },
-
-
+    "custom/menu":{ 
+    "format":"🐧", 
+    "on-click": "pkill -9 wofi ; wofi --no-actions --allow-images --show drun --width 400 --lines 6",
+    "tooltip-format": "Bluethooth",
+    "tooltip": true
+    },
 "battery": {
         "states": {
             // "good": 95,
@@ -173,7 +180,8 @@
         "format": "{icon}",
         "format-icons": {
             "activated": "⚡️",
-            "deactivated": "✨"
+            "deactivated": "✨",
+        "on-click": "kitty -e htop"
         }
       },
     "custom/portapapeles": {
@@ -188,7 +196,8 @@
         "critical-threshold": 80,
         // "format-critical": "{icon} {temperatureC}°C",
         "format": "{icon} {temperatureC}°C",
-        "format-icons": ["🔥"]
+        "format-icons": ["🔥"],
+        "on-click": "kitty -e htop"
         },
      "custom/grabar":{
        "format": "{icon}",
@@ -201,12 +210,6 @@
          "on-click": "swaymsg floating toggle",
          "on-click-right": "swaymsg layout toggle split"
          },        
-      "custom/menu":{ 
-         "format":"🐧", 
-         "on-click": "pkill -9 wofi ; wofi --no-actions --allow-images --show drun --width 400 --lines 6",
-         "tooltip-format": "Bluethooth",
-         "tooltip": true
-        },
       "custom/pacman": {
          "format": "📦 {}",
          "interval": 3600,                     // every hour
@@ -222,6 +225,7 @@
          },
       "cpu": {
          "format": "🐌 {usage}%",
+         "on-click": "kitty -e htop"
     },
       "custom/darkmode":{ 
          "format": "{icon}",
@@ -238,4 +242,29 @@
          "tooltip-format": "Archivo de ayuda",
          "tooltip": "true"
     }    
-}
+},
+
+{
+    "layer": "bottom", 
+    "position": "bottom", // Waybar position (top|bottom|left|right)
+    "height": 25,
+    "margin-top": 0,
+    "margin-bottom": 5,
+    "margin-left": 5,
+    "margin-right": 5, 
+
+    "modules-center": [
+    "wlr/taskbar"
+    ],
+
+        "wlr/taskbar": {
+        "format": "{icon}",
+        "tooltip-format": "{title}",
+        "on-click": "activate",
+        "all-outputs": false,
+        "active-first": false,
+        "icon-size": 40,
+        "icon-theme": "Papirus-Dark",
+        "on-click-right": "minimize"
+    }
+}]
