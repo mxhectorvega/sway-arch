@@ -65,18 +65,16 @@ set $menu_power "pkill -9 wofi ; sh $HOME/.config/waybar/custom/power"
 set $lock_warning notify-send --expire-time 10000 --icon $HOME/.config/user.png 'SystemCtl' 'La pantalla se bloqueará en 20 segundos, mueva el cursor o siga en lo que estaba...'
 
 ## Apariencia basica
-smart_borders on
-smart_gaps off
+#smart_gaps inverse_outer
 titlebar_border_thickness 0
 titlebar_padding 4
 default_border pixel 0
+#gaps horizontal $gap_int
+#gaps vertical $gap_int
 #gaps inner $gap_int
-gaps top $gap_top
-gaps bottom $gap_int
-gaps left $gap_int
-gaps right $gap_int
+gaps outer $gap_int
 font $default_font
-popup_during_fullscreen smart
+#popup_during_fullscreen smart
 
 ## Confuracion de teclado y velocidad de escritura
 ## repeat_delay 300

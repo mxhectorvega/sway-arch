@@ -24,24 +24,23 @@
     "temperature", 
     "cpu", 
     "memory", 
-    "idle_inhibitor", 
-    "custom/grabar", 
     "custom/pacman",
+    "custom/grabar", 
     "custom/ayuda",
     "sway/mode"
     ],
     
     "modules-center": [
-    "sway/workspaces"
+    "clock"
     ],
     
     "modules-right": [
+    "idle_inhibitor", 
     "custom/wf-recorder", 
     "backlight",
     "custom/darkmode",
     "pulseaudio#mic", 
-    "pulseaudio", 
-    "clock", 
+    "pulseaudio",  
     "bluetooth", 
     "custom/portapapeles", 
     "tray", 
@@ -50,27 +49,6 @@
 
     "sway/mode": {
         "format": "{}"
-    },
-    "sway/workspaces": {
-        "disable-scroll": true,
-        "current-only": false,
-        "all-outputs": false,
-        "disable-markup": false,
-        "format": "{icon}",
-        "format-icons": {
-            "1": "🔘",
-            "2": "🔘",
-            "3": "🔘",
-            "4": "🔘",
-            "5": "🔘",
-            },
-        "persistent_workspaces": {
-            "1": [],
-            "2": [],
-            "3": [],
-            "4": [],
-            "5": [],
-            }
     },
     "sway/window": {
         "max-length": 20,
@@ -102,8 +80,7 @@
     "clock": {
         // "timezone": "America/Mexico_City",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": "{:🕦 %H:%M}",
-        "format-alt": "{:📅 %a, %d %b}"
+        "format": "{:%a, %d %B %H:%M}",
     },
      "backlight": {
         "device": "intel_backlight",
@@ -254,9 +231,30 @@
     "margin-right": 5, 
 
     "modules-center": [
-    "wlr/taskbar"
+    "sway/workspaces"
     ],
 
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "current-only": false,
+        "all-outputs": false,
+        "disable-markup": false,
+        "format": "{icon}",
+        "format-icons": {
+            "1": "🔘",
+            "2": "🔘",
+            "3": "🔘",
+            "4": "🔘",
+            "5": "🔘",
+            },
+        "persistent_workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": [],
+            }
+    },
         "wlr/taskbar": {
         "format": "{icon}",
         "tooltip-format": "{title}",
