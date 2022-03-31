@@ -209,8 +209,8 @@ bindsym $mod+Right focus right
 
 ## Mover ventanas flotantes con teclas H,J,K,L
 bindsym $mod+Shift+$left move left
-bindsym $mod+Shift+$down move down
-bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$up move down
+bindsym $mod+Shift+$down move up
 bindsym $mod+Shift+$right move right
 
 ## Mover ventanas flotantes  con teclas teclas de direccion
@@ -220,16 +220,16 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 ## Redimencionar con teclas H,J,K,L
-bindsym $mod+Ctrl+$left resize shrink width 5 px or 5 ppt
+bindsym $mod+Ctrl+$right resize shrink width 5 px or 5 ppt
 bindsym $mod+Ctrl+$down resize grow height 5 px or 5 ppt
 bindsym $mod+Ctrl+$up resize shrink height 5 px or 5 ppt
-bindsym $mod+Ctrl+$right resize grow width 5 px or 5 ppt
+bindsym $mod+Ctrl+$left resize grow width 5 px or 5 ppt
 
 ## Redimencionar ventanas flotates con teclas de direccion
-bindsym $mod+Ctrl+Left resize shrink width 5 px or 5 ppt
-bindsym $mod+Ctrl+Down resize grow height 5 px or 5 ppt
-bindsym $mod+Ctrl+Up resize shrink height 5 px or 5 ppt
-bindsym $mod+Ctrl+Right resize grow width 5 px or 5 ppt
+bindsym $mod+Ctrl+Right resize shrink width 5 px or 5 ppt
+bindsym $mod+Ctrl+Up resize grow height 5 px or 5 ppt
+bindsym $mod+Ctrl+Down resize shrink height 5 px or 5 ppt
+bindsym $mod+Ctrl+Left resize grow width 5 px or 5 ppt
 
 ## Puedes "dividir" el objeto actual de tu enfoque con
 ## $mod+b o $mod+v, es para divisiones horizontales y verticales
