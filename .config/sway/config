@@ -30,7 +30,8 @@ set $editor vim
 
 ## Delara tipo y tamaño de texto
 #set $default_font Terminus 8
-set $default_font Iosevka 10
+set $default_font SF Compact Display SemiBold 9
+set $font_notify "SF Compact Display Bold 9, SF Compact Display 9"
 
 ## Delara los espacios entre ventanas
 set $gap_ext 5
@@ -116,7 +117,7 @@ output * {
     scale_filter linear
     subpixel none
     render_bit_depth 8
-#    scale 1.5
+    scale 1.0
 }
 
 ## Configuracion de 2 monitores
@@ -378,7 +379,7 @@ exec wl-paste --watch cliphist store
 exec_always 'pkill mako; exec mako \
     --background-color "$transparent" \
     --margin "$gap_top" \
-    --font "$default_font" \
+    --font $font_notify \
     --border-size 0 \
     --width 360 \
     --height 150 \

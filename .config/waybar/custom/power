@@ -2,7 +2,7 @@
 
 loco=$(printf "Bloquear\nCerrar sesion\nApagar\nReiniciar\nSuspender\nHibernar\nSuspencion hibrida\nSuspender y luego hibernar" | wofi \
       --dmenu \
-      --width 200 \
+      --width 250 \
       --lines 8 \
       --prompt Powermenu)
 

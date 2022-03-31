@@ -11,7 +11,8 @@
 * {
     border: none;
     border-radius: 3;
-    font-family: Iosevka;
+    font-family: "SF Compact Display", "Font Awesome 5 Free";
+    font-weight: 600;
     font-size: 12px;
     min-height: 5px;
     min-width: 5px;
@@ -29,28 +30,41 @@ window#waybar.empty {
     background-color: transparent;
 }
 window#waybar.solo {
-    background-color: #FFFFFF;
+    background-color: rgba(0, 0, 0, 0.90);
 }
 
-#workspaces button {
+#workspaces button{
     background-color: rgba(0, 0, 0, 0.90);
     padding: 0 6 0 6px;
+    color: #dddddd;
     margin-right: 3;
 }
 
-#workspaces button.hover {
+#workspaces button.visible{
     background-color: rgba(0, 0, 0, 0.90);
     padding: 0 6 0 6px;
+    color: #dddddd;
+    margin-right: 3;
 }
 
-#workspaces button.focused {
+#workspaces button.focused{
     background-color: #5999bd;
     padding: 0 6 0 6px;
+    color: #ffffff;
+    margin-right: 3;
 }
 
-#workspaces button.urgent {
+#workspaces button.urgent{
     background-color: #5999bd;
     padding: 0 6 0 6px;
+    color: #dddddd;
+    margin-right: 3;
+}
+#workspaces button.persistent{
+    background-color: rgba(0, 0, 0, 0.90);
+    padding: 0 6 0 6px;
+    color: #dddddd;
+    margin-right: 3;
 }
 
 #mode {
@@ -84,8 +98,8 @@ window#waybar.solo {
 {
     background-color: rgba(0, 0, 0, 0.90);
     padding: 0 5 0 5px;
-    color: #ffffff;
     margin-right: 3;
+    color: #dddddd;
 }
 
 /* If workspaces is the leftmost module, omit left margin */
@@ -101,13 +115,13 @@ window#waybar.solo {
 @keyframes blink {
     to {
         background-color: #5999bd;;
-        color: #000000;
+        color: #dddddd;
     }
 }
 
 #battery.critical:not(.charging) {
     background-color: rgba(0, 0, 0, 0.90);
-    color: #ffffff;
+    color: #dddddd;
     animation-name: blink;
     animation-duration: 0.9s;
     animation-timing-function: linear;
@@ -139,7 +153,7 @@ window#waybar.solo {
 }
 
 #taskbar button {
-    background-color: rgba(0, 0, 0, 0.0);
+    background-color: rgba(255, 255, 255, 0.0);
     padding: 0 0 0 3px;
     margin-right: 0;
     min-height: 50px;
@@ -147,7 +161,7 @@ window#waybar.solo {
 }
 
 #taskbar button.maximized {
-    background-color: rgba(0, 0, 0, 0.0);
+    background-color: rgba(255, 255, 255, 0.0);
     padding: 0 0 0 3px;
     margin-right: 0;
     min-height: 50px;
@@ -155,7 +169,7 @@ window#waybar.solo {
 }
 
 #taskbar button.minimized {
-    background-color: rgba(0, 0, 0, 0.0);
+    background-color: rgba(255, 255, 255, 0.0);
     padding: 0 0 0 3px;
     margin-right: 0;
     min-height: 50px;
@@ -163,7 +177,7 @@ window#waybar.solo {
 }
 
 #taskbar button.active {
-    background-color: rgba(0, 0, 0, 0.0);
+    background-color: rgba(255, 255, 255, 0.0);
     padding: 0 0 0 3px;
     margin-right: 0;
     min-height: 50px;
@@ -171,7 +185,7 @@ window#waybar.solo {
 }
 
 #taskbar button.fullscreen {
-    background-color: rgba(0, 0, 0, 0.0);
+    background-color: rgba(255, 255, 255, 0.0);
     padding: 0 0 0 3px;
     margin-right: 0;
     min-height: 50px;

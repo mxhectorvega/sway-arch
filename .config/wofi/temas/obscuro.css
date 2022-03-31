@@ -14,8 +14,14 @@ window {
     background-color: rgba(0, 0, 0, 0.90);
 }
 
+* {
+    font-family: "SF Compact Display", "Font Awesome 5 Free";
+    font-weight: 600;
+    font-size: 12px;
+    color: #dddddd;
+}
+
 #input {
-    color: white;
     border-radius: 3;
     background-color: rgba(0, 0, 0, 0.90);
     font-size: 12;
@@ -34,11 +40,9 @@ window {
 
 #entry:selected {
     border-radius: 2;    
-    color: white;
     background-color: #5999bd;
 }
 
 #text {
     padding: 5px;
-    color: white;
 }

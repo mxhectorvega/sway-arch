@@ -2,8 +2,8 @@
 
 set $border #ffffffee
 set $border_inactive #ffffffee
-set $foreground #111111
-set $foreground_inactive #808080
+set $foreground #505050
+set $foreground_inactive #909090
 set $transparent #ffffffee
 
 # class

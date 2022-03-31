@@ -56,45 +56,45 @@
         "tooltip": false
     },
     "custom/menu":{ 
-    "format":"🐧", 
+    "format":"", 
     "on-click": "pkill -9 wofi ; wofi --no-actions --allow-images --show drun --width 400 --lines 6",
     "tooltip-format": "Bluethooth",
     "tooltip": true
     },
-"battery": {
+    "battery": {
         "states": {
             // "good": 95,
             "warning": 30,
             "critical": 10
         },
-        "format": "{icon} {capacity}%",
-        "format-charging": "🔌 {capacity}%",
-        "format-plugged": "🔌 {capacity}%",
+        "format": "{capacity}%  {icon}",
+        "format-charging": "{capacity}%  ",
+        "format-plugged": "{capacity}%  ",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
-        "format-icons": ["💔", "❤️", "❤️", "❤️", "❤️"]
+        "format-icons": ["", "", "", "", ""]
     },
     "battery#bat2": {
         "bat": "BAT2"
-    },  
+    },
     "clock": {
         // "timezone": "America/Mexico_City",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format": "{:%a, %d %B %H:%M}",
     },
-     "backlight": {
+    "backlight": {
         "device": "intel_backlight",
-        "format": "{icon} {percent}%",
+        "format": "{percent}%  {icon}",
         "on-scroll-down": "exec light -U 5",
         "on-scroll-up": "exec light -A 5 ",
-        "format-icons": "🌙",
+        "format-icons": ["",""],
         "tooltip-format": "Bluethooth"
     },
        "bluetooth": {
           "format": "{icon}",
           "format-icons": {
-          "enabled": "💙",
-          "disabled": "🖤" },
+          "enabled": "",
+          "disabled": "" },
           "on-click": "blueberry",
           "tooltip-format": "Bluethooth"
     },
@@ -102,122 +102,114 @@
         "icon-size": 14,
         "spacing": 5
     },
-   "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "📡 {ipaddr} {signalStrength}%",
-        //"format-wifi": "📡 {signalStrength}%",
-        "format-ethernet": "🥨 {ipaddr} Eth",
-        "tooltip-format": "🥨 {ifname} via {gwaddr}",
-        "format-linked": "🥨 {ifname} (No IP)",
-        "format-disconnected": "😵 desconectado",
-        "on-click": "kitty -e nmtui"
-      },
+    "network": {
+    "interface": "wlp2s0",
+    "format": "{ifname}",
+    "format-wifi": "{essid} ({signalStrength}%) ",
+    "format-ethernet": "{ifname} ",
+    "format-disconnected": "", //An empty format will hide the module.
+    "format-disconnected": "",
+    "tooltip-format": "{ifname}",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+    "tooltip-format-ethernet": "{ifname} ",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 50,
+    "on-click": "kitty -e nmtui"
+    },
     "pulseaudio": {
-        "format": "{icon} {volume}%",
-        "format-bluetooth": "🎧 {volume}%",
-        "format-muted": "🔇",
-        "format-icons": {
-          "headphone": "🎧",
-          "hands-free": "🎧",
-          "headset": "🎧",
-          "phone": "📞",
-          "portable": "📞",
-          "car": "📞🚘",
-       "pulseaudio": {
-        "format": "{icon} {volume}%",
-        "format-bluetooth": "🎧 {volume}%",
-        "format-muted": "🔇",
-        "format-icons": {
-          "headphone": "",
-          "hands-free": "",
-          "headset": "",
-          "phone": "📞",
-          "portable": "📞",
-          "car": "📞🚘",
-          "default": ["🔈","🔉","🔊"]
-           },
-        "scroll-step": 1,
-        "on-click": "pavucontrol"
-  },       "default": ["🔈","🔉","🔊"]
-           },
-        "scroll-step": 1,
-        "on-click": "pavucontrol"
-  },
+    "format": "{volume}%  {icon}",
+    "format-bluetooth": "{volume}% {icon}",
+    "format-muted": "",
+    "format-icons": {
+        "alsa_output.pci-0000_00_1f.3.analog-stereo": "",
+        "headphones": "",
+        "handsfree": "",
+        "headset": "",
+        "phone": "",
+        "portable": "",
+        "car": "",
+        "default": ["", ""]
+    },
+    "scroll-step": 1,
+    "on-click": "pavucontrol"
+    },
     "pulseaudio#mic": {
         "format": "{format_source}",
-        "format-source": "🎤",
-        "format-source-muted": "​🤐​",
+        "format-source": "",
+        "format-source-muted": "​",
         "tooltip-format": "Microfono",
         "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
-  },
+    },
     "memory": {
-        "format": "🐏 {}%"
-       },
+    "interval": 30,
+    "format": "{}%  ",
+    "max-length": 10,
+    "on-click": "kitty -e htop"
+    },
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
-            "activated": "⚡️",
-            "deactivated": "✨",
+            "activated": "",
+            "deactivated": "",
         "on-click": "kitty -e htop"
         }
       },
     "custom/portapapeles": {
-        "format": "📎",
+        "format": "",
         "on-click": "pkill -9 wofi ; cliphist list | wofi --no-actions --dmenu --width 600 --lines 8 --prompt Clipboard | cliphist decode | wl-copy",
         "on-click-right": "rm .cache/cliphist/db && exec notify-send -t 10000 -i $HOME/.config/user.png 'Clipboard' 'El historial del portapapeles se a borrado con exito.'",
-          "tooltip-format": "Bluethooth"
+        "tooltip-format": "Bluethooth"
         },      
     "temperature": {
-        //"thermal-zone": 2,
+        // "thermal-zone": 2,
         // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "critical-threshold": 80,
-        // "format-critical": "{icon} {temperatureC}°C",
-        "format": "{icon} {temperatureC}°C",
-        "format-icons": ["🔥"],
+        // "critical-threshold": 80,
+        // "format-critical": "{temperatureC}°C  ",
+        "format": "{temperatureC}°C  ",
         "on-click": "kitty -e htop"
         },
-     "custom/grabar":{
-       "format": "{icon}",
-       "format-icons": "🔴",
-       "on-click": "wf-recorder -a -f $(xdg-user-dir VIDEOS)/$(date +'screencast_%Y-%m-%d_%H-%M-%S.mp4' ; exec notify-send -t 10000 -i $HOME/.config/user.png 'Screenrecorder' 'Se ha iniciado screenrecorder, presione click derecho sobre el mismo boton para cancelar')",
-        "on-click-right": "killall --signal SIGINT wf-recorder ; exec notify-send -t 10000 -i $HOME/.config/user.png 'Screenrecorder' 'La grabacion ha finalizado y se ha guardado en el directorio Videos'",
+    "custom/grabar":{
+    "format": "{icon}",
+    "format-icons": "",
+    "on-click": "wf-recorder -a -f $(xdg-user-dir VIDEOS)/$(date +'screencast_%Y-%m-%d_%H-%M-%S.mp4' ; exec notify-send -t 10000 -i $HOME/.config/user.png 'Screenrecorder' 'Se ha iniciado screenrecorder, presione click derecho sobre el mismo boton para cancelar')",
+    "on-click-right": "killall --signal SIGINT wf-recorder ; exec notify-send -t 10000 -i $HOME/.config/user.png 'Screenrecorder' 'La grabacion ha finalizado y se ha guardado en el directorio Videos'",
     },
-      "custom/layout":{ 
-         "format":"📐", 
-         "on-click": "swaymsg floating toggle",
-         "on-click-right": "swaymsg layout toggle split"
-         },        
-      "custom/pacman": {
-         "format": "📦 {}",
-         "interval": 3600,                     // every hour
-         "exec": "checkupdates | wc -l",       // # of updates
-         "exec-if": "exit 0",                  // always run; consider advanced run conditions
-         "on-click": "kitty -e sudo pacman -Syyu; pkill -SIGRTMIN+8 waybar", // update system
-         "signal": 8
-         },
-      "custom/power":{ 
-         "format":"🔐", 
-         "on-click": "pkill -9 wofi ; sh $HOME/.config/waybar/custom/power",
-         "tooltip-format": "Bluethooth"
-         },
-      "cpu": {
-         "format": "🐌 {usage}%",
-         "on-click": "kitty -e htop"
+    "custom/layout":{ 
+        "format":"📐", 
+        "on-click": "swaymsg floating toggle",
+        "on-click-right": "swaymsg layout toggle split"
+        },        
+    "custom/pacman": {
+        "format": "{}  ",
+        "interval": 3600,                     // every hour
+        "exec": "checkupdates | wc -l",       // # of updates
+        "exec-if": "exit 0",                  // always run; consider advanced run conditions
+        "on-click": "kitty -e sudo pacman -Syyu; pkill -SIGRTMIN+8 waybar", // update system
+        "signal": 8
+        },
+    "custom/power":{ 
+        "format":"", 
+        "on-click": "pkill -9 wofi ; sh $HOME/.config/waybar/custom/power",
+        "tooltip-format": "Bluethooth"
+        },
+    "cpu": {
+        "format": "{usage}%  ",
+        "on-click": "kitty -e htop"
     },
-      "custom/darkmode":{ 
-         "format": "{icon}",
-         "format-icons": "🌗",
-         "on-click": "sh $HOME/.config/waybar/custom/modo-obscuro",
-         "on-click-right": "sh $HOME/.config/waybar/custom/modo-claro",
-         "tooltip-format": "Click normal modo obscuro",
-         "tooltip": "true"
+    "custom/darkmode":{ 
+        "format": "{icon}",
+        "format-icons": "",
+        "on-click": "sh $HOME/.config/waybar/custom/modo-obscuro",
+        "on-click-right": "sh $HOME/.config/waybar/custom/modo-claro",
+        "tooltip-format": "Click normal modo obscuro",
+        "tooltip": "true"
     },
-         "custom/ayuda":{ 
-         "format": "{icon}",
-         "format-icons": "📘",
-         "on-click": "zathura $HOME/.config/sway-mxhectorvega.pdf &",
-         "tooltip-format": "Archivo de ayuda",
-         "tooltip": "true"
+        "custom/ayuda":{ 
+        "format": "{icon}",
+        "format-icons": "",
+        "on-click": "zathura $HOME/.config/sway-mxhectorvega.pdf &",
+        "tooltip-format": "Archivo de ayuda",
+        "tooltip": "true"
     }    
 },
 
@@ -238,22 +230,24 @@
         "disable-scroll": true,
         "current-only": false,
         "all-outputs": false,
-        "disable-markup": false,
+        "disable-markup": false, 
         "format": "{icon}",
         "format-icons": {
-            "1": "🔘",
-            "2": "🔘",
-            "3": "🔘",
-            "4": "🔘",
-            "5": "🔘",
-            },
+        "1": "",
+        "2": "",
+        "3": "",
+        "4": "",
+        "5": "",
+        "focused": "",
+        "default": ""
+    },
         "persistent_workspaces": {
-            "1": [],
-            "2": [],
-            "3": [],
-            "4": [],
-            "5": [],
-            }
+        "1": [],
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": [],
+        }
     },
         "wlr/taskbar": {
         "format": "{icon}",

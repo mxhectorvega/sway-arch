@@ -11,7 +11,8 @@
 * {
     border: none;
     border-radius: 3;
-    font-family: Iosevka;
+    font-family: "SF Compact Display", "Font Awesome 5 Free";
+    font-weight: 600;
     font-size: 12px;
     min-height: 5px;
     min-width: 5px;
@@ -29,28 +30,41 @@ window#waybar.empty {
     background-color: transparent;
 }
 window#waybar.solo {
-    background-color: #FFFFFF;
+    background-color: rgba(255, 255, 255, 0.90);
 }
 
-#workspaces button {
+#workspaces button{
     background-color: rgba(255, 255, 255, 0.90);
     padding: 0 6 0 6px;
+    color: #505050;
     margin-right: 3;
 }
 
-#workspaces button.hover {
+#workspaces button.visible{
     background-color: rgba(255, 255, 255, 0.90);
     padding: 0 6 0 6px;
+    color: #505050;
+    margin-right: 3;
 }
 
-#workspaces button.focused {
+#workspaces button.focused{
     background-color: #5999bd;
     padding: 0 6 0 6px;
+    color: #ffffff;
+    margin-right: 3;
 }
 
-#workspaces button.urgent {
+#workspaces button.urgent{
     background-color: #5999bd;
     padding: 0 6 0 6px;
+    color: #505050;
+    margin-right: 3;
+}
+#workspaces button.persistent{
+    background-color: rgba(255, 255, 255, 0.90);
+    padding: 0 6 0 6px;
+    color: #505050;
+    margin-right: 3;
 }
 
 #mode {
@@ -84,8 +98,8 @@ window#waybar.solo {
 {
     background-color: rgba(255, 255, 255, 0.90);
     padding: 0 5 0 5px;
-    color: #000000;
     margin-right: 3;
+    color: #505050;
 }
 
 /* If workspaces is the leftmost module, omit left margin */
@@ -101,13 +115,13 @@ window#waybar.solo {
 @keyframes blink {
     to {
         background-color: #5999bd;;
-        color: #000000;
+        color: #505050;
     }
 }
 
 #battery.critical:not(.charging) {
     background-color: rgba(255, 255, 255, 0.90);
-    color: #111111;
+    color: #505050;
     animation-name: blink;
     animation-duration: 0.9s;
     animation-timing-function: linear;
