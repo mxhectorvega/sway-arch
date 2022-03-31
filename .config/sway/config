@@ -118,6 +118,8 @@ output * {
     subpixel none
     render_bit_depth 8
     scale 1.0
+## En caso de usar maquina virtual, coloque aqui la resolucion ejemplo: mode 800x600
+#    mode 1366x768    
 }
 
 ## Configuracion de 2 monitores
