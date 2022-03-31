@@ -1,10 +1,10 @@
 ## Tema claro para sway
 
-set $border #ffffffee
-set $border_inactive #ffffffee
+set $border #ffffffdd
+set $border_inactive #ffffffdd
 set $foreground #505050
 set $foreground_inactive #909090
-set $transparent #ffffffee
+set $transparent #ffffffdd
 
 # class
 #   border
