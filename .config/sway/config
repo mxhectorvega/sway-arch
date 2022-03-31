@@ -149,12 +149,12 @@ bindsym $mod+$alt+Right output - transform 90
 
 ## Transparencia
 for_window {
-[app_id="Alacritty"]    opacity 0.90
-[app_id="foot"]         opacity 0.90
-[app_id="mousepad"]     opacity 0.90
-[app_id="geany"]        opacity 0.90
-[app_id="thunar"]       opacity 0.90
-[app_id="pcmanfm"]      opacity 0.90
+[app_id="Alacritty"]    opacity 0.80
+[app_id="foot"]         opacity 0.80
+[app_id="mousepad"]     opacity 0.80
+[app_id="geany"]        opacity 0.80
+[app_id="thunar"]       opacity 0.80
+[app_id="pcmanfm"]      opacity 0.80
 [app_id="qvidcap"]      opacity 1.0
 }
 
