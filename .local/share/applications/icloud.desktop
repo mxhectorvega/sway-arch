@@ -1,0 +1,8 @@
+[Desktop Entry]
+# VERSION=3.38.1
+Name=icloud
+Comment=icloud
+Exec=/usr/lib/brave-bin/brave --password-store=basic --app=https://icloud.com/finder/
+Icon=finder
+Type=Application
+StartupWMClass=icloud

@@ -1,0 +1,8 @@
+[Desktop Entry]
+# VERSION=3.38.1
+Name=google
+Comment=google
+Exec=/usr/lib/brave-bin/brave --password-store=basic --app=https://google.com/
+Icon=google
+Type=Application
+StartupWMClass=google

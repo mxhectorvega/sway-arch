@@ -1,0 +1,8 @@
+[Desktop Entry]
+# VERSION=3.38.1
+Name=twitter
+Comment=twitter
+Exec=/usr/lib/brave-bin/brave --password-store=basic --app=https://twitter.com/
+Icon=twitter
+Type=Application
+StartupWMClass=twitter

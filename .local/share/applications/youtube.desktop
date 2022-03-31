@@ -1,0 +1,8 @@
+[Desktop Entry]
+# VERSION=3.38.1
+Name=youtube
+Comment=youtube
+Exec=/usr/lib/brave-bin/brave --password-store=basic --app=https://youtube.com/
+Icon=youtube
+Type=Application
+StartupWMClass=youtube
