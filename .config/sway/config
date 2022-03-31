@@ -348,7 +348,7 @@ bindsym --release Print exec \
 
 ## Captura de pantalla fullscreen + portapapeles.
 bindsym --release Ctrl+Print exec \
-    grim - | wl-copy && exec notify-send -t 10000 -i $HOME/.config/user.png 'Clipoard' 'La captura de pantalla se ha guardado en el directorio Imagenes'
+    grim - | wl-copy && exec notify-send -t 10000 -i $HOME/.config/user.png 'Clipoard' 'La captura de pantalla se ha guardado en el portapapeles'
 
 ## Seleccion (drag to select)
 bindsym --release Shift+Print exec \
@@ -356,7 +356,7 @@ bindsym --release Shift+Print exec \
 
 ## Seleccion (drag to select) + portapapeles.
 bindsym --release Ctrl+Shift+Print exec \
-    grim -g "$(slurp)" - | wl-copy && exec notify-send -t 10000 -i $HOME/.config/user.png 'Clipoard' 'La captura de pantalla se ha guardado en el directorio Imagenes'
+    grim -g "$(slurp)" - | wl-copy && exec notify-send -t 10000 -i $HOME/.config/user.png 'Clipoard' 'La captura de pantalla se ha guardado en el portapapeles'
 
 ## Autoarranque
 
