@@ -50,7 +50,7 @@ window#waybar.solo {
 #workspaces button.focused{
     background-color: #5999bd;
     padding: 0 6 0 6px;
-    color: #ffffff;
+    color: #505050;
     margin-right: 3;
 }
 
@@ -133,6 +133,7 @@ window#waybar.solo {
     background-color: rgba(255, 255, 255, 0.80);
     padding: 0 5 0 5px;
     margin-right: 0;
+    color: #505050;
 }
 
 #tray > .passive {

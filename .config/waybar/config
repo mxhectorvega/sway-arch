@@ -90,7 +90,7 @@
         "format-icons": ["",""],
         "tooltip-format": "Bluethooth"
     },
-       "bluetooth": {
+    "bluetooth": {
           "format": "{icon}",
           "format-icons": {
           "enabled": "",
