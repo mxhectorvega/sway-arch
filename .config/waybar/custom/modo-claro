@@ -18,5 +18,8 @@ sed -i "s/Orchis-dark/Orchis-light/g" $HOME/.gtkrc-2.0
 sed -i "s/Papirus-Dark/Papirus-Light/g" $HOME/.gtkrc-2.0
 sed -i "s/Orchis-dark/Orchis-light/g" $HOME/.config/gtk-3.0/settings.ini
 sed -i "s/Papirus-Dark/Papirus-Light/g" $HOME/.config/gtk-3.0/settings.ini
+sed -i "s/color=000000 dddddd/color=ffffff 505050/g" $HOME/.config/foot/foot.ini
+sed -i "s/foreground=dddddd/foreground=505050/g" $HOME/.config/foot/foot.ini
+sed -i "s/background=000000/background=ffffff/g" $HOME/.config/foot/foot.ini
 
 swaymsg reload

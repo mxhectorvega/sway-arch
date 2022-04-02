@@ -207,7 +207,7 @@
         "custom/ayuda":{ 
         "format": "{icon}",
         "format-icons": "",
-        "on-click": "zathura $HOME/.config/sway-mxhectorvega.pdf &",
+        "on-click": "zathura $HOME/.config/ayuda_sway_mxhectorvega.pdf &",
         "tooltip-format": "Archivo de ayuda",
         "tooltip": "true"
     }    

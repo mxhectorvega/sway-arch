@@ -5,6 +5,8 @@ set $border_inactive #ffffffff
 set $foreground #505050
 set $foreground_inactive #909090
 set $transparent #ffffffff
+set $foreground_urgent #505050
+set $urgent #5999bd
 
 # class
 #   border
@@ -13,24 +15,45 @@ set $transparent #ffffffff
 #   indicator
 #   child_border
 
+
 client.focused \
   $border \
   $border \
   $foreground \
   $border \
   $border
-
-client.unfocused \
-  $border_inactive \
-  $border_inactive \
-  $foreground_inactive \
-  $border_inactive \
-  $border_inactive
   
 client.focused_inactive \
-  $border_inactive \
-  $border_inactive \
+  $border \
+  $border \
+  $foreground \
+  $border \
+  $border
+
+client.focused_tab_title \
+  $border \
+  $border \
+  $foreground \
+  $border \
+  $border
+
+client.placeholder \
+  $border \
+  $border \
   $foreground_inactive \
-  $border_inactive \
-  $border_inactive
-  
+  $border \
+  $border
+
+client.unfocused \
+  $border \
+  $border \
+  $foreground_inactive \
+  $border \
+  $border
+
+client.urgent \
+  $border \
+  $urgent \
+  $foreground_urgent \
+  $border \
+  $border
