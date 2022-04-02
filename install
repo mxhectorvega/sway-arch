@@ -33,7 +33,7 @@ sudo pacman -S git libsixel make gcc htop vim neofetch handbrake blueberry netwo
 
 # SwayWM
 sudo pacman -S rtkit qt5-wayland xorg-xwayland kanshi swayidle wofi mako waybar grim slurp wl-clipboard wf-recorder gammastep swappy brightnessctl --noconfirm --needed
-sudo pacman -S xdg-desktop-portal xdg-desktop-portal-wlr --noconfirm --needed
+sudo pacman -S xdg-desktop-portal xdg-desktop-portal-gtk xdg-desktop-portal-wlr --noconfirm --needed
 sudo pacman -S wireplumber --noconfirm --needed
 
 # Pipewire utilities

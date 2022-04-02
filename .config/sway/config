@@ -23,7 +23,7 @@ set $theme_sway obscuro
 set $filemanager thunar
 
 ## Delara la terminal por defecto
-set $terminal kitty
+set $terminal foot
 
 ## Delara el editor de texto en terminal por defecto
 set $editor vim

@@ -80,7 +80,7 @@
     "clock": {
         // "timezone": "America/Mexico_City",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": "{:%a, %d %B %H:%M}",
+        "format": "{:%a, %d de %B %H:%M}",
     },
     "backlight": {
         "device": "intel_backlight",
@@ -114,7 +114,7 @@
     "tooltip-format-ethernet": "{ifname} ",
     "tooltip-format-disconnected": "Disconnected",
     "max-length": 50,
-    "on-click": "kitty -e nmtui"
+    "on-click": "foot -e nmtui"
     },
     "pulseaudio": {
     "format": "{volume}%  {icon}",
@@ -144,14 +144,14 @@
     "interval": 30,
     "format": "{}%  ",
     "max-length": 10,
-    "on-click": "kitty -e htop"
+    "on-click": "foot -e htop"
     },
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
             "activated": "",
             "deactivated": "",
-        "on-click": "kitty -e htop"
+        "on-click": "foot -e htop"
         }
       },
     "custom/portapapeles": {
@@ -166,7 +166,7 @@
         // "critical-threshold": 80,
         // "format-critical": "{temperatureC}°C  ",
         "format": "{temperatureC}°C  ",
-        "on-click": "kitty -e htop"
+        "on-click": "foot -e htop"
         },
     "custom/grabar":{
     "format": "{icon}",
@@ -184,7 +184,7 @@
         "interval": 3600,                     // every hour
         "exec": "checkupdates | wc -l",       // # of updates
         "exec-if": "exit 0",                  // always run; consider advanced run conditions
-        "on-click": "kitty -e sudo pacman -Syyu; pkill -SIGRTMIN+8 waybar", // update system
+        "on-click": "foot -e sudo pacman -Syyu; pkill -SIGRTMIN+8 waybar", // update system
         "signal": 8
         },
     "custom/power":{ 
@@ -194,7 +194,7 @@
         },
     "cpu": {
         "format": "{usage}%  ",
-        "on-click": "kitty -e htop"
+        "on-click": "foot -e htop"
     },
     "custom/darkmode":{ 
         "format": "{icon}",
