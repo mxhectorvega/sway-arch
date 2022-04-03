@@ -27,9 +27,32 @@ sleep 1
 
 # Actualizacion del SO
 sudo pacman -Syu --noconfirm
+sudo pacman -S git --noconfirm
+
+# Dotfiles Fedora en Arch
+clear
+printf '\n \nEscribe la contraseña para reemplazar archivo .bashrc...\n'
+sudo rm -rf "$HOME"/.bashrc
+
+clear
+printf '\n \nClonando repositorios mxhectorvega...\n'
+sleep 1
+
+git clone https://github.com/mxhectorvega/sway-arch
+git clone https://github.com/mxhectorvega/tipografias
+git clone https://github.com/mxhectorvega/temas
+
+cp -rf sway-arch/.bashrc "$HOME"
+cp -rf sway-arch/.vimrc "$HOME"
+cp -rf sway-arch/.config/ "$HOME"
+cp -rf sway-arch/.local/ "$HOME"
+mkdir .local/share/fonts/
+cp -rf tipografias/* "$HOME"/.local/share/fonts/
+cp -rf temas/.{icons,themes}/ "$HOME"
+rm -rf "$HOME"/{sway-arch,tipografias,temas}/
 
 # Software adicional
-sudo pacman -S git make gcc htop vim neofetch blueberry network-manager-applet pacman-contrib gnome-disk-utility python-pillowfight imagemagick man bc polkit-gnome lxappearance telegram-desktop imv mpv zathura-pdf-mupdf geany geany-plugins xdg-user-dirs gvfs --noconfirm --needed
+sudo pacman -S git foot make gcc htop vim neofetch blueberry network-manager-applet pacman-contrib gnome-disk-utility python-pillowfight imagemagick man bc polkit-gnome lxappearance telegram-desktop imv mpv zathura-pdf-mupdf geany geany-plugins xdg-user-dirs gvfs --noconfirm --needed
 
 # SwayWM
 sudo pacman -S rtkit qt5-wayland xorg-xwayland kanshi swayidle wofi mako waybar grim slurp wl-clipboard wf-recorder gammastep swappy brightnessctl --noconfirm --needed
@@ -58,28 +81,6 @@ clear
 printf '\n \nInstalando el gestor de paquetes Paru...\n'
 sleep 1
 cd ; git clone https://aur.archlinux.org/paru-bin.git ; cd paru-bin ; makepkg -si --noconfirm ; cd ; rm -rf paru-bin
-
-# Dotfiles Fedora en Arch
-clear
-printf '\n \nEscribe la contraseña para reemplazar archivo .bashrc...\n'
-sudo rm -rf "$HOME"/.bashrc
-
-clear
-printf '\n \nClonando repositorios mxhectorvega...\n'
-sleep 1
-
-git clone https://github.com/mxhectorvega/sway-arch
-git clone https://github.com/mxhectorvega/tipografias
-git clone https://github.com/mxhectorvega/temas
-
-cp -rf sway-arch/.bashrc "$HOME"
-cp -rf sway-arch/.vimrc "$HOME"
-cp -rf sway-arch/.config/ "$HOME"
-cp -rf sway-arch/.local/ "$HOME"
-mkdir .local/share/fonts/
-cp -rf tipografias/* "$HOME"/.local/share/fonts/
-cp -rf temas/.{icons,themes}/ "$HOME"
-rm -rf "$HOME"/{sway-arch,tipografias,temas}/
 
 sudo systemctl enable lightdm
 sudo systemctl enable bluetooth.service
