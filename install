@@ -44,6 +44,7 @@ sudo pacman -S thunar thunar-archive-plugin thunar-volman thunar-archive-plugin 
 
 # Fuentes basicas
 sudo pacman -S ttf-{dejavu,hack,roboto,liberation} terminus-font wqy-microhei bdf-unifont unicode-character-database --noconfirm --needed
+sudo pacman -S noto-fonts-cjk --noconfirm
 
 # Display manager (pantalla de inicio de sesion)
 sudo pacman -S lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings --noconfirm
@@ -61,24 +62,27 @@ cd ; git clone https://aur.archlinux.org/paru-bin.git ; cd paru-bin ; makepkg -s
 # Dotfiles Fedora en Arch
 clear
 printf '\n \nEscribe la contraseña para reemplazar archivo .bashrc...\n'
-mkdir "$HOME"/.config
-mkdir "$HOME"/.local
-mkdir "$HOME"/.local/bin
-mkdir "$HOME"/.local/share
-mkdir "$HOME"/.local/share/fonts
 sudo rm -rf "$HOME"/.bashrc
 
 clear
 printf '\n \nClonando repositorios mxhectorvega...\n'
 sleep 1
-git clone https://github.com/mxhectorvega/sway-arch /tmp/sway-arch
-git clone https://github.com/mxhectorvega/tipografias  /tmp/tipografias
-git clone https://github.com/mxhectorvega/temas /tmp/temas
-cp -rp /tmp/temas/.* "$HOME"
-cp -rp /tmp/sway-arch/.* "$HOME"
-cp -rp /tmp/tipografias/.* "$HOME"/.local/share/fonts
+
+git clone https://github.com/mxhectorvega/sway-arch
+git clone https://github.com/mxhectorvega/tipografias
+git clone https://github.com/mxhectorvega/temas
+
+cp -rf sway-arch/.bashrc "$HOME"
+cp -rf sway-arch/.vimrc "$HOME"
+cp -rf sway-arch/.config/ "$HOME"
+cp -rf sway-arch/.local/ "$HOME"
+mkdir .local/share/fonts/
+cp -rf tipografias/* "$HOME"/.local/share/fonts/
+cp -rf temas/.{icons,themes}/ "$HOME"
+rm -rf "$HOME"/{,sway-arch,tipografias,temas}/
+
 sudo systemctl enable lightdm
-sudo systemctl enable bluetooth.service                                                     
+sudo systemctl enable bluetooth.service
 sudo systemctl start bluetooth.service
 
 # Todo el SO en español
@@ -114,9 +118,8 @@ clear
 printf '\n \nInstalando gestor de portapapeles para Wayland desde AUR'
 sleep 1
 paru -S cliphist --noconfirm
-paru -S ranger-sixel --noconfirm
-paru -S cliphist --noconfirm
 paru -S libsixel  --noconfirm
+paru -S ranger-sixel --noconfirm
 
 # Creando directorios de usuario
 clear
