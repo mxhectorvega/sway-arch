@@ -85,8 +85,8 @@
     "backlight": {
         "device": "intel_backlight",
         "format": "{percent}%  {icon}",
-        "on-scroll-down": "exec light -U 5",
-        "on-scroll-up": "exec light -A 5 ",
+        "on-scroll-down": "exec brightnessctl -m set 5%-",
+        "on-scroll-up": "exec brightnessctl -m set +5%",
         "format-icons": ["",""],
         "tooltip-format": "Bluethooth"
     },
