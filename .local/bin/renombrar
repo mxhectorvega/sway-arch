@@ -1,0 +1,15 @@
+#!/bin/sh
+
+start="2063"
+
+for f in *.jpg; do
+    mv -- "$f" "${start%.jpg}.jpg"
+    start=$((start+1))
+done
+
+
+for f in *.png; do
+    mv -- "$f" "${start%.png}.png"
+    start=$((start+1))
+done
+
