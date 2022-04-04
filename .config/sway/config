@@ -79,7 +79,7 @@ font $default_font
 
 ## Confuracion de teclado y velocidad de escritura
 ## repeat_delay 300
-input * {
+input type:keyboard {
     xkb_layout latam
     xkb_numlock enabled
 }
