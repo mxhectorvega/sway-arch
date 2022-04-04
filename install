@@ -52,7 +52,7 @@ cp -rf temas/.{icons,themes}/ "$HOME"
 rm -rf "$HOME"/{sway-arch,tipografias,temas}/
 
 # Software adicional
-sudo pacman -S git foot make gcc htop vim neofetch blueberry network-manager-applet pacman-contrib gnome-disk-utility python-pillowfight imagemagick man bc polkit-gnome lxappearance telegram-desktop imv mpv zathura-pdf-mupdf geany geany-plugins xdg-user-dirs gvfs --noconfirm --needed
+sudo pacman -S git foot make gcc htop vim blueberry network-manager-applet pacman-contrib gnome-disk-utility python-pillowfight imagemagick man bc polkit-gnome lxappearance telegram-desktop imv mpv zathura-pdf-mupdf geany geany-plugins xdg-user-dirs gvfs --noconfirm --needed
 
 # SwayWM
 sudo pacman -S rtkit qt5-wayland xorg-xwayland kanshi swayidle wofi mako waybar grim slurp wl-clipboard wf-recorder gammastep swappy brightnessctl --noconfirm --needed
@@ -66,8 +66,7 @@ sudo pacman -S wireplumber --noconfirm --needed
 sudo pacman -S thunar thunar-archive-plugin thunar-volman thunar-archive-plugin tumbler ffmpegthumbnailer xarchiver zip unzip unrar unarj p7zip lzop lzip lrzip lha cpio arj --noconfirm --needed
 
 # Fuentes basicas
-sudo pacman -S ttf-{dejavu,hack,roboto,liberation} terminus-font wqy-microhei bdf-unifont unicode-character-database --noconfirm --needed
-sudo pacman -S noto-fonts-cjk --noconfirm
+sudo pacman -S ttf-{dejavu,hack,roboto,liberation} terminus-font wqy-microhei bdf-unifont unicode-character-database noto-fonts noto-fonts-cjk--noconfirm --needed
 
 # Display manager (pantalla de inicio de sesion)
 sudo pacman -S lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings --noconfirm
