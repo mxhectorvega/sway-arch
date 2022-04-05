@@ -1,0 +1,8 @@
+[Desktop Entry]
+# VERSION=3.38.1
+Name=netflix
+Comment=netflix
+Exec=/usr/lib/brave-bin/brave --password-store=basic --app=https://netflix.com/
+Icon=netflix
+Type=Application
+StartupWMClass=netflix
