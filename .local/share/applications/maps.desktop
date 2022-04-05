@@ -1,0 +1,8 @@
+[Desktop Entry]
+# VERSION=3.38.1
+Name=maps
+Comment=maps
+Exec=/usr/lib/brave-bin/brave --password-store=basic --app=https://google.com/maps/
+Icon=maps
+Type=Application
+StartupWMClass=maps
