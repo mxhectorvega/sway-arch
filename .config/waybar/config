@@ -80,7 +80,7 @@
     "clock": {
         // "timezone": "America/Mexico_City",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": "{:%a ,  %d  de  %B   %H:%M}",
+        "format": "{:%a,  %d  de  %B   %H:%M}",
     },
     "backlight": {
         "device": "intel_backlight",
