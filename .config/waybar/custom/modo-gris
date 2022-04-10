@@ -11,7 +11,7 @@ cp $HOME/.config/wofi/temas/gris.css $HOME/.config/wofi/style.css
 cp $HOME/.config/waybar/temas/gris.css $HOME/.config/waybar/style.css
 
 sed -i "s/-light/-dark/g" $HOME/.config/sway/config
-sed -i "s/-Light/-Dark/g" $HOME/.config/sway/config
+sed -i "s/-Light/-dark/g" $HOME/.config/sway/config
 
 sed -i "s/claro/gris/g" $HOME/.config/sway/config
 sed -i "s/obscuro/gris/g" $HOME/.config/sway/config
@@ -20,9 +20,9 @@ sed -i "s/claro/gris/g" $HOME/.config/kitty/kitty.conf
 sed -i "s/obscuro/gris/g" $HOME/.config/kitty/kitty.conf
 
 sed -i "s/-light/-dark/g" $HOME/.gtkrc-2.0
-sed -i "s/-Light/-Dark/g" $HOME/.gtkrc-2.0
+sed -i "s/-Light/-dark/g" $HOME/.gtkrc-2.0
 sed -i "s/-light/-dark/g" $HOME/.config/gtk-3.0/settings.ini
-sed -i "s/-Light/-Dark/g" $HOME/.config/gtk-3.0/settings.ini
+sed -i "s/-Light/-dark/g" $HOME/.config/gtk-3.0/settings.ini
 
 sed -i "s/color=ffffff 505050/color=000000 dddddd/g" $HOME/.config/foot/foot.ini
 sed -i "s/foreground=505050/foreground=dddddd/g" $HOME/.config/foot/foot.ini
