@@ -119,7 +119,7 @@
     },
     "pulseaudio": {
     "format": "{volume}%  {icon}",
-    "format-bluetooth": "{volume}% {icon}",
+    "format-bluetooth": "{volume}%  {icon}",
     "format-muted": "",
     "format-icons": {
         "alsa_output.pci-0000_00_1f.3.analog-stereo": "",
@@ -202,7 +202,6 @@
         "format-icons": "",
         "on-click": "sh $HOME/.config/waybar/custom/modo-obscuro",
         "on-click-right": "sh $HOME/.config/waybar/custom/modo-claro",
-        "on-click-middle": "sh $HOME/.config/waybar/custom/modo-gris",
         "tooltip-format": "Click normal modo obscuro",
         "tooltip": "true"
     },

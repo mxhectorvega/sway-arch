@@ -17,7 +17,7 @@ set $desktop-wall $HOME/.config/wall.*
 ## Declarar temas e iconos
 set $theme_gtk Colloid-dark-compact
 set $theme_icons Colloid-dark
-set $theme_sway gris
+set $theme_sway obscuro
 
 
 ## Declarar teclados, mismos que se podra cambiar con
@@ -163,7 +163,7 @@ for_window {
 }
 
 ## Configuracion de temas y fuentes (no tocar, la informacion es tomada de 
-## las primeras lineas en donde degris lo temas manualmente)
+## las primeras lineas en donde deobscuro lo temas manualmente)
 set $gnome-schema org.gnome.desktop.interface
 exec_always {
     gsettings set $gnome-schema gtk-theme '$theme_gtk'
@@ -321,6 +321,9 @@ for_window {
 bindsym XF86AudioLowerVolume  exec pactl set-sink-volume @DEFAULT_SINK@ -1%
 bindsym XF86AudioRaiseVolume  exec pactl set-sink-volume @DEFAULT_SINK@ +1%
 bindsym XF86AudioMute         exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+## Cambiar de distribucion de teclado alterna
+bindsym $mod+Ctrl+space input 1:1:AT_Translated_Set_2_keyboard xkb_switch_layout next
 
 ## Controles de brillo
 bindsym XF86MonBrightnessUp exec brightnessctl -m set +5%

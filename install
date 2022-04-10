@@ -42,6 +42,7 @@ git clone https://github.com/mxhectorvega/sway-arch
 git clone https://github.com/mxhectorvega/tipografias
 git clone https://github.com/mxhectorvega/temas
 
+cp -rf sway-arch/.gtkrc-2.0 "$HOME"
 cp -rf sway-arch/.bashrc "$HOME"
 cp -rf sway-arch/.vimrc "$HOME"
 cp -rf sway-arch/.config/ "$HOME"
