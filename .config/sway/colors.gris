@@ -1,0 +1,59 @@
+## Tema claro para sway
+
+set $border #242424ff
+set $border_inactive #242424ff
+set $foreground #dddddd
+set $foreground_inactive #505050
+set $transparent #242424cd
+set $foreground_urgent #ffffff
+set $urgent #5999bd
+
+# class
+#   border
+#   background
+#   text
+#   indicator
+#   child_border
+
+
+client.focused \
+  $border \
+  $border \
+  $foreground \
+  $border \
+  $border
+  
+client.focused_inactive \
+  $border \
+  $border \
+  $foreground \
+  $border \
+  $border
+
+client.focused_tab_title \
+  $border \
+  $border \
+  $foreground \
+  $border \
+  $border
+
+client.placeholder \
+  $border \
+  $border \
+  $foreground_inactive \
+  $border \
+  $border
+
+client.unfocused \
+  $border \
+  $border \
+  $foreground_inactive \
+  $border \
+  $border
+
+client.urgent \
+  $border \
+  $urgent \
+  $foreground_urgent \
+  $border \
+  $border

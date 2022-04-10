@@ -15,9 +15,15 @@ set $block-wall $HOME/.config/wall.*
 set $desktop-wall $HOME/.config/wall.*
 
 ## Declarar temas e iconos
-set $theme_gtk Orchis-dark-compact
+set $theme_gtk Colloid-dark-compact
 set $theme_icons Papirus-Dark
 set $theme_sway obscuro
+
+
+## Declarar teclados, mismos que se podra cambiar con
+## clic derecho o izquierdo para alternar entre ambos.
+set $teclado1 latam
+set $teclado2 es
 
 ## Declara gesror de archivos GUI
 set $filemanager thunar
@@ -80,7 +86,7 @@ font $default_font
 ## Confuracion de teclado y velocidad de escritura
 ## repeat_delay 300
 input type:keyboard {
-    xkb_layout latam
+    xkb_layout $teclado1,$teclado2
     xkb_numlock enabled
 }
 
@@ -149,10 +155,10 @@ bindsym $mod+$alt+Right output - transform 90
 
 ## Transparencia
 for_window {
-[app_id="mousepad"]     opacity 0.80
-[app_id="geany"]        opacity 0.80
-[app_id="thunar"]       opacity 0.80
-[app_id="pcmanfm"]      opacity 0.80
+[app_id="mousepad"]     opacity 0.90
+[app_id="geany"]        opacity 0.90
+[app_id="thunar"]       opacity 0.90
+[app_id="pcmanfm"]      opacity 0.90
 [app_id="qvidcap"]      opacity 1.0
 }
 
