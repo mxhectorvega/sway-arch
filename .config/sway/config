@@ -6,6 +6,11 @@
 ## Version:
 ## v5.0: 26/02/2022
 
+## Status Bar:
+bar {
+    swaybar_command waybar
+}
+
 ## Delara teclas super y altinput * xkCozetteb_numlock enable
 set $mod Mod4
 set $alt Mod1
@@ -15,9 +20,9 @@ set $block-wall $HOME/.config/wall.*
 set $desktop-wall $HOME/.config/wall.*
 
 ## Declarar temas e iconos
-set $theme_gtk Colloid-dark-compact
-set $theme_icons Colloid-dark
-set $theme_sway obscuro
+set $theme_gtk Colloid-light-compact
+set $theme_icons Colloid-light
+set $theme_sway claro
 
 
 ## Declarar teclados, mismos que se podra cambiar con
@@ -101,11 +106,6 @@ input type:touchpad {
     middle_emulation enabled
 }
 
-## Status Bar:
-bar {
-   status_command pkill -9 waybar && waybar
-}
-
 ## Esta configuracion es para desactivar el monitor de a portatil cuando se cierra y 
 ## dejar activo el monitor secundario
 ## Declara el identificador del monitor de la laptop
@@ -163,7 +163,7 @@ for_window {
 }
 
 ## Configuracion de temas y fuentes (no tocar, la informacion es tomada de 
-## las primeras lineas en donde deobscuro lo temas manualmente)
+## las primeras lineas en donde declaro lo temas manualmente)
 set $gnome-schema org.gnome.desktop.interface
 exec_always {
     gsettings set $gnome-schema gtk-theme '$theme_gtk'
@@ -274,7 +274,7 @@ for_window {
 
 ## Gestores de archivos
 [app_id="org.gnome.Nautilus"] floating enable
-[app_id="org.kde.dolphin"] floating enable, resize set 1550 900
+[app_id="org.kde.dolphin"] floating enable, resize set 800 600
 
 ## Dialogos
 ## General
@@ -302,6 +302,10 @@ for_window {
 ## Ventanas emergentes "Popup"
 [title="popupterm"] floating enable, resize set $termpopupwidth $termpopupheight
 [title="Progreso de las operaciones de archivo"] floating enable
+[app_id="xdg-desktop-portal-gtk"] floating enable
+[app_id="xdg-desktop-portal-gnome"] floating enable
+[app_id="xdg-desktop-portal-wrl"] floating enable
+[app_id="null"] floating enable
 
 ## Lanzadores
 [title="fuzzyterm"] floating enable, sticky enable, resize set $fuzzytermwidth $fuzzytermheight
