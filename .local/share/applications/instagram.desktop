@@ -2,7 +2,7 @@
 # VERSION=3.38.1
 Name=instagram
 Comment=instagram
-Exec=/usr/lib/brave-bin/brave --password-store=basic --app=https://web.whatsapp.com/
+Exec=/usr/lib/brave-bin/brave --password-store=basic --app=https://www.instagram.com/
 Icon=instagram
 Type=Application
 StartupWMClass=instagram
