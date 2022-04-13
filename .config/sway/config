@@ -20,9 +20,9 @@ set $block-wall $HOME/.config/wall.*
 set $desktop-wall $HOME/.config/wall.*
 
 ## Declarar temas e iconos
-set $theme_gtk Colloid-light-compact
-set $theme_icons Colloid-light
-set $theme_sway claro
+set $theme_gtk Colloid-dark-compact
+set $theme_icons Colloid-dark
+set $theme_sway obscuro
 
 
 ## Declarar teclados, mismos que se podra cambiar con
@@ -58,15 +58,10 @@ set $menu "pkill -9 wofi ; wofi \
      --lines 6 \"
 
 ## Declara menu gestor de portapapeles
-set $menu_clipboard "pkill -9 wofi ; cliphist \
-     list | wofi --no-actions \
-     --dmenu \
-     --width 600 \
-     --lines 8 \
-     --prompt Clipboard | cliphist decode | wl-copy"
+set $menu_clipboard "pkill -9 wofi ; clipman pick -t wofi"
 
 ## Limpiar menu portapales
-set $clean_clipboard rm .cache/cliphist/db && exec \
+set $clean_clipboard clipman clear --all ; exec \
     notify-send -t 10000 -i $HOME/.config/user.png \
     "Clipboard" "El historial del portapapeles se a borrado con exito."
    
@@ -163,7 +158,7 @@ for_window {
 }
 
 ## Configuracion de temas y fuentes (no tocar, la informacion es tomada de 
-## las primeras lineas en donde declaro lo temas manualmente)
+## las primeras lineas en donde deobscuro lo temas manualmente)
 set $gnome-schema org.gnome.desktop.interface
 exec_always {
     gsettings set $gnome-schema gtk-theme '$theme_gtk'
@@ -305,7 +300,8 @@ for_window {
 [app_id="xdg-desktop-portal-gtk"] floating enable
 [app_id="xdg-desktop-portal-gnome"] floating enable
 [app_id="xdg-desktop-portal-wrl"] floating enable
-[app_id="null"] floating enable
+[app_id=null] floating enable
+[class="tm"] floating enable
 
 ## Lanzadores
 [title="fuzzyterm"] floating enable, sticky enable, resize set $fuzzytermwidth $fuzzytermheight
@@ -387,7 +383,8 @@ exec_always systemctl --user import-environment "$imp_vars"
 exec_always hash dbus-update-activation-environment 2>/dev/null && \
     dbus-update-activation-environment --systemd "$imp_vars"
 
-exec wl-paste --watch cliphist store
+## Gestor de portapapeles de AUR para waylad es el mas ligero que encontre, asi que no hagan de a pedo.
+exec wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json
 
 exec_always 'pkill mako; exec mako \
     --background-color "$transparent" \

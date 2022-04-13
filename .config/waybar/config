@@ -157,8 +157,8 @@
       },
     "custom/portapapeles": {
         "format": "",
-        "on-click": "pkill -9 wofi ; cliphist list | wofi --no-actions --dmenu --width 600 --lines 8 --prompt Clipboard | cliphist decode | wl-copy",
-        "on-click-right": "rm .cache/cliphist/db && exec notify-send -t 10000 -i $HOME/.config/user.png 'Clipboard' 'El historial del portapapeles se a borrado con exito.'",
+        "on-click": "pkill wofi ; clipman pick -t wofi",
+        "on-click-right": "clipman clear --all && exec notify-send -t 10000 -i $HOME/.config/user.png 'Clipboard' 'El historial del portapapeles se a borrado con exito.'",
         "tooltip-format": "Bluethooth"
         },      
     "temperature": {

@@ -120,8 +120,8 @@ clear
 printf '\n \nInstalando gestor de portapapeles para Wayland desde AUR'
 sleep 1
 paru -S ranger-sixel --noconfirm
-paru -S libsixel  --noconfirm
-paru -S cliphist --noconfirm
+sudo pacman -S libsixel  --noconfirm
+sudo pacman -S clipman --noconfirm
 
 # Creando directorios de usuario
 clear
