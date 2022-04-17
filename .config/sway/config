@@ -120,7 +120,7 @@ output * {
     render_bit_depth 8
     scale 1.0
 ## En caso de usar maquina virtual, coloque aqui la resolucion ejemplo: mode 800x600
-#    mode 1366x768    
+#    mode 8000x600
 }
 
 ## Configuracion de 2 monitores
@@ -383,8 +383,8 @@ exec_always systemctl --user import-environment "$imp_vars"
 exec_always hash dbus-update-activation-environment 2>/dev/null && \
     dbus-update-activation-environment --systemd "$imp_vars"
 
-## Gestor de portapapeles de AUR para waylad es el mas ligero que encontre, asi que no hagan de a pedo.
-exec wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json
+## Gestor de portapapeles de AUR para waylad es el mas ligero que encontre, asi que no hagan de pedo.
+exec_always wl-paste -t text --watch clipman store --no-persist
 
 exec_always 'pkill mako; exec mako \
     --background-color "$transparent" \
