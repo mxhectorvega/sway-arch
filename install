@@ -6,7 +6,7 @@
 # mxhectorvega@gmail.com
 # https://github.com/mxhectorvega
 # Version:
-# v7.0: 20/11/2021 - Configuracion para una instalacion limpia con archinstall ejecutado desde el LiveUSB.
+# v8.0: 20/11/2021 - Configuracion para una instalacion limpia con archinstall ejecutado desde el LiveUSB.
 
 # Pacman configuraciones
 clear 
@@ -53,10 +53,10 @@ cp -rf $HOME/temas/.{icons,themes}/ "$HOME"
 rm -rf "$HOME"/{sway-arch,tipografias,temas}/
 
 # Software adicional
-sudo pacman -S git foot make gcc htop vim blueberry network-manager-applet pacman-contrib gnome-disk-utility python-pillowfight imagemagick man bc polkit-gnome lxappearance telegram-desktop imv mpv zathura-pdf-mupdf mousepad xdg-user-dirs --noconfirm --needed
+sudo pacman -S git foot make gcc htop vim blueberry network-manager-applet pacman-contrib man bc polkit-gnome telegram-desktop imv mpv zathura-pdf-mupdf mousepad xdg-user-dirs --noconfirm --needed
 
 # SwayWM
-sudo pacman -S rtkit qt5-wayland xorg-xwayland swayidle wofi mako waybar grim slurp wl-clipboard wf-recorder gammastep swappy brightnessctl --noconfirm --needed
+sudo pacman -S rtkit qt5-wayland xorg-xwayland swayidle wofi mako waybar grim slurp wl-clipboard wf-recorder brightnessctl --noconfirm --needed
 sudo pacman -S xdg-desktop-portal xdg-desktop-portal-gtk xdg-desktop-portal-wlr --noconfirm --needed
 sudo pacman -S wireplumber --noconfirm --needed
 
@@ -72,11 +72,6 @@ sudo pacman -S ttf-{dejavu,hack,roboto,liberation} terminus-font wqy-microhei un
 # Display manager (pantalla de inicio de sesion)
 sudo pacman -S lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings --noconfirm
 
-# Desinstalar terminal y menu obsoletos
-sudo pacman -Rs dmenu --noconfirm
-sudo pacman -Rs alacritty --noconfirm
-sudo pacman -Rs nano --noconfirm
-
 # Paru AUR helper
 clear 
 printf '\n \nInstalando el gestor de paquetes Paru...\n'
@@ -84,10 +79,7 @@ sleep 1
 cd ; git clone https://aur.archlinux.org/paru-bin.git ; cd paru-bin ; makepkg -si --noconfirm ; cd ; rm -rf paru-bin
 sudo sed -i "s/#BottomUp/BottomUp/g" /etc/paru.conf 
 
-## Habilitando servicio de bluetooth 
-sudo systemctl enable --now bluetooth.service
-
-# Todo el SO en español
+## Todo el SO en español
 clear 
 printf '\n \nEstableciendo español como idioma predeterminado...\n'
 sleep 1
@@ -115,36 +107,6 @@ sudo locale-gen
 sudo timedatectl set-timezone America/Mexico_City
 sudo timedatectl set-ntp yes
 
-# Gestor de portapapeles (paquete unicamente disponible en AUR)
-clear
-printf '\n \nInstalando gestor de portapapeles para Wayland desde AUR'
-sleep 1
-paru -S ranger-sixel --noconfirm
-sudo pacman -S libsixel  --noconfirm
-sudo pacman -S clipman --noconfirm
-
-# Creando directorios de usuario
-clear
-printf '\n \nCreando directorios de usuario...\n'
-xdg-user-dirs-update --force
-sleep 2
-
-# Cambiando de fuente y wallpaper ligthDM
-sudo cp $HOME/.config/wall.* /usr/share/backgrounds/wall.jpg
-sudo tee /etc/lightdm/lightdm-gtk-greeter.conf <<EOF
-[greeter]
-background=/usr/share/backgrounds/wall.jpg
-theme-name=$HOME/.themes/Orchis-dark-compact/
-icon-theme-name=$HOME/.icons/Papirus-Dark/
-font-name=SF Compact Display 9
-xft-antialias=true
-xft-dpi=96
-xft-hintstyle=hintslight
-xft-rgba=rgb
-indicators=~session;~spacer;separator;~clock;~spacer;separator;~power;
-clock-format=%a, %b %d, %H:%M
-EOF
-
 ## borrando directorios no necesarios
 rm -rf "$HOME"/go/
 
@@ -159,6 +121,25 @@ sudo tee -a /etc/pacman.conf <<EOF
 Include = /etc/pacman.d/chaotic-mirrorlist
 EOF
 sudo pacman -Sy --noconfirm
+sudo pacman -S clipman --noconfirm
+
+# Cambiando de fuente y wallpaper ligthDM
+sudo tee /etc/lightdm/lightdm-gtk-greeter.conf <<EOF
+[greeter]
+font-name=SF Compact Display 9
+xft-antialias=true
+xft-dpi=96
+xft-hintstyle=hintslight
+xft-rgba=rgb
+indicators=~session;~spacer;separator;~clock;~spacer;separator;~power;
+clock-format=%a, %b %d, %H:%M
+EOF
+
+# Desinstalar terminal y menu obsoletos
+clear
+sudo pacman -Rs dmenu --noconfirm
+sudo pacman -Rs alacritty --noconfirm
+sudo pacman -Rs nano --noconfirm
 
 clear
 sleep 1
@@ -166,19 +147,14 @@ printf '\n \nConfiguraciones aplicadas!'
 sleep 1
 printf '\n \nIniciando pantalla de inicio de session....'
 clear
+## Habilitando servicio de pantalla de inicio de sesion
 sudo systemctl enable --now lightdm
+## Habilitando servicio de bluetooth 
+sudo systemctl enable --now bluetooth.service
 #printf '\n \nConsulte los atajos del teclado en el archivo ~/.config/sway/config'
-#sleep 1
-#printf '\n \nCambie el tema desde Xlappearance y en la config de Sway.'
 #sleep 1
 #printf '\n \nReemplace el fondo de escritorio en .config/wall.*'
 #sleep 1
 #printf '\n \nContribuye paypal.me/hivz'
 #sleep 1
 #printf '\n \n'
-
-
-
-# En caso de que usted use maquina virtual o tenga un computador que genere problemas, 
-# debe instalar estos 2 paquetes:
-#paru -S sway-git wlroots-git
