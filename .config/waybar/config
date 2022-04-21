@@ -25,29 +25,53 @@
     "cpu", 
     "memory", 
     "custom/pacman",
+    "sway/language",
     "custom/grabar", 
+    "custom/darkmode",
     "idle_inhibitor", 
     "custom/ayuda",
     "sway/mode"
     ],
     
     "modules-center": [
-    "clock"
+    "sway/workspaces"
     ],
     
     "modules-right": [
     "custom/wf-recorder", 
     "backlight",
-    "custom/darkmode",
     "pulseaudio#mic", 
     "pulseaudio",  
-    "sway/language",
     "bluetooth", 
     "custom/portapapeles", 
-    "tray", 
+    "clock",
+    "tray",
     "custom/power" 
     ],
 
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "current-only": false,
+        "all-outputs": false,
+        "disable-markup": false, 
+        "format": "{icon}",
+        "format-icons": {
+        "1": "",
+        "2": "",
+        "3": "",
+        "4": "",
+        "5": "",
+        "focused": "",
+        "default": ""
+    },
+        "persistent_workspaces": {
+        "1": [],
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": [],
+        }
+    },
     "sway/mode": {
         "format": "{}"
     },
@@ -115,7 +139,7 @@
     "tooltip-format-ethernet": "{ifname} ",
     "tooltip-format-disconnected": "Disconnected",
     "max-length": 50,
-    "on-click": "foot -e nmtui"
+    "on-click": "kitty -e nmtui"
     },
     "pulseaudio": {
     "format": "{volume}%  {icon}",
@@ -145,14 +169,14 @@
     "interval": 30,
     "format": "{}%  ",
     "max-length": 10,
-    "on-click": "foot -e htop"
+    "on-click": "kitty -e htop"
     },
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
             "activated": "",
             "deactivated": "",
-        "on-click": "foot -e htop"
+        "on-click": "kitty -e htop"
         }
       },
     "custom/portapapeles": {
@@ -167,7 +191,7 @@
         // "critical-threshold": 80,
         // "format-critical": "{temperatureC}°C  ",
         "format": "{temperatureC}°C  ",
-        "on-click": "foot -e htop"
+        "on-click": "kitty -e htop"
         },
     "custom/grabar":{
     "format": "{icon}",
@@ -185,7 +209,7 @@
         "interval": 3600,                     // every hour
         "exec": "checkupdates | wc -l",       // # of updates
         "exec-if": "exit 0",                  // always run; consider advanced run conditions
-        "on-click": "foot -e sudo pacman -Syyu; pkill -SIGRTMIN+8 waybar", // update system
+        "on-click": "kitty -e sudo pacman -Syyu; pkill -SIGRTMIN+8 waybar", // update system
         "signal": 8
         },
     "custom/power":{ 
@@ -195,7 +219,7 @@
         },
     "cpu": {
         "format": "{usage}%  ",
-        "on-click": "foot -e htop"
+        "on-click": "kitty -e htop"
     },
     "custom/darkmode":{ 
         "format": "{icon}",
@@ -217,7 +241,7 @@
     "on-click": "swaymsg input '1:1:AT_Translated_Set_2_keyboard' xkb_switch_layout next"
     }
 
-},
+/*},
 
 {
     "layer": "bottom", 
@@ -229,32 +253,9 @@
     "margin-right": 5, 
 
     "modules-center": [
-    "sway/workspaces"
+    ""
     ],
 
-    "sway/workspaces": {
-        "disable-scroll": true,
-        "current-only": false,
-        "all-outputs": false,
-        "disable-markup": false, 
-        "format": "{icon}",
-        "format-icons": {
-        "1": "",
-        "2": "",
-        "3": "",
-        "4": "",
-        "5": "",
-        "focused": "",
-        "default": ""
-    },
-        "persistent_workspaces": {
-        "1": [],
-        "2": [],
-        "3": [],
-        "4": [],
-        "5": [],
-        }
-    },
         "wlr/taskbar": {
         "format": "{icon}",
         "tooltip-format": "{title}",
@@ -264,5 +265,5 @@
         "icon-size": 40,
         "icon-theme": "Papirus-Dark",
         "on-click-right": "minimize"
-    }
+    } */
 }]

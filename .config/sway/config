@@ -34,7 +34,7 @@ set $teclado2 es
 set $filemanager thunar
 
 ## Delara la terminal por defecto
-set $terminal foot
+set $terminal kitty
 
 ## Delara el editor de texto en terminal por defecto
 set $editor vim

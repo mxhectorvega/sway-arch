@@ -53,7 +53,7 @@ cp -rf $HOME/temas/.{icons,themes}/ "$HOME"
 rm -rf "$HOME"/{sway-arch,tipografias,temas}/
 
 # Software adicional
-sudo pacman -S git foot make gcc htop vim blueberry network-manager-applet pacman-contrib man bc polkit-gnome telegram-desktop imv mpv zathura-pdf-mupdf mousepad xdg-user-dirs --noconfirm --needed
+sudo pacman -S git kitty make gcc htop vim blueberry network-manager-applet pacman-contrib man bc polkit-gnome telegram-desktop imv mpv zathura-pdf-mupdf mousepad xdg-user-dirs python-pillow imagemagick --noconfirm --needed
 
 # SwayWM
 sudo pacman -S rtkit qt5-wayland xorg-xwayland swayidle wofi mako waybar grim slurp wl-clipboard wf-recorder brightnessctl --noconfirm --needed
@@ -140,6 +140,7 @@ clear
 sudo pacman -Rs dmenu --noconfirm
 sudo pacman -Rs alacritty --noconfirm
 sudo pacman -Rs nano --noconfirm
+sudo pacman -Rs foot --noconfirm
 
 clear
 sleep 1
