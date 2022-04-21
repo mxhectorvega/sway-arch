@@ -56,6 +56,7 @@ rm -rf "$HOME"/{sway-arch,tipografias,temas}/
 sudo pacman -S git kitty make gcc htop vim blueberry network-manager-applet pacman-contrib man bc polkit-gnome telegram-desktop imv mpv zathura-pdf-mupdf mousepad xdg-user-dirs python-pillow imagemagick --noconfirm --needed
 
 # SwayWM
+sudo pacman -S sway --noconfirm --needed
 sudo pacman -S rtkit qt5-wayland xorg-xwayland swayidle wofi mako waybar grim slurp wl-clipboard wf-recorder brightnessctl --noconfirm --needed
 sudo pacman -S xdg-desktop-portal xdg-desktop-portal-gtk xdg-desktop-portal-wlr --noconfirm --needed
 sudo pacman -S wireplumber --noconfirm --needed
