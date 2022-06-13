@@ -1,24 +1,21 @@
 #!/usr/bin/env bash
 
-# Post-install para Sway en Archlinux
-# Autor:
-# Hector Ivan Vega Zamudio
-# mxhectorvega@gmail.com
-# https://github.com/mxhectorvega
-# Version:
-# v8.0: 20/11/2021 - Configuracion para una instalacion limpia con archinstall ejecutado desde el LiveUSB.
+# Titulo: Post-install para Sway en Archlinux
+# Autor: Hector Iván Vega Zamudio
+# Correo: mxhectorvega@gmail.com
+# Link: https://github.com/mxhectorvega
+# Versión:v9.0
+# fecha de actualización 12/06/2022
+# Nota: El sistema de preferencia tuvo que haber sido instalado con la herramienta archinstall del liveUSB,
+# Seleccionando el perfil Sway con todos los controladores de código abierto.
 
 # Pacman configuraciones
 clear 
 printf '\n \nConfigurando gestor de paquetes Pacman...\n'
 sleep 1
 sudo sed -i "s/#Color/Color/g" /etc/pacman.conf 
-sudo sed -i "s/#TotalDownload/TotalDownload/g" /etc/pacman.conf 
-sudo sed -i "s/#VerbosePkgLists/VerbosePkgLists/g" /etc/pacman.conf 
-sudo sed -i "s/#ParallelDownloads = 5/ParallelDownloads = 50/g" /etc/pacman.conf
-sudo sed -i "38i ILoveCandy" /etc/pacman.conf 
-#sudo sed -i "s/#[multilib]/[multilib]/g" /etc/pacman.conf 
-#sudo sed -i "s/#Include = /etc/pacman.d/mirrorlist /Include = /etc/pacman.d/mirrorlist/g" /etc/pacman.conf
+sudo sed -i "s/#ParallelDownloads/ParallelDownloads/g" /etc/pacman.conf
+sudo sed -i "38i ILoveCandy" /etc/pacman.conf
 
 # Paquetes adicionales
 clear
@@ -79,34 +76,6 @@ printf '\n \nInstalando el gestor de paquetes Paru...\n'
 sleep 1
 cd ; git clone https://aur.archlinux.org/paru-bin.git ; cd paru-bin ; makepkg -si --noconfirm ; cd ; rm -rf paru-bin
 sudo sed -i "s/#BottomUp/BottomUp/g" /etc/paru.conf 
-
-## Todo el SO en español
-clear 
-printf '\n \nEstableciendo español como idioma predeterminado...\n'
-sleep 1
-sudo tee /etc/locale.conf <<EOF
-LANG="es_MX.UTF-8"
-LC_CTYPE="es_MX.UTF-8"
-LC_NUMERIC="es_MX.UTF-8"
-LC_TIME="es_MX.UTF-8"
-LC_COLLATE="es_MX.UTF-8"
-LC_MONETARY="es_MX.UTF-8"
-LC_MESSAGES="es_MX.UTF-8"
-LC_PAPER="es_MX.UTF-8"
-LC_NAME="es_MX.UTF-8"
-LC_ADDRESS="es_MX.UTF-8"
-LC_TELEPHONE="es_MX.UTF-8"
-LC_MEASUREMENT="es_MX.UTF-8"
-LC_IDENTIFICATION="es_MX.UTF-8"
-LC_ALL=
-EOF
-sudo tee /etc/locale.gen <<EOF
-es_MX.UTF-8 UTF-8
-EOF
-sudo localectl set-locale LANG=es_MX.UTF-8
-sudo locale-gen
-sudo timedatectl set-timezone America/Mexico_City
-sudo timedatectl set-ntp yes
 
 ## borrando directorios no necesarios
 rm -rf "$HOME"/go/
