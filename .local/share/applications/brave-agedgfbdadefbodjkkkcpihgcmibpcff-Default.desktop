@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=iCloud
+Exec=/opt/brave.com/brave/brave-browser --profile-directory=Default --app-id=agedgfbdadefbodjkkkcpihgcmibpcff
+Icon=/home/vega/.icons/vega/icloud.svg
+StartupWMClass=crx_agedgfbdadefbodjkkkcpihgcmibpcff

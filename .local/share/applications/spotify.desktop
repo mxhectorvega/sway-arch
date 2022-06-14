@@ -1,8 +1,0 @@
-[Desktop Entry]
-# VERSION=3.38.1
-Name=spotify
-Comment=spotify
-Exec=/usr/lib/brave-bin/brave --password-store=basic --app=https://open.spotify.com/
-Icon=spotify
-Type=Application
-StartupWMClass=spotify

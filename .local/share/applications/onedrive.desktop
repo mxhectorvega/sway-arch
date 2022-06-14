@@ -1,8 +1,0 @@
-[Desktop Entry]
-# VERSION=3.38.1
-Name=onedrive
-Comment=onedrive
-Exec=/usr/lib/brave-bin/brave --password-store=basic --app=https://onedrive.live.com/
-Icon=onedrive
-Type=Application
-StartupWMClass=onedrive

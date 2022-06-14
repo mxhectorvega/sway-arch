@@ -1,8 +1,0 @@
-[Desktop Entry]
-# VERSION=3.38.1
-Name=whatsapp
-Comment=whatsapp
-Exec=/usr/lib/brave-bin/brave --password-store=basic --app=https://web.whatsapp.com/
-Icon=whatsapp
-Type=Application
-StartupWMClass=whatsapp

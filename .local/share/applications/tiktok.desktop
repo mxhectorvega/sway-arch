@@ -1,8 +1,0 @@
-[Desktop Entry]
-# VERSION=3.38.1
-Name=tiktok
-Comment=tiktok
-Exec=/usr/lib/brave-bin/brave --password-store=basic --app=https://tiktok.com/
-Icon=tiktok
-Type=Application
-StartupWMClass=tiktok

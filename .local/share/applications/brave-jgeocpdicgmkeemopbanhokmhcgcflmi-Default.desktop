@@ -1,0 +1,26 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=Twitter
+Exec=/opt/brave.com/brave/brave-browser --profile-directory=Default --app-id=jgeocpdicgmkeemopbanhokmhcgcflmi
+Icon=/home/vega/.icons/vega/twitter.svg
+StartupWMClass=crx_jgeocpdicgmkeemopbanhokmhcgcflmi
+Actions=Explorar;Mensajes-Directos;Notificaciones;Nuevo-Tweet
+
+[Desktop Action Explorar]
+Name=Explorar
+Exec=/opt/brave.com/brave/brave-browser --profile-directory=Default --app-id=jgeocpdicgmkeemopbanhokmhcgcflmi "--app-launch-url-for-shortcuts-menu-item=https://twitter.com/explore?utm_source=jumplist&utm_medium=shortcut"
+
+[Desktop Action Mensajes-Directos]
+Name=Mensajes Directos
+Exec=/opt/brave.com/brave/brave-browser --profile-directory=Default --app-id=jgeocpdicgmkeemopbanhokmhcgcflmi "--app-launch-url-for-shortcuts-menu-item=https://twitter.com/messages?utm_source=jumplist&utm_medium=shortcut"
+
+[Desktop Action Notificaciones]
+Name=Notificaciones
+Exec=/opt/brave.com/brave/brave-browser --profile-directory=Default --app-id=jgeocpdicgmkeemopbanhokmhcgcflmi "--app-launch-url-for-shortcuts-menu-item=https://twitter.com/notifications?utm_source=jumplist&utm_medium=shortcut"
+
+[Desktop Action Nuevo-Tweet]
+Name=Nuevo Tweet
+Exec=/opt/brave.com/brave/brave-browser --profile-directory=Default --app-id=jgeocpdicgmkeemopbanhokmhcgcflmi "--app-launch-url-for-shortcuts-menu-item=https://twitter.com/compose/tweet?utm_source=jumplist&utm_medium=shortcut"
