@@ -4,7 +4,7 @@
 ## mxhectorvega@gmail.com
 ## https://github.com/mxhectorvega
 ## Version:
-## v5.0: 26/02/2022
+## v6.0: 17/06/2022
 
 ## Status Bar:
 bar {
@@ -16,12 +16,12 @@ set $mod Mod4
 set $alt Mod1
 
 ## Declarar wallpapers bloqueo y escritorio
-set $block-wall $HOME/.config/wall.*
-set $desktop-wall $HOME/.config/wall.*
+set $block-wall ~/.config/background
+set $desktop-wall ~/.config/background
 
 ## Declarar temas e iconos
-set $theme_gtk Colloid-dark-compact
-set $theme_icons Colloid-dark
+set $theme_gtk Colloid-Dark
+set $theme_icons WhiteSur-dark
 set $theme_sway obscuro
 
 
@@ -34,13 +34,13 @@ set $teclado2 es
 set $filemanager thunar
 
 ## Delara la terminal por defecto
-set $terminal kitty
+set $terminal gnome-terminal
 
 ## Delara el editor de texto en terminal por defecto
 set $editor vim
 
 ## Delara tipo y tamaño de texto
-#set $default_font Terminus 8
+set $font_terminal Terminus 8
 set $default_font SF Compact Display SemiBold 9
 set $font_notify "SF Compact Display Bold 9, SF Compact Display 9"
 
@@ -111,9 +111,9 @@ bindswitch --reload --locked lid:off output $laptop enable
 ## Otput configuration general de todos los monitores
 ## Configuracion de fondo de escritorio .config/wall.* delcarado en la linea 14 y 15.
 ## output * bg #404040 lid_color
-output * {
+output "*" {
 #    bg #202020 solid_color
-    bg $desktop-wall fill
+    background $desktop-wall fill
     adaptive_sync on
     scale_filter linear
     subpixel none
@@ -164,7 +164,7 @@ exec_always {
     gsettings set $gnome-schema gtk-theme '$theme_gtk'
     gsettings set $gnome-schema icon-theme '$theme_icons'
     gsettings set $gnome-schema font-name '$default_font'
-    gsettings set $gnome-schema monospace-font-name '$default_font'
+    gsettings set $gnome-schema monospace-font-name '$font_terminal'
     gsettings set $gnome-schema document-font-name '$default_font'
     gsettings set org.gnome.desktop.wm.preferences titlebar-font '$default_font'
     gsettings set org.gnome.desktop.wm.preferences button-layout :

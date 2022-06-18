@@ -2,8 +2,8 @@
 # Any customization should be done in ~/.gtkrc-2.0.mine instead.
 
 include "/home/vega/.gtkrc-2.0.mine"
-gtk-theme-name="Colloid-dark-compact"
-gtk-icon-theme-name="Colloid-dark"
+gtk-theme-name="Colloid-Dark"
+gtk-icon-theme-name="WhiteSur-dark"
 gtk-font-name="SF Compact Display 9"
 gtk-cursor-theme-name="Adwaita"
 gtk-cursor-theme-size=0
